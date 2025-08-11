@@ -4,9 +4,16 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 // Define the artworks
-const artworks = [
+const baseArtworks = [
   {
     id: 1,
     image: "/placeholder-sicdk.png",
@@ -154,18 +161,34 @@ const artworks = [
   },
 ]
 
+// Enrich artworks with minimal metadata for filtering
+const fallbackArtists = ["Jean-Michel Basquiat", "Pablo Picasso", "Joan Mitchell"]
+const artworks = baseArtworks.map((artwork, index) => ({
+  ...artwork,
+  artistName: artwork.artistName || fallbackArtists[index % fallbackArtists.length],
+  isSold: artwork.isSold ?? (index % 4 === 0),
+}))
+
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
 export default function HomePage() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
   const [selectedArtworkForInquiry, setSelectedArtworkForInquiry] = useState(null)
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
+  const [selectedArtist, setSelectedArtist] = useState<string>("all")
+  const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
 
   useEffect(() => {
     setIsVisible(true) // Trigger initial animation on component mount
   }, [])
 
-  const totalPages = Math.ceil(artworks.length / ITEMS_PER_PAGE)
+  const artists = Array.from(new Set(artworks.map((a) => a.artistName))).sort()
+  const filteredArtworks = artworks.filter((a) => {
+    const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
+    const soldOk = showSoldOnly ? a.isSold : true
+    return artistOk && soldOk
+  })
+  const totalPages = Math.max(1, Math.ceil(filteredArtworks.length / ITEMS_PER_PAGE))
 
   const nextPage = useCallback(() => {
     setCurrentPageIndex((prevIndex) => Math.min(prevIndex + 1, totalPages - 1))
@@ -178,9 +201,13 @@ export default function HomePage() {
   const openAcquireModal = (artwork) => setSelectedArtworkForInquiry(artwork)
   const closeAcquireModal = () => setSelectedArtworkForInquiry(null)
 
+  useEffect(() => {
+    setCurrentPageIndex(0)
+  }, [selectedArtist, showSoldOnly])
+
   const startIndex = currentPageIndex * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentArtworks = artworks.slice(startIndex, endIndex)
+  const currentArtworks = filteredArtworks.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
@@ -188,7 +215,7 @@ export default function HomePage() {
       <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-500">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-black"></div>
+            <div className="w-8 h-8 bg-black" />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Curated Fine Art</div>
@@ -201,12 +228,12 @@ export default function HomePage() {
               onClick={() => setCurrentPageIndex(0)}
             >
               Collection
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
             </Button>
             <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
               <Link href="/about">
                 About
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
               </Link>
             </Button>
             <div className="flex items-center space-x-2 text-gray-600">
@@ -219,65 +246,114 @@ export default function HomePage() {
 
       {/* Main Art Display Grid */}
       <main className={`flex-1 relative px-4 md:px-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {currentArtworks.map((artwork) => (
-                <div key={artwork.id} className="group cursor-pointer flex flex-col">
-                  <div className="relative overflow-hidden mb-3 rounded-md">
-                    <div className="w-full aspect-[3/2] bg-gray-200" />
-                  </div>
-                  <div className="space-y-1 text-center px-2">
-                    <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
-                      {artwork.title}
-                    </h3>
-                    <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
-                    <div className="flex items-center justify-center pt-2">
-                      <span className="text-lg font-light text-black flex items-center space-x-1">
-                        <Bitcoin className="w-4 h-4" />
-                        <span>{artwork.price}</span>
-                      </span>
-                    </div>
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-[220px_minmax(0,1fr)] gap-6">
+            {/* Sidebar Filters */}
+            <aside className="hidden md:block">
+              <div className="sticky top-20 space-y-6">
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Artists</div>
+                  <Select value={selectedArtist} onValueChange={(v) => setSelectedArtist(v)}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="All artists" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All artists</SelectItem>
+                      {artists.map((name) => (
+                        <SelectItem key={name} value={name}>
+                          {name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Status</div>
+                  <div className="flex gap-2">
                     <Button
+                      variant={showSoldOnly ? "outline" : "default"}
                       size="sm"
-                      variant="outline"
-                      className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
-                      onClick={() => openAcquireModal(artwork)}
+                      onClick={() => setShowSoldOnly(false)}
                     >
-                      Inquire
+                      All
+                    </Button>
+                    <Button
+                      variant={showSoldOnly ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setShowSoldOnly(true)}
+                    >
+                      Sold
                     </Button>
                   </div>
                 </div>
-              ))}
-          </div>
+              </div>
+            </aside>
 
-          {/* Pagination Controls */}
-          <div className="mt-8 flex items-center justify-between">
-            <div className="text-sm text-gray-500 font-light">
-              Page {currentPageIndex + 1} of {totalPages}
+            {/* Products Grid */}
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {currentArtworks.map((artwork) => (
+                  <div key={artwork.id} className="group cursor-pointer flex flex-col">
+                    <div className="relative overflow-hidden mb-3 rounded-md">
+                      <div className="w-full aspect-[3/2] bg-gray-200" />
+                    </div>
+                    <div className="space-y-1 text-center px-2">
+                      <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
+                        {artwork.title}
+                      </h3>
+                      <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
+                      <div className="flex items-center justify-center pt-2">
+                        <span className="text-lg font-light text-black flex items-center space-x-1">
+                          <Bitcoin className="w-4 h-4" />
+                          <span>{artwork.price}</span>
+                        </span>
+                      </div>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
+                        onClick={() => openAcquireModal(artwork)}
+                      >
+                        Inquire
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                {filteredArtworks.length === 0 && (
+                  <div className="text-center text-gray-500 font-light py-12">No works found.</div>
+                )}
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              {currentPageIndex > 0 && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="p-2 text-gray-800 hover:text-black"
-                  aria-label="Previous"
-                  onClick={prevPage}
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-              )}
-              {currentPageIndex < totalPages - 1 && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="p-2 text-gray-800 hover:text-black"
-                  aria-label="Next"
-                  onClick={nextPage}
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              )}
+
+            {/* Pagination Controls */}
+            <div className="mt-8 flex items-center justify-between md:col-span-2">
+              <div className="text-sm text-gray-500 font-light">
+                Page {currentPageIndex + 1} of {totalPages}
+              </div>
+              <div className="flex items-center gap-2">
+                {currentPageIndex > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="p-2 text-gray-800 hover:text-black"
+                    aria-label="Previous"
+                    onClick={prevPage}
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </Button>
+                )}
+                {currentPageIndex < totalPages - 1 && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="p-2 text-gray-800 hover:text-black"
+                    aria-label="Next"
+                    onClick={nextPage}
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -297,16 +373,12 @@ export default function HomePage() {
             </Button>
             <div className="text-center mb-10">
               <h2 className="text-4xl font-extralight text-black mb-4">Acquire Artwork</h2>
-              {selectedArtworkForInquiry.title && (
+              {selectedArtworkForInquiry.title ? (
                 <p className="text-lg font-light text-gray-600">
-                  Express your interest in "<span className="font-medium">{selectedArtworkForInquiry.title}</span>". We
-                  will contact you shortly.
+                  Express your interest in <span className="font-medium">{selectedArtworkForInquiry.title}</span>. We will contact you shortly.
                 </p>
-              )}
-              {!selectedArtworkForInquiry.title && (
-                <p className="text-lg font-light text-gray-600">
-                  Please provide your details for a general inquiry. We will contact you shortly.
-                </p>
+              ) : (
+                <p className="text-lg font-light text-gray-600">Please provide your details for a general inquiry. We will contact you shortly.</p>
               )}
             </div>
 
@@ -333,14 +405,10 @@ export default function HomePage() {
                   rows={4}
                   className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-lg resize-none"
                   placeholder="Optional: Share your interest or questions."
-                ></textarea>
+                />
               </div>
               <div className="text-center pt-4">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="bg-black hover:bg-gray-900 text-white font-light px-16 py-4 text-lg transition-all duration-300"
-                >
+                <Button type="submit" size="lg" className="bg-black hover:bg-gray-900 text-white font-light px-16 py-4 text-lg transition-all duration-300">
                   Send Inquiry
                 </Button>
               </div>
