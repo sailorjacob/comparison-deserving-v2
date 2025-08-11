@@ -124,8 +124,9 @@
   html,
   body,
   #__next {
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
   }
 
   * {
@@ -135,12 +136,5 @@
     @apply bg-background text-foreground;
   }
 
-  /* Optional: Hide scrollbar for a cleaner look */
-  body::-webkit-scrollbar {
-    display: none;
-  }
-  body {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+  /* Keep default scrollbars visible for usability */
 }

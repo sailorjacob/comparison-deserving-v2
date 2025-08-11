@@ -78,6 +78,79 @@ const artworks = [
     description:
       "A futuristic vision rendered with digital precision, blending organic forms with technological elements to create a surreal and thought-provoking landscape.",
   },
+  // Additional examples
+  {
+    id: 9,
+    image: "/placeholder.jpg",
+    title: "Nocturne Variations",
+    artist: "Contemporary, 2022",
+    price: "2.3 BTC",
+    description:
+      "Subtle gradients and atmospheric tones generate a quiet interplay of light and distance.",
+  },
+  {
+    id: 10,
+    image: "/placeholder-jdaem.png",
+    title: "Static Field",
+    artist: "Modernist, 2019",
+    price: "1.2 BTC",
+    description:
+      "A minimal study in texture and negative space, inviting closer inspection of surface.",
+  },
+  {
+    id: 11,
+    image: "/placeholder-user.jpg",
+    title: "Portrait Study",
+    artist: "Anonymous, 2018",
+    price: "2.0 BTC",
+    description:
+      "An intimate portrait rendered with expressive brushwork and restrained palette.",
+  },
+  {
+    id: 12,
+    image: "/placeholder-logo.png",
+    title: "Glyph Sequence",
+    artist: "Conceptual, 2020",
+    price: "0.9 BTC",
+    description:
+      "Symbolic forms arranged in iterative sequences to elicit rhythm and meaning.",
+  },
+  {
+    id: 13,
+    image: "/placeholder-sicdk.png",
+    title: "City Grid",
+    artist: "Urban, 2021",
+    price: "1.7 BTC",
+    description:
+      "Orthogonal patterns referencing metropolitan networks and shifting perspectives.",
+  },
+  {
+    id: 14,
+    image: "/colorful-geometric-abstract.png",
+    title: "Spectrum Weave",
+    artist: "Modern Artist, 2024",
+    price: "1.3 BTC",
+    description:
+      "Interlaced chroma bands create an optical depth and quiet cadence.",
+  },
+  {
+    id: 15,
+    image: "/textured-oil-landscape.png",
+    title: "Ridge Line",
+    artist: "Landscape, 2017",
+    price: "2.6 BTC",
+    description:
+      "A layered horizon with impasto textures suggesting weathered terrain.",
+  },
+  {
+    id: 16,
+    image: "/fine-art-painting.png",
+    title: "Gesture No. 12",
+    artist: "Emerging Talent, 2024",
+    price: "1.9 BTC",
+    description:
+      "A spontaneous motion study where line density becomes structure.",
+  },
 ]
 
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
@@ -94,12 +167,12 @@ export default function HomePage() {
   const totalPages = Math.ceil(artworks.length / ITEMS_PER_PAGE)
 
   const nextPage = useCallback(() => {
-    setCurrentPageIndex((prevIndex) => Math.min(prevIndex + 1, totalPages - 1))
+    setCurrentPageIndex((prevIndex) => (prevIndex + 1) % totalPages)
   }, [totalPages])
 
   const prevPage = useCallback(() => {
-    setCurrentPageIndex((prevIndex) => Math.max(prevIndex - 1, 0))
-  }, [])
+    setCurrentPageIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages)
+  }, [totalPages])
 
   const openAcquireModal = (artwork) => setSelectedArtworkForInquiry(artwork)
   const closeAcquireModal = () => setSelectedArtworkForInquiry(null)
@@ -109,10 +182,10 @@ export default function HomePage() {
   const currentArtworks = artworks.slice(startIndex, endIndex)
 
   return (
-    <div className="h-screen w-screen bg-white flex flex-col overflow-hidden">
+    <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 transition-all duration-500">
-        <div className="container mx-auto px-8 py-6 flex items-center justify-between">
+      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-500">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-black"></div>
             <div>
@@ -146,25 +219,22 @@ export default function HomePage() {
       </nav>
 
       {/* Main Art Display Grid */}
-      <main className="flex-1 flex items-center justify-center relative overflow-hidden px-8 pt-24 pb-12">
-        {" "}
-        {/* Added pt-24 here */}
-        <div
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-        >
-          <div className="container mx-auto h-full w-full flex flex-col justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 items-center justify-center">
+      <main className={`flex-1 relative px-6 md:px-8 py-8 md:py-12 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {currentArtworks.map((artwork) => (
-                <div key={artwork.id} className="group cursor-pointer flex flex-col h-full">
-                  <div className="relative overflow-hidden flex-1 mb-4">
+                <div key={artwork.id} className="group cursor-pointer flex flex-col">
+                  <div className="relative overflow-hidden mb-4 rounded-md">
+                    <div className="w-full aspect-[4/3] bg-gray-50">
                     <img
                       src={artwork.image || "/placeholder.svg"}
                       alt={artwork.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"></div>
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 pointer-events-none"></div>
                   </div>
-                  <div className="space-y-1 text-center">
+                  <div className="space-y-1 text-center px-2">
                     <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
                       {artwork.title}
                     </h3>
@@ -178,7 +248,7 @@ export default function HomePage() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
                       onClick={() => openAcquireModal(artwork)}
                     >
                       Inquire
@@ -186,29 +256,29 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
-            </div>
+          </div>
 
-            {/* Pagination Controls */}
-            <div className="absolute left-0 right-0 bottom-1/2 translate-y-1/2 flex justify-between px-4 md:px-8">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="bg-white/80 hover:bg-white rounded-full w-12 h-12 shadow-lg"
-                onClick={prevPage}
-                disabled={currentPageIndex === 0}
-              >
-                <ChevronLeft className="w-6 h-6 text-black" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="bg-white/80 hover:bg-white rounded-full w-12 h-12 shadow-lg"
-                onClick={nextPage}
-                disabled={currentPageIndex === totalPages - 1}
-              >
-                <ChevronRight className="w-6 h-6 text-black" />
-              </Button>
+          {/* Pagination Controls */}
+          <div className="mt-8 flex items-center justify-between">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/90 hover:bg-white rounded-full w-12 h-12 shadow-lg border"
+              onClick={prevPage}
+            >
+              <ChevronLeft className="w-6 h-6 text-black" />
+            </Button>
+            <div className="text-sm text-gray-500 font-light">
+              Page {currentPageIndex + 1} of {totalPages}
             </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/90 hover:bg-white rounded-full w-12 h-12 shadow-lg border"
+              onClick={nextPage}
+            >
+              <ChevronRight className="w-6 h-6 text-black" />
+            </Button>
           </div>
         </div>
       </main>
@@ -280,7 +350,7 @@ export default function HomePage() {
       )}
 
       {/* Footer - Minimal */}
-      <footer className="w-full py-6 px-8 border-t border-gray-100 bg-white z-40">
+      <footer className="w-full py-4 px-6 border-t border-gray-100 bg-white z-40">
         <div className="container mx-auto flex items-center justify-between">
           <p className="text-gray-500 font-light text-sm">© 2024 comparison-deserving. Private Collection.</p>
           <div className="flex items-center space-x-6 text-gray-600 font-light">
