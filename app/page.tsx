@@ -165,7 +165,7 @@ const baseArtworks = [
 ]
 
 // Enrich artworks with minimal metadata for filtering
-const fallbackArtists = ["Jean-Michel Basquiat", "Pablo Picasso", "Joan Mitchell"]
+const fallbackArtists = ["Jean-Michel Basquiat", "Pablo Picasso"]
 const artworks = baseArtworks.map((artwork, index) => ({
   ...artwork,
   artistName: artwork.artistName || fallbackArtists[index % fallbackArtists.length],
@@ -248,9 +248,9 @@ export default function HomePage() {
       </nav>
 
       {/* Main Art Display Grid */}
-      <main className={`flex-1 relative pl-0 pr-3 md:pr-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-5">
+      <main className={`flex-1 relative px-0 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-[210px_minmax(0,1fr)] gap-6">
             {/* Sidebar Filters */}
             <aside className="hidden md:block">
               <div className="sticky top-20 space-y-6">
@@ -294,8 +294,7 @@ export default function HomePage() {
 
             {/* Products Grid */}
             <div>
-              <div className="mx-auto max-w-7xl pr-3 md:pr-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
                     <div className="relative overflow-hidden mb-3 rounded-md">
@@ -336,7 +335,6 @@ export default function HomePage() {
                 {filteredArtworks.length === 0 && (
                   <div className="text-center text-gray-500 font-light py-12">No works found.</div>
                 )}
-                </div>
               </div>
             </div>
 
