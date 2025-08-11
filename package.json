@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "A modern Next.js application with comprehensive UI components",
+  "packageManager": "pnpm@10.12.1",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -58,7 +59,7 @@
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.9",
+    "vaul": "^1.1.2",
     "zod": "3.25.67"
   },
   "devDependencies": {
