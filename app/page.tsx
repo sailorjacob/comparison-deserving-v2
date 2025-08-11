@@ -20,6 +20,7 @@ const baseArtworks = [
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/IMG_549509AE11D4-1-removebg-preview%20(1).png",
     title: "Backyard Blue",
     artist: "Jimmy Frezza, 2022",
+    artistName: "Jimmy Frezza",
     medium: "Oil, acrylic, and found object on canvas",
     price: "",
     description:
@@ -184,7 +185,7 @@ export default function HomePage() {
     setIsVisible(true) // Trigger initial animation on component mount
   }, [])
 
-  const artists = Array.from(new Set(artworks.map((a) => a.artistName))).sort()
+  const artists = Array.from(new Set(["Jimmy Frezza", ...artworks.map((a) => a.artistName)])).sort()
   const filteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
@@ -248,7 +249,7 @@ export default function HomePage() {
 
       {/* Main Art Display Grid */}
       <main className={`flex-1 relative pl-0 pr-3 md:pr-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="mx-auto max-w-7xl">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-5">
             {/* Sidebar Filters */}
             <aside className="hidden md:block">
@@ -293,7 +294,8 @@ export default function HomePage() {
 
             {/* Products Grid */}
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="mx-auto max-w-7xl pr-3 md:pr-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
                     <div className="relative overflow-hidden mb-3 rounded-md">
@@ -334,6 +336,7 @@ export default function HomePage() {
                 {filteredArtworks.length === 0 && (
                   <div className="text-center text-gray-500 font-light py-12">No works found.</div>
                 )}
+                </div>
               </div>
             </div>
 
