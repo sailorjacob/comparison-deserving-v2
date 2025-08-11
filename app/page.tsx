@@ -186,7 +186,7 @@ export default function HomePage() {
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
       <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-500">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-black"></div>
             <div>
@@ -218,13 +218,13 @@ export default function HomePage() {
       </nav>
 
       {/* Main Art Display Grid */}
-      <main className={`flex-1 relative px-6 md:px-8 py-8 md:py-12 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <main className={`flex-1 relative px-4 md:px-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {currentArtworks.map((artwork) => (
                 <div key={artwork.id} className="group cursor-pointer flex flex-col">
-                  <div className="relative overflow-hidden mb-4 rounded-md">
-                    <div className="w-full aspect-[4/3] bg-gray-200" />
+                  <div className="relative overflow-hidden mb-3 rounded-md">
+                    <div className="w-full aspect-[3/2] bg-gray-200" />
                   </div>
                   <div className="space-y-1 text-center px-2">
                     <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
