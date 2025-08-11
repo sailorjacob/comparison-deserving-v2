@@ -16,16 +16,18 @@ import {
 const baseArtworks = [
   {
     id: 1,
-    image: "/placeholder-sicdk.png",
-    title: "Untitled #47",
-    artist: "Contemporary, 2023",
-    price: "3.5 BTC",
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/IMG_549509AE11D4-1-removebg-preview%20(1).png",
+    title: "Backyard Blue",
+    artist: "Jimmy Frezza, 2022",
+    medium: "Oil, acrylic, and found object on canvas",
+    price: "",
     description:
-      "A captivating abstract piece exploring the interplay of light and shadow, rendered with bold strokes and a muted palette. This work invites contemplation on the ephemeral nature of perception.",
+      "Oil, acrylic, and found object on canvas.",
   },
   {
     id: 2,
-    image: "/colorful-geometric-abstract.png",
+    image: "",
     title: "Geometric Study #3",
     artist: "Modern Artist, 2023",
     price: "1.8 BTC",
@@ -34,7 +36,7 @@ const baseArtworks = [
   },
   {
     id: 3,
-    image: "/textured-oil-landscape.png",
+    image: "",
     title: "Landscape Memory",
     artist: "Anonymous, 2021",
     price: "3.2 BTC",
@@ -43,7 +45,7 @@ const baseArtworks = [
   },
   {
     id: 4,
-    image: "/fine-art-painting.png",
+    image: "",
     title: "Abstract Expression",
     artist: "Emerging Talent, 2024",
     price: "2.1 BTC",
@@ -52,7 +54,7 @@ const baseArtworks = [
   },
   {
     id: 5,
-    image: "/placeholder-sicdk.png",
+    image: "",
     title: "Urban Echoes",
     artist: "Contemporary, 2022",
     price: "2.9 BTC",
@@ -61,7 +63,7 @@ const baseArtworks = [
   },
   {
     id: 6,
-    image: "/colorful-geometric-abstract.png",
+    image: "",
     title: "Chromatic Harmony",
     artist: "Modern Artist, 2021",
     price: "1.5 BTC",
@@ -70,7 +72,7 @@ const baseArtworks = [
   },
   {
     id: 7,
-    image: "/textured-oil-landscape.png",
+    image: "",
     title: "Whispers of the Forest",
     artist: "Anonymous, 2020",
     price: "4.0 BTC",
@@ -79,7 +81,7 @@ const baseArtworks = [
   },
   {
     id: 8,
-    image: "/fine-art-painting.png",
+    image: "",
     title: "Digital Dreamscape",
     artist: "Emerging Talent, 2023",
     price: "2.7 BTC",
@@ -89,7 +91,7 @@ const baseArtworks = [
   // Additional examples
   {
     id: 9,
-    image: "/placeholder.jpg",
+    image: "",
     title: "Nocturne Variations",
     artist: "Contemporary, 2022",
     price: "2.3 BTC",
@@ -98,7 +100,7 @@ const baseArtworks = [
   },
   {
     id: 10,
-    image: "/placeholder-jdaem.png",
+    image: "",
     title: "Static Field",
     artist: "Modernist, 2019",
     price: "1.2 BTC",
@@ -107,7 +109,7 @@ const baseArtworks = [
   },
   {
     id: 11,
-    image: "/placeholder-user.jpg",
+    image: "",
     title: "Portrait Study",
     artist: "Anonymous, 2018",
     price: "2.0 BTC",
@@ -116,7 +118,7 @@ const baseArtworks = [
   },
   {
     id: 12,
-    image: "/placeholder-logo.png",
+    image: "",
     title: "Glyph Sequence",
     artist: "Conceptual, 2020",
     price: "0.9 BTC",
@@ -125,7 +127,7 @@ const baseArtworks = [
   },
   {
     id: 13,
-    image: "/placeholder-sicdk.png",
+    image: "",
     title: "City Grid",
     artist: "Urban, 2021",
     price: "1.7 BTC",
@@ -134,7 +136,7 @@ const baseArtworks = [
   },
   {
     id: 14,
-    image: "/colorful-geometric-abstract.png",
+    image: "",
     title: "Spectrum Weave",
     artist: "Modern Artist, 2024",
     price: "1.3 BTC",
@@ -143,7 +145,7 @@ const baseArtworks = [
   },
   {
     id: 15,
-    image: "/textured-oil-landscape.png",
+    image: "",
     title: "Ridge Line",
     artist: "Landscape, 2017",
     price: "2.6 BTC",
@@ -152,7 +154,7 @@ const baseArtworks = [
   },
   {
     id: 16,
-    image: "/fine-art-painting.png",
+    image: "",
     title: "Gesture No. 12",
     artist: "Emerging Talent, 2024",
     price: "1.9 BTC",
@@ -295,19 +297,29 @@ export default function HomePage() {
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
                     <div className="relative overflow-hidden mb-3 rounded-md">
-                    <div className="w-full aspect-[4/3] bg-gray-200" />
+                      {artwork.image ? (
+                        <img
+                          src={artwork.image}
+                          alt={artwork.title}
+                          className="w-full aspect-[4/3] object-contain bg-gray-100"
+                        />
+                      ) : (
+                        <div className="w-full aspect-[4/3] bg-gray-200" />
+                      )}
                     </div>
                     <div className="space-y-1 text-center px-2">
                       <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
                         {artwork.title}
                       </h3>
                       <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
-                      <div className="flex items-center justify-center pt-2">
-                        <span className="text-lg font-light text-black flex items-center space-x-1">
-                          <Bitcoin className="w-4 h-4" />
-                          <span>{artwork.price}</span>
-                        </span>
-                      </div>
+                      {artwork.price && (
+                        <div className="flex items-center justify-center pt-2">
+                          <span className="text-lg font-light text-black flex items-center space-x-1">
+                            <Bitcoin className="w-4 h-4" />
+                            <span>{artwork.price}</span>
+                          </span>
+                        </div>
+                      )}
                       <Button
                         size="sm"
                         variant="outline"
