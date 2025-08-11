@@ -245,9 +245,9 @@ export default function HomePage() {
       </nav>
 
       {/* Main Art Display Grid */}
-      <main className={`flex-1 relative px-4 md:px-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-[220px_minmax(0,1fr)] gap-6">
+      <main className={`flex-1 relative pl-0 pr-3 md:pr-6 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-5">
             {/* Sidebar Filters */}
             <aside className="hidden md:block">
               <div className="sticky top-20 space-y-6">
@@ -291,11 +291,11 @@ export default function HomePage() {
 
             {/* Products Grid */}
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
                     <div className="relative overflow-hidden mb-3 rounded-md">
-                      <div className="w-full aspect-[3/2] bg-gray-200" />
+                    <div className="w-full aspect-[4/3] bg-gray-200" />
                     </div>
                     <div className="space-y-1 text-center px-2">
                       <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
