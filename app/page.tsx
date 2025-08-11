@@ -2,6 +2,7 @@
 
 import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
 
 // Define the artworks
@@ -167,12 +168,12 @@ export default function HomePage() {
   const totalPages = Math.ceil(artworks.length / ITEMS_PER_PAGE)
 
   const nextPage = useCallback(() => {
-    setCurrentPageIndex((prevIndex) => (prevIndex + 1) % totalPages)
+    setCurrentPageIndex((prevIndex) => Math.min(prevIndex + 1, totalPages - 1))
   }, [totalPages])
 
   const prevPage = useCallback(() => {
-    setCurrentPageIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages)
-  }, [totalPages])
+    setCurrentPageIndex((prevIndex) => Math.max(prevIndex - 1, 0))
+  }, [])
 
   const openAcquireModal = (artwork) => setSelectedArtworkForInquiry(artwork)
   const closeAcquireModal = () => setSelectedArtworkForInquiry(null)
@@ -197,18 +198,16 @@ export default function HomePage() {
             <Button
               variant="ghost"
               className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0"
-              onClick={() => setCurrentPageIndex(0)} // Go to first page
+              onClick={() => setCurrentPageIndex(0)}
             >
               Collection
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full"></span>
             </Button>
-            <Button
-              variant="ghost"
-              className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0"
-              onClick={() => openAcquireModal(null)} // General inquiry
-            >
-              Acquire
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full"></span>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/about">
+                About
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full"></span>
+              </Link>
             </Button>
             <div className="flex items-center space-x-2 text-gray-600">
               <Bitcoin className="w-4 h-4" />
@@ -225,14 +224,7 @@ export default function HomePage() {
               {currentArtworks.map((artwork) => (
                 <div key={artwork.id} className="group cursor-pointer flex flex-col">
                   <div className="relative overflow-hidden mb-4 rounded-md">
-                    <div className="w-full aspect-[4/3] bg-gray-50">
-                    <img
-                      src={artwork.image || "/placeholder.svg"}
-                      alt={artwork.title}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                    />
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 pointer-events-none"></div>
+                    <div className="w-full aspect-[4/3] bg-gray-200" />
                   </div>
                   <div className="space-y-1 text-center px-2">
                     <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
@@ -260,25 +252,33 @@ export default function HomePage() {
 
           {/* Pagination Controls */}
           <div className="mt-8 flex items-center justify-between">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="bg-white/90 hover:bg-white rounded-full w-12 h-12 shadow-lg border"
-              onClick={prevPage}
-            >
-              <ChevronLeft className="w-6 h-6 text-black" />
-            </Button>
             <div className="text-sm text-gray-500 font-light">
               Page {currentPageIndex + 1} of {totalPages}
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="bg-white/90 hover:bg-white rounded-full w-12 h-12 shadow-lg border"
-              onClick={nextPage}
-            >
-              <ChevronRight className="w-6 h-6 text-black" />
-            </Button>
+            <div className="flex items-center gap-2">
+              {currentPageIndex > 0 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="p-2 text-gray-800 hover:text-black"
+                  aria-label="Previous"
+                  onClick={prevPage}
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+              )}
+              {currentPageIndex < totalPages - 1 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="p-2 text-gray-800 hover:text-black"
+                  aria-label="Next"
+                  onClick={nextPage}
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </main>
