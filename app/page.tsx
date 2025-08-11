@@ -23,144 +23,25 @@ const baseArtworks = [
     artistName: "Jimmy Frezza",
     medium: "Oil, acrylic, and found object on canvas",
     price: "",
-    description:
-      "Oil, acrylic, and found object on canvas.",
+    description: "Oil, acrylic, and found object on canvas.",
   },
   {
     id: 2,
     image: "",
-    title: "Geometric Study #3",
-    artist: "Modern Artist, 2023",
-    price: "1.8 BTC",
-    description:
-      "A vibrant exploration of form and color, this piece uses precise geometric shapes to create a sense of dynamic balance. Its intricate patterns draw the viewer into a meditative state.",
+    title: "Untitled",
+    artist: "Pablo Picasso",
+    artistName: "Pablo Picasso",
+    price: "",
+    description: "Placeholder work for Pablo Picasso.",
   },
   {
     id: 3,
     image: "",
-    title: "Landscape Memory",
-    artist: "Anonymous, 2021",
-    price: "3.2 BTC",
-    description:
-      "An evocative landscape rendered with rich textures and deep hues, capturing the essence of a forgotten memory. The brushwork conveys a sense of raw emotion and natural beauty.",
-  },
-  {
-    id: 4,
-    image: "",
-    title: "Abstract Expression",
-    artist: "Emerging Talent, 2024",
-    price: "2.1 BTC",
-    description:
-      "A powerful expression of raw emotion through spontaneous brushstrokes and a dynamic composition. This piece challenges conventional forms, inviting personal interpretation.",
-  },
-  {
-    id: 5,
-    image: "",
-    title: "Urban Echoes",
-    artist: "Contemporary, 2022",
-    price: "2.9 BTC",
-    description:
-      "A dynamic urban landscape capturing the energy and rhythm of city life through a blend of sharp lines and soft, atmospheric tones.",
-  },
-  {
-    id: 6,
-    image: "",
-    title: "Chromatic Harmony",
-    artist: "Modern Artist, 2021",
-    price: "1.5 BTC",
-    description:
-      "A study in color theory, this piece uses a vibrant spectrum to create a harmonious yet striking visual experience, inviting viewers to explore its depths.",
-  },
-  {
-    id: 7,
-    image: "",
-    title: "Whispers of the Forest",
-    artist: "Anonymous, 2020",
-    price: "4.0 BTC",
-    description:
-      "An ethereal depiction of a forest, where light filters through dense foliage, creating a sense of mystery and tranquility. The textures evoke the raw beauty of nature.",
-  },
-  {
-    id: 8,
-    image: "",
-    title: "Digital Dreamscape",
-    artist: "Emerging Talent, 2023",
-    price: "2.7 BTC",
-    description:
-      "A futuristic vision rendered with digital precision, blending organic forms with technological elements to create a surreal and thought-provoking landscape.",
-  },
-  // Additional examples
-  {
-    id: 9,
-    image: "",
-    title: "Nocturne Variations",
-    artist: "Contemporary, 2022",
-    price: "2.3 BTC",
-    description:
-      "Subtle gradients and atmospheric tones generate a quiet interplay of light and distance.",
-  },
-  {
-    id: 10,
-    image: "",
-    title: "Static Field",
-    artist: "Modernist, 2019",
-    price: "1.2 BTC",
-    description:
-      "A minimal study in texture and negative space, inviting closer inspection of surface.",
-  },
-  {
-    id: 11,
-    image: "",
-    title: "Portrait Study",
-    artist: "Anonymous, 2018",
-    price: "2.0 BTC",
-    description:
-      "An intimate portrait rendered with expressive brushwork and restrained palette.",
-  },
-  {
-    id: 12,
-    image: "",
-    title: "Glyph Sequence",
-    artist: "Conceptual, 2020",
-    price: "0.9 BTC",
-    description:
-      "Symbolic forms arranged in iterative sequences to elicit rhythm and meaning.",
-  },
-  {
-    id: 13,
-    image: "",
-    title: "City Grid",
-    artist: "Urban, 2021",
-    price: "1.7 BTC",
-    description:
-      "Orthogonal patterns referencing metropolitan networks and shifting perspectives.",
-  },
-  {
-    id: 14,
-    image: "",
-    title: "Spectrum Weave",
-    artist: "Modern Artist, 2024",
-    price: "1.3 BTC",
-    description:
-      "Interlaced chroma bands create an optical depth and quiet cadence.",
-  },
-  {
-    id: 15,
-    image: "",
-    title: "Ridge Line",
-    artist: "Landscape, 2017",
-    price: "2.6 BTC",
-    description:
-      "A layered horizon with impasto textures suggesting weathered terrain.",
-  },
-  {
-    id: 16,
-    image: "",
-    title: "Gesture No. 12",
-    artist: "Emerging Talent, 2024",
-    price: "1.9 BTC",
-    description:
-      "A spontaneous motion study where line density becomes structure.",
+    title: "Untitled",
+    artist: "Jean-Michel Basquiat",
+    artistName: "Jean-Michel Basquiat",
+    price: "",
+    description: "Placeholder work for Jean-Michel Basquiat.",
   },
 ]
 
@@ -185,7 +66,7 @@ export default function HomePage() {
     setIsVisible(true) // Trigger initial animation on component mount
   }, [])
 
-  const artists = Array.from(new Set(["Jimmy Frezza", ...artworks.map((a) => a.artistName)])).sort()
+  const artists = Array.from(new Set(["Jimmy Frezza", "Pablo Picasso", "Jean-Michel Basquiat", ...artworks.map((a) => a.artistName)])).sort()
   const filteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
@@ -250,7 +131,7 @@ export default function HomePage() {
       {/* Main Art Display Grid */}
       <main className={`flex-1 relative px-0 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="mx-auto max-w-7xl pl-2 md:pl-3 pr-4 md:pr-6">
-          <div className="grid grid-cols-1 md:grid-cols-[210px_minmax(0,1fr)] gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-6">
             {/* Sidebar Filters */}
             <aside className="hidden md:block">
               <div className="sticky top-20 space-y-6">
