@@ -112,6 +112,17 @@ const baseArtworks: Artwork[] = [
     description: "Work by Allie.",
     isSold: false,
   },
+  {
+    id: 9,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammo%20cat.jpg",
+    title: "Ammo Cat x rare.glass",
+    artist: "Ammo Cat",
+    artistName: "Ammo Cat",
+    price: "0.20 BTC",
+    description: "Collaboration piece.",
+    isSold: false,
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
