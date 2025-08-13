@@ -127,6 +127,17 @@ const baseArtworks: Artwork[] = [
     description: "Collaboration piece.",
     isSold: false,
   },
+  {
+    id: 10,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammocat%202.jpg",
+    title: "Ammo Cat x rare.glass 2",
+    artist: "Ammo Cat",
+    artistName: "Ammo Cat",
+    price: "0.20 BTC",
+    description: "Collaboration piece.",
+    isSold: false,
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
@@ -243,7 +254,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "outline" : "default"}
                       size="sm"
-                      className={`${showSoldOnly ? "border-yellow-500 text-yellow-700 hover:bg-yellow-50" : "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"}`}
+                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-500"}`}
                       onClick={() => setShowSoldOnly(false)}
                     >
                       All
@@ -251,7 +262,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "default" : "outline"}
                       size="sm"
-                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500" : "border-yellow-500 text-yellow-700 hover:bg-yellow-50"}`}
+                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-500" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
                       onClick={() => setShowSoldOnly(true)}
                     >
                       Sold
