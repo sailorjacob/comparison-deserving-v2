@@ -258,7 +258,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "outline" : "default"}
                       size="sm"
-                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-500"}`}
+                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"}`}
                       onClick={() => setShowSoldOnly(false)}
                     >
                       All
@@ -266,7 +266,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "default" : "outline"}
                       size="sm"
-                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-500" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
+                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
                       onClick={() => setShowSoldOnly(true)}
                     >
                       Sold
