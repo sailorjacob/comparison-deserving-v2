@@ -157,6 +157,10 @@ export default function HomePage() {
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
   const hideHeader = useHideOnScroll({ threshold: 10, topOffset: 12 })
+  const [formName, setFormName] = useState("")
+  const [formEmail, setFormEmail] = useState("")
+  const [formMessage, setFormMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     setIsVisible(true) // Trigger initial animation on component mount
@@ -375,13 +379,44 @@ export default function HomePage() {
               )}
             </div>
 
-            <form className="space-y-8">
+            <form
+              className="space-y-8"
+              onSubmit={async (e) => {
+                e.preventDefault()
+                if (isSubmitting) return
+                setIsSubmitting(true)
+                try {
+                  const res = await fetch("/api/inquiry", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      name: formName,
+                      email: formEmail,
+                      message: formMessage,
+                      artworkTitle: selectedArtworkForInquiry?.title ?? null,
+                    }),
+                  })
+                  if (!res.ok) throw new Error("Failed to send inquiry")
+                  alert("Inquiry sent. We'll contact you shortly.")
+                  setFormName("")
+                  setFormEmail("")
+                  setFormMessage("")
+                  setSelectedArtworkForInquiry(null)
+                } catch (err) {
+                  alert("There was an error sending your inquiry. Please try again.")
+                } finally {
+                  setIsSubmitting(false)
+                }
+              }}
+            >
               <div>
                 <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Name</label>
                 <input
                   type="text"
                   className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
                   required
+                  value={formName}
+                  onChange={(e) => setFormName(e.target.value)}
                 />
               </div>
               <div>
@@ -390,6 +425,8 @@ export default function HomePage() {
                   type="email"
                   className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
                   required
+                  value={formEmail}
+                  onChange={(e) => setFormEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -398,11 +435,13 @@ export default function HomePage() {
                   rows={4}
                   className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg resize-none"
                   placeholder="Optional: Share your interest or questions."
+                  value={formMessage}
+                  onChange={(e) => setFormMessage(e.target.value)}
                 />
               </div>
               <div className="text-center pt-4">
-                <Button type="submit" size="lg" className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-light px-8 sm:px-16 py-4 text-base sm:text-lg transition-all duration-300">
-                  Send Inquiry
+                <Button type="submit" size="lg" className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-light px-8 sm:px-16 py-4 text-base sm:text-lg transition-all duration-300" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
                 </Button>
               </div>
             </form>

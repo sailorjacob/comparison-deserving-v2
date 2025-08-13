@@ -78,6 +78,15 @@ This project is automatically deployed to Vercel:
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
 
+## 🔐 Environment
+
+To enable inquiry emails, set the following environment variables (locally in `.env.local` and in your hosting provider):
+
+```
+RESEND_API_KEY=your_resend_api_key
+INQUIRY_TO_EMAIL=info@haven.engineer
+```
+
 ## 📝 License
 
 This project is private and proprietary.
