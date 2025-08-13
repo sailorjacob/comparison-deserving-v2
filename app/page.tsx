@@ -40,26 +40,7 @@ const baseArtworks: Artwork[] = [
     price: "",
     description: "Oil, acrylic, and found object on canvas.",
   },
-  {
-    id: 2,
-    image: "",
-    title: "Untitled",
-    artist: "Pablo Picasso",
-    artistName: "Pablo Picasso",
-    price: "",
-    description: "Placeholder work for Pablo Picasso.",
-    isPlaceholder: true,
-  },
-  {
-    id: 3,
-    image: "",
-    title: "Untitled",
-    artist: "Jean-Michel Basquiat",
-    artistName: "Jean-Michel Basquiat",
-    price: "",
-    description: "Placeholder work for Jean-Michel Basquiat.",
-    isPlaceholder: true,
-  },
+  
   // Allie works
   {
     id: 4,
@@ -195,10 +176,9 @@ const baseArtworks: Artwork[] = [
 ]
 
 // Enrich artworks with minimal metadata for filtering
-const fallbackArtists = ["Jean-Michel Basquiat", "Pablo Picasso"]
 const artworks: Artwork[] = baseArtworks.map((artwork, index) => ({
   ...artwork,
-  artistName: artwork.artistName || fallbackArtists[index % fallbackArtists.length],
+  artistName: artwork.artistName,
   isSold: artwork.isSold ?? (index % 4 === 0),
 }))
 
@@ -220,7 +200,7 @@ export default function HomePage() {
     setIsVisible(true) // Trigger initial animation on component mount
   }, [])
 
-  const artists = Array.from(new Set(["Jimmy Frezza", "Pablo Picasso", "Jean-Michel Basquiat", ...artworks.map((a) => a.artistName)])).sort()
+  const artists = Array.from(new Set(artworks.map((a) => a.artistName))).sort()
   const filteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
