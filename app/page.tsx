@@ -185,7 +185,7 @@ export default function HomePage() {
       <nav className={`w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-transform duration-300 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}>
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-black" />
+            <div className="w-8 h-8 bg-yellow-500" />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Curated Fine Art</div>
@@ -243,6 +243,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "outline" : "default"}
                       size="sm"
+                      className={`${showSoldOnly ? "border-yellow-500 text-yellow-700 hover:bg-yellow-50" : "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"}`}
                       onClick={() => setShowSoldOnly(false)}
                     >
                       All
@@ -250,6 +251,7 @@ export default function HomePage() {
                     <Button
                       variant={showSoldOnly ? "default" : "outline"}
                       size="sm"
+                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500" : "border-yellow-500 text-yellow-700 hover:bg-yellow-50"}`}
                       onClick={() => setShowSoldOnly(true)}
                     >
                       Sold
