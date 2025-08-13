@@ -308,7 +308,7 @@ export default function HomePage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
+                        className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
                         onClick={() => openAcquireModal(artwork)}
                       >
                         {artwork.price ? "Buy" : "Inquire"}
