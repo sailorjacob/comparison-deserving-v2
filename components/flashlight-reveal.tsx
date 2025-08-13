@@ -52,12 +52,12 @@ export function FlashlightReveal() {
 
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
     updateTargetFromEvent(e.clientX, e.clientY)
-    targetRadiusRef.current = 140
+    targetRadiusRef.current = 180
   }
 
   const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (e) => {
     updateTargetFromEvent(e.clientX, e.clientY)
-    targetRadiusRef.current = 140
+    targetRadiusRef.current = 180
   }
 
   const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -67,13 +67,13 @@ export function FlashlightReveal() {
   const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const t = e.touches[0]
     updateTargetFromEvent(t.clientX, t.clientY)
-    targetRadiusRef.current = 150
+    targetRadiusRef.current = 180
   }
 
   const handleTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const t = e.touches[0]
     updateTargetFromEvent(t.clientX, t.clientY)
-    targetRadiusRef.current = 150
+    targetRadiusRef.current = 180
   }
 
   const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = () => {
@@ -90,25 +90,27 @@ export function FlashlightReveal() {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        className="relative overflow-hidden select-none"
+        className="relative overflow-hidden select-none w-full min-h-[50vh] md:min-h-[60vh]"
         style={{
-          // Flashlight clip that reveals only the circular area
-          clipPath: "circle(var(--r, 0px) at var(--x, -100px) var(--y, -100px))",
-          WebkitClipPath: "circle(var(--r, 0px) at var(--x, -100px) var(--y, -100px))",
-          willChange: "clip-path",
+          WebkitMaskImage:
+            "radial-gradient(circle var(--r, 0px) at var(--x, -100px) var(--y, -100px), rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 60%)",
+          maskImage:
+            "radial-gradient(circle var(--r, 0px) at var(--x, -100px) var(--y, -100px), rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 60%)",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          willChange: "mask-image, -webkit-mask-image",
         } as React.CSSProperties}
       >
-        <div className="pointer-events-none">
-          <p className="text-red-600 font-light leading-relaxed max-w-3xl">
-            comparison deserving represents the best artists in the world, alive right now
-          </p>
-          <p className="text-red-600 font-light leading-relaxed max-w-3xl mt-3">
-            we are working on a world where more art and bitcoin are exchanged
-          </p>
+        <div className="absolute inset-0 flex items-center">
+          <div className="pointer-events-none px-1 md:px-2">
+            <p className="text-red-600 font-light leading-relaxed max-w-3xl">
+              comparison deserving represents the best artists in the world, alive right now
+            </p>
+            <p className="text-red-600 font-light leading-relaxed max-w-3xl mt-3">
+              we are working on a world where more art and bitcoin are exchanged
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="mt-2 text-xs text-gray-400 font-light">
-        Tap and drag to reveal on mobile
       </div>
     </div>
   )

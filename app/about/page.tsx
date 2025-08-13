@@ -16,7 +16,9 @@ export default function AboutPage() {
         Comparison-Deserving is a curated fine art collection presented with a focus on clarity and restraint.
         All works shown are placeholders for private inventory. For acquisition inquiries, please contact us.
       </p>
-      <FlashlightReveal />
+      <div className="mt-12">
+        <FlashlightReveal />
+      </div>
       <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
     </main>
   )
