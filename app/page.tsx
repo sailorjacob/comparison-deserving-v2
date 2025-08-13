@@ -12,8 +12,21 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+// Types
+interface Artwork {
+  id: number
+  image: string
+  title: string
+  artist: string
+  artistName: string
+  medium?: string
+  price: string
+  description: string
+  isSold?: boolean
+}
+
 // Define the artworks
-const baseArtworks = [
+const baseArtworks: Artwork[] = [
   {
     id: 1,
     image:
@@ -43,11 +56,62 @@ const baseArtworks = [
     price: "",
     description: "Placeholder work for Jean-Michel Basquiat.",
   },
+  // Allie works
+  {
+    id: 4,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie1.png",
+    title: "Moonlit Garden",
+    artist: "Allie, 2021",
+    artistName: "Allie",
+    price: "",
+    description: "Work by Allie.",
+  },
+  {
+    id: 5,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
+    title: "Lunar Tides",
+    artist: "Allie, 2022",
+    artistName: "Allie",
+    price: "",
+    description: "Work by Allie.",
+  },
+  {
+    id: 6,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie3.png",
+    title: "Crescent Echoes",
+    artist: "Allie, 2023",
+    artistName: "Allie",
+    price: "",
+    description: "Work by Allie.",
+  },
+  {
+    id: 7,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie4.png",
+    title: "Allie 1",
+    artist: "Allie",
+    artistName: "Allie",
+    price: "",
+    description: "Work by Allie.",
+  },
+  {
+    id: 8,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie5.png",
+    title: "Allie 2",
+    artist: "Allie",
+    artistName: "Allie",
+    price: "",
+    description: "Work by Allie.",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
 const fallbackArtists = ["Jean-Michel Basquiat", "Pablo Picasso"]
-const artworks = baseArtworks.map((artwork, index) => ({
+const artworks: Artwork[] = baseArtworks.map((artwork, index) => ({
   ...artwork,
   artistName: artwork.artistName || fallbackArtists[index % fallbackArtists.length],
   isSold: artwork.isSold ?? (index % 4 === 0),
@@ -57,7 +121,7 @@ const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
 export default function HomePage() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
-  const [selectedArtworkForInquiry, setSelectedArtworkForInquiry] = useState(null)
+  const [selectedArtworkForInquiry, setSelectedArtworkForInquiry] = useState<Artwork | null>(null)
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
@@ -82,7 +146,7 @@ export default function HomePage() {
     setCurrentPageIndex((prevIndex) => Math.max(prevIndex - 1, 0))
   }, [])
 
-  const openAcquireModal = (artwork) => setSelectedArtworkForInquiry(artwork)
+  const openAcquireModal = (artwork: Artwork) => setSelectedArtworkForInquiry(artwork)
   const closeAcquireModal = () => setSelectedArtworkForInquiry(null)
 
   useEffect(() => {
@@ -91,7 +155,7 @@ export default function HomePage() {
 
   const startIndex = currentPageIndex * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentArtworks = filteredArtworks.slice(startIndex, endIndex)
+  const currentArtworks: Artwork[] = filteredArtworks.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
