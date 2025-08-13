@@ -404,10 +404,10 @@ export default function HomePage() {
         <div className="container mx-auto flex items-center justify-between">
           <p className="text-gray-500 font-light text-sm">© 2024 comparison-deserving. Private Collection.</p>
           <div className="flex items-center space-x-6 text-gray-600 font-light">
-            <a href="#" className="hover:text-black transition-colors text-sm">
+            <a href="/privacy" className="hover:text-black transition-colors text-sm">
               Privacy
             </a>
-            <a href="#" className="hover:text-black transition-colors text-sm">
+            <a href="/terms" className="hover:text-black transition-colors text-sm">
               Terms
             </a>
           </div>
