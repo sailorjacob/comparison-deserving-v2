@@ -64,8 +64,9 @@ const baseArtworks: Artwork[] = [
     title: "Moonlit Garden",
     artist: "Allie, 2021",
     artistName: "Allie",
-    price: "",
+    price: "0.35 BTC",
     description: "Work by Allie.",
+    isSold: false,
   },
   {
     id: 5,
@@ -74,8 +75,9 @@ const baseArtworks: Artwork[] = [
     title: "Lunar Tides",
     artist: "Allie, 2022",
     artistName: "Allie",
-    price: "",
+    price: "0.75 BTC",
     description: "Work by Allie.",
+    isSold: false,
   },
   {
     id: 6,
@@ -84,8 +86,9 @@ const baseArtworks: Artwork[] = [
     title: "Crescent Echoes",
     artist: "Allie, 2023",
     artistName: "Allie",
-    price: "",
+    price: "1.10 BTC",
     description: "Work by Allie.",
+    isSold: false,
   },
   {
     id: 7,
@@ -94,8 +97,9 @@ const baseArtworks: Artwork[] = [
     title: "Allie 1",
     artist: "Allie",
     artistName: "Allie",
-    price: "",
+    price: "0.50 BTC",
     description: "Work by Allie.",
+    isSold: false,
   },
   {
     id: 8,
@@ -104,8 +108,9 @@ const baseArtworks: Artwork[] = [
     title: "Allie 2",
     artist: "Allie",
     artistName: "Allie",
-    price: "",
+    price: "0.95 BTC",
     description: "Work by Allie.",
+    isSold: false,
   },
 ]
 
