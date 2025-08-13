@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { FlashlightReveal } from "@/components/flashlight-reveal"
 
 export default function AboutPage() {
   return (
@@ -15,6 +16,7 @@ export default function AboutPage() {
         Comparison-Deserving is a curated fine art collection presented with a focus on clarity and restraint.
         All works shown are placeholders for private inventory. For acquisition inquiries, please contact us.
       </p>
+      <FlashlightReveal />
       <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
     </main>
   )
