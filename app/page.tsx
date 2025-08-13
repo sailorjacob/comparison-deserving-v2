@@ -4,6 +4,7 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
+import { useHideOnScroll } from "@/hooks/use-scroll-direction"
 import {
   Select,
   SelectContent,
@@ -144,6 +145,7 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
+  const hideHeader = useHideOnScroll({ threshold: 10, topOffset: 12 })
 
   useEffect(() => {
     setIsVisible(true) // Trigger initial animation on component mount
@@ -180,7 +182,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-500">
+      <nav className={`w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-transform duration-300 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}>
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-black" />
@@ -289,7 +291,7 @@ export default function HomePage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
+                        className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent w-full sm:w-auto"
                         onClick={() => openAcquireModal(artwork)}
                       >
                         {artwork.price ? "Buy" : "Inquire"}
@@ -339,8 +341,8 @@ export default function HomePage() {
 
       {/* Acquire Modal */}
       {selectedArtworkForInquiry && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-8">
-          <div className="bg-white p-12 rounded-lg shadow-2xl max-w-2xl w-full relative">
+        <div className="fixed inset-0 bg-black/80 z-[100] flex items-end sm:items-center justify-center p-4 sm:p-8">
+          <div className="bg-white p-6 sm:p-8 md:p-12 rounded-t-2xl sm:rounded-lg shadow-2xl max-w-2xl w-full relative max-h-[90vh] overflow-y-auto">
             <Button
               variant="ghost"
               size="icon"
@@ -350,13 +352,13 @@ export default function HomePage() {
               <X className="w-6 h-6" />
             </Button>
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-extralight text-black mb-4">Acquire Artwork</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extralight text-black mb-4">Acquire Artwork</h2>
               {selectedArtworkForInquiry.title ? (
-                <p className="text-lg font-light text-gray-600">
+                <p className="text-base sm:text-lg font-light text-gray-600">
                   Express your interest in <span className="font-medium">{selectedArtworkForInquiry.title}</span>. We will contact you shortly.
                 </p>
               ) : (
-                <p className="text-lg font-light text-gray-600">Please provide your details for a general inquiry. We will contact you shortly.</p>
+                <p className="text-base sm:text-lg font-light text-gray-600">Please provide your details for a general inquiry. We will contact you shortly.</p>
               )}
             </div>
 
@@ -365,7 +367,7 @@ export default function HomePage() {
                 <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Name</label>
                 <input
                   type="text"
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-lg"
+                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
                   required
                 />
               </div>
@@ -373,7 +375,7 @@ export default function HomePage() {
                 <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Email</label>
                 <input
                   type="email"
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-lg"
+                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
                   required
                 />
               </div>
@@ -381,12 +383,12 @@ export default function HomePage() {
                 <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Message</label>
                 <textarea
                   rows={4}
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-lg resize-none"
+                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg resize-none"
                   placeholder="Optional: Share your interest or questions."
                 />
               </div>
               <div className="text-center pt-4">
-                <Button type="submit" size="lg" className="bg-black hover:bg-gray-900 text-white font-light px-16 py-4 text-lg transition-all duration-300">
+                <Button type="submit" size="lg" className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-light px-8 sm:px-16 py-4 text-base sm:text-lg transition-all duration-300">
                   Send Inquiry
                 </Button>
               </div>
