@@ -138,6 +138,16 @@ const baseArtworks: Artwork[] = [
     description: "Collaboration piece.",
     isSold: false,
   },
+  {
+    id: 11,
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/AHG22.png",
+    title: "Cartoon (2023)",
+    artist: "Anthony Haden-Guest",
+    artistName: "Anthony Haden-Guest",
+    price: "",
+    description: "Work by Anthony Haden-Guest.",
+    isSold: false,
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
