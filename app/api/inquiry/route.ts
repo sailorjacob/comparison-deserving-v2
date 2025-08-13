@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Ensure this route is always dynamic and not statically evaluated at build time
+export const dynamic = "force-dynamic"
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +16,13 @@ export async function POST(req: NextRequest) {
 
     const to = process.env.INQUIRY_TO_EMAIL || "info@haven.engineer"
 
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      // Soft-fail with clear error; avoids build-time crashes
+      return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
+    }
+
+    const resend = new Resend(apiKey)
     await resend.emails.send({
       from: "inquiries@haven.engineer",
       to,
