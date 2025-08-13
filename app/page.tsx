@@ -23,6 +23,7 @@ interface Artwork {
   price: string
   description: string
   isSold?: boolean
+  isPlaceholder?: boolean
 }
 
 // Define the artworks
@@ -46,6 +47,7 @@ const baseArtworks: Artwork[] = [
     artistName: "Pablo Picasso",
     price: "",
     description: "Placeholder work for Pablo Picasso.",
+    isPlaceholder: true,
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ const baseArtworks: Artwork[] = [
     artistName: "Jean-Michel Basquiat",
     price: "",
     description: "Placeholder work for Jean-Michel Basquiat.",
+    isPlaceholder: true,
   },
   // Allie works
   {
@@ -150,7 +153,8 @@ export default function HomePage() {
   const filteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
-    return artistOk && soldOk
+    const placeholderOk = selectedArtist === "all" ? !a.isPlaceholder : true
+    return artistOk && soldOk && placeholderOk
   })
   const totalPages = Math.max(1, Math.ceil(filteredArtworks.length / ITEMS_PER_PAGE))
 
@@ -288,7 +292,7 @@ export default function HomePage() {
                         className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
                         onClick={() => openAcquireModal(artwork)}
                       >
-                        Inquire
+                        {artwork.price ? "Buy" : "Inquire"}
                       </Button>
                     </div>
                   </div>
