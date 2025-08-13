@@ -65,7 +65,7 @@ const baseArtworks: Artwork[] = [
     id: 4,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie1.png",
-    title: "Moonlit Garden",
+    title: "Storm",
     artist: "Allie, 2021",
     artistName: "Allie",
     price: "",
@@ -76,7 +76,7 @@ const baseArtworks: Artwork[] = [
     id: 5,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
-    title: "Lunar Tides",
+    title: "Sisters",
     artist: "Allie, 2022",
     artistName: "Allie",
     price: "",
@@ -87,7 +87,7 @@ const baseArtworks: Artwork[] = [
     id: 6,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie3.png",
-    title: "Crescent Echoes",
+    title: "Waiting",
     artist: "Allie, 2023",
     artistName: "Allie",
     price: "",
@@ -98,7 +98,7 @@ const baseArtworks: Artwork[] = [
     id: 7,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie4.png",
-    title: "Allie 1",
+    title: "Olive",
     artist: "Allie",
     artistName: "Allie",
     price: "",
@@ -146,6 +146,50 @@ const baseArtworks: Artwork[] = [
     artistName: "Anthony Haden-Guest",
     price: "",
     description: "Work by Anthony Haden-Guest.",
+    isSold: false,
+  },
+  {
+    id: 12,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20frezza%20suit.png",
+    title: "Suit",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "Work by Jimmy Frezza.",
+    isSold: false,
+  },
+  {
+    id: 13,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20moto.jpeg",
+    title: "Moto",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "Work by Jimmy Frezza.",
+    isSold: false,
+  },
+  {
+    id: 14,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Jimmy%20Camera.jpeg",
+    title: "Jimmy Camera",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "Work by Jimmy Frezza.",
+    isSold: false,
+  },
+  {
+    id: 15,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20black%20hole.png",
+    title: "Black Hole",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "Work by Jimmy Frezza.",
     isSold: false,
   },
 ]
