@@ -227,7 +227,25 @@ export default function HomePage() {
     const placeholderOk = selectedArtist === "all" ? !a.isPlaceholder : true
     return artistOk && soldOk && placeholderOk
   })
-  const totalPages = Math.max(1, Math.ceil(filteredArtworks.length / ITEMS_PER_PAGE))
+  // Randomize ordering but keep "Backyard Blue" pinned as the very first item when present
+  const [randomizedFilteredArtworks, setRandomizedFilteredArtworks] = useState<Artwork[]>([])
+
+  useEffect(() => {
+    // Shuffle a shallow copy of the filtered list
+    const toShuffle = [...filteredArtworks]
+    // Pull out the pinned item if present within the filtered set
+    const pinnedIndex = toShuffle.findIndex((a) => a.title === "Backyard Blue")
+    const pinned = pinnedIndex >= 0 ? toShuffle.splice(pinnedIndex, 1)[0] : null
+
+    for (let i = toShuffle.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]]
+    }
+
+    setRandomizedFilteredArtworks(pinned ? [pinned, ...toShuffle] : toShuffle)
+  }, [selectedArtist, showSoldOnly])
+
+  const totalPages = Math.max(1, Math.ceil(randomizedFilteredArtworks.length / ITEMS_PER_PAGE))
 
   const nextPage = useCallback(() => {
     setCurrentPageIndex((prevIndex) => Math.min(prevIndex + 1, totalPages - 1))
@@ -246,7 +264,7 @@ export default function HomePage() {
 
   const startIndex = currentPageIndex * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentArtworks: Artwork[] = filteredArtworks.slice(startIndex, endIndex)
+  const currentArtworks: Artwork[] = randomizedFilteredArtworks.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
@@ -370,7 +388,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 ))}
-                {filteredArtworks.length === 0 && (
+                {randomizedFilteredArtworks.length === 0 && (
                   <div className="text-center text-gray-500 font-light py-12">No works found.</div>
                 )}
               </div>
