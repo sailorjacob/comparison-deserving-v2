@@ -216,7 +216,7 @@ export default function HomePage() {
 
       {/* Main Art Display Grid */}
       <main className={`flex-1 relative px-0 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="mx-auto max-w-7xl pl-2 md:pl-3 pr-4 md:pr-6">
+        <div className="container mx-auto px-4 md:px-6 md:pl-[3rem]">
           <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-6">
             {/* Sidebar Filters */}
             <aside className="hidden md:block">
