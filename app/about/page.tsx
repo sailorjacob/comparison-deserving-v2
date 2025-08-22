@@ -64,10 +64,11 @@ export default function AboutPage() {
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
-        comparison deserving represents exceptional artists across the world.
+        Comparison-Deserving is a curated fine art collection presented with a focus on clarity and restraint.
+        All works shown are placeholders for private inventory. For acquisition inquiries, please contact us.
       </p>
-      <p className="text-gray-700 font-light leading-relaxed max-w-3xl">
-        Contact: <a href="mailto:info@haven.engineer" className="text-black hover:underline">info@haven.engineer</a>
+      <p className="text-gray-500 font-light text-sm">
+        <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
       </p>
       <div className="mt-12">
         <FlashlightReveal />
