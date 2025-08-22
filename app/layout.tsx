@@ -4,8 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'comparison-deserving — Curated Fine Art',
-  description: 'A private collection interface for curated fine art.',
+  title: 'Fine Art Gallery',
+  description: 'comparison-deserving represents exceptional artists across the world, alive now.',
   generator: 'v0.dev',
 }
 
@@ -24,7 +24,7 @@ html {
   --font-mono: ${GeistMono.variable};
 }
         `}</style>
-        <link rel="icon" href="/placeholder-logo.svg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body>{children}</body>
     </html>
