@@ -4,6 +4,7 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
+import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 
 
@@ -11,6 +12,7 @@ import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
 export default function HomePage() {
+  const searchParams = useSearchParams()
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
   const [selectedArtworkForInquiry, setSelectedArtworkForInquiry] = useState<Artwork | null>(null)
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
@@ -24,7 +26,13 @@ export default function HomePage() {
 
   useEffect(() => {
     setIsVisible(true) // Trigger initial animation on component mount
-  }, [])
+    
+    // Check for artist parameter in URL
+    const artistParam = searchParams.get('artist')
+    if (artistParam) {
+      setSelectedArtist(artistParam)
+    }
+  }, [searchParams])
 
   const artistProfiles = getArtistProfiles()
   const filteredArtworks = artworks.filter((a) => {
@@ -215,12 +223,12 @@ export default function HomePage() {
                   {Array.from({ length: totalPages }, (_, i) => (
                     <Button
                       key={i}
-                      variant={currentPageIndex === i ? "default" : "ghost"}
+                      variant="ghost"
                       size="sm"
                       className={`w-8 h-8 p-0 ${
                         currentPageIndex === i 
-                          ? "bg-black text-white hover:bg-gray-800" 
-                          : "text-gray-600 hover:text-black hover:bg-gray-100"
+                          ? "bg-gray-100 text-black border border-gray-300" 
+                          : "text-gray-600 hover:text-black hover:bg-gray-50"
                       }`}
                       onClick={() => setCurrentPageIndex(i)}
                     >

@@ -218,7 +218,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             {otherArtists.map((artist) => (
               <Link 
                 key={artist.name} 
-                href="/artists"
+                href={`/?artist=${encodeURIComponent(artist.name)}`}
                 className="group text-center"
               >
                 <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden bg-gray-200">
