@@ -117,7 +117,7 @@ export default function ArtistsPage() {
               <>
                 {/* Artist Info */}
                 <div className="text-center max-w-2xl mx-auto">
-                  <div className="w-48 h-48 mx-auto mb-6 bg-gray-200 rounded-lg overflow-hidden">
+                  <div className="w-80 h-80 mx-auto mb-6 bg-gray-200 rounded-lg overflow-hidden">
                     <img
                       src={selectedArtist.image}
                       alt={selectedArtist.name}
@@ -140,7 +140,7 @@ export default function ArtistsPage() {
                 {/* Selected Artwork Display */}
                 {selectedArtwork && (
                   <div className="text-center">
-                    <div className="max-w-lg mx-auto mb-4">
+                    <div className="max-w-sm mx-auto mb-4">
                       <img
                         src={selectedArtwork.image}
                         alt={selectedArtwork.title}
