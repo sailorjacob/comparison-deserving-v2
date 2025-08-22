@@ -120,6 +120,19 @@ export const baseArtworks: Artwork[] = [
     dimensions: "22 x 30 inches",
   },
   {
+    id: 16,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/carcinogenesis.jpg",
+    title: "Carcinogenesis",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "A powerful exploration of transformation and cellular metamorphosis.",
+    isSold: false,
+    year: "2023",
+    dimensions: "28 x 36 inches",
+  },
+  {
     id: 12,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20frezza%20suit.png",
@@ -174,19 +187,6 @@ export const baseArtworks: Artwork[] = [
     isSold: false,
     year: "2023",
     dimensions: "36 x 48 inches",
-  },
-  {
-    id: 16,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/carcinogenesis.jpg",
-    title: "Carcinogenesis",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "A powerful exploration of transformation and cellular metamorphosis.",
-    isSold: false,
-    year: "2023",
-    dimensions: "28 x 36 inches",
   },
 ]
 
