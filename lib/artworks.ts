@@ -305,6 +305,32 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "Oil on canvas",
   },
+  {
+    id: 26,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Sketchbook%20Scan.jpg",
+    title: "Sketchbook Scan (Print)",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "A scan from a discarded sketchbook, now available as a limited print. Raw creative energy captured in its most honest form.",
+    isSold: false,
+    year: "2023",
+    dimensions: "Digital print",
+  },
+  {
+    id: 27,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Sketchbook%20Scan%202.jpg",
+    title: "Sketchbook Scan 2 (Print)",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "Second scan from the discarded sketchbook series, available as a limited print. Unfiltered artistic expression.",
+    isSold: false,
+    year: "2023",
+    dimensions: "Digital print",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering

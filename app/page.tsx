@@ -3,7 +3,7 @@
 import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useEffect, useState, useCallback, Suspense } from "react"
+import { useEffect, useState, useCallback, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 import { ImageProtection } from "@/components/image-protection"
@@ -49,12 +49,24 @@ function HomePageContent() {
   }, [searchParams])
 
   const artistProfiles = getArtistProfiles()
-  const filteredArtworks = artworks.filter((a) => {
+  const baseFilteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
     const placeholderOk = selectedArtist === "all" ? !a.isPlaceholder : true
     return artistOk && soldOk && placeholderOk
   })
+  
+  // Randomize artworks but keep "Backyard Blue" (id: 1) pinned first
+  const filteredArtworks = useMemo(() => {
+    const backyardBlue = baseFilteredArtworks.find(a => a.id === 1)
+    const otherArtworks = baseFilteredArtworks.filter(a => a.id !== 1)
+    
+    // Shuffle other artworks
+    const shuffled = [...otherArtworks].sort(() => Math.random() - 0.5)
+    
+    // Return with Backyard Blue first (if it exists in filtered results)
+    return backyardBlue ? [backyardBlue, ...shuffled] : shuffled
+  }, [baseFilteredArtworks])
   const totalPages = Math.max(1, Math.ceil(filteredArtworks.length / ITEMS_PER_PAGE))
 
   const nextPage = useCallback(() => {
