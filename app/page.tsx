@@ -66,15 +66,15 @@ export default function HomePage() {
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
       <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-300">
-        <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+        <div className="container mx-auto px-4 md:px-6 py-3">
+          <div className="flex items-center space-x-4 mb-2">
             <div className="w-8 h-8 bg-yellow-500" />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
             </div>
           </div>
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="flex items-center space-x-8">
             <Button
               variant="ghost"
               className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0"
