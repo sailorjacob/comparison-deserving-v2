@@ -219,7 +219,7 @@ export const getArtistProfiles = (): Artist[] => [
   {
     name: "Allie",
     bio: "Emerging artist exploring themes of nature, emotion, and human connection through vibrant imagery.",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Allie.jpg",
     artworks: artworks.filter(a => a.artistName === "Allie")
   },
   {
