@@ -179,7 +179,7 @@ const baseArtworks: Artwork[] = [
 const artworks: Artwork[] = baseArtworks.map((artwork, index) => ({
   ...artwork,
   artistName: artwork.artistName,
-  isSold: artwork.isSold ?? (index % 4 === 0),
+  isSold: artwork.isSold ?? false,
 }))
 
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
@@ -255,7 +255,7 @@ export default function HomePage() {
             <div className="w-8 h-8 bg-yellow-500" />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
-              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Curated Fine Art</div>
+              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-12">
@@ -308,17 +308,17 @@ export default function HomePage() {
                   <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Status</div>
                   <div className="flex gap-2">
                     <Button
-                      variant={showSoldOnly ? "outline" : "default"}
+                      variant={showSoldOnly ? "outline" : "outline"}
                       size="sm"
-                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500"}`}
+                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "border border-black text-black bg-white hover:bg-gray-50"}`}
                       onClick={() => setShowSoldOnly(false)}
                     >
                       All
                     </Button>
                     <Button
-                      variant={showSoldOnly ? "default" : "outline"}
+                      variant={showSoldOnly ? "outline" : "outline"}
                       size="sm"
-                      className={`${showSoldOnly ? "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-500" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
+                      className={`${showSoldOnly ? "border border-black text-black bg-white hover:bg-gray-50" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
                       onClick={() => setShowSoldOnly(true)}
                     >
                       Sold
