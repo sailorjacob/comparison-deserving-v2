@@ -230,7 +230,7 @@ export default function ArtistsPage() {
           </div>
         </div>
 
-        <div className="text-xs text-gray-500 font-light text-center py-4">Singapore</div>
+
       </main>
     </div>
   )

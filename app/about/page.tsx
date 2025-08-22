@@ -69,9 +69,9 @@ export default function AboutPage() {
       <p className="text-gray-500 font-light text-sm">
         <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
       </p>
-      <div className="mt-12">
-        <FlashlightReveal />
-      </div>
+              <div className="mt-12">
+          <FlashlightReveal />
+        </div>
         <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
       </main>
     </div>
