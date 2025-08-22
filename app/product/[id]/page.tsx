@@ -19,6 +19,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   const [formEmail, setFormEmail] = useState("")
   const [formMessage, setFormMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const artwork = getArtworkById(parseInt(params.id))
 
@@ -77,15 +78,38 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Artwork Image */}
+          {/* Artwork Image Gallery */}
           <div className="space-y-4">
             <div className="aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
               <img
-                src={artwork.image}
+                src={artwork.images ? artwork.images[currentImageIndex] : artwork.image}
                 alt={artwork.title}
                 className="w-full h-full object-contain"
               />
             </div>
+            
+            {/* Image Thumbnails */}
+            {artwork.images && artwork.images.length > 1 && (
+              <div className="flex gap-2 justify-center">
+                {artwork.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-16 h-16 rounded-md overflow-hidden border-2 transition-all ${
+                      currentImageIndex === index
+                        ? "border-black"
+                        : "border-gray-200 hover:border-gray-400"
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${artwork.title} view ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Artwork Details */}

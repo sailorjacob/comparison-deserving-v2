@@ -2,6 +2,7 @@
 export interface Artwork {
   id: number
   image: string
+  images?: string[] // Additional images for gallery view
   title: string
   artist: string
   artistName: string
@@ -134,7 +135,11 @@ export const baseArtworks: Artwork[] = [
   {
     id: 13,
     image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20moto.jpeg",
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/MotoFull.jpg",
+    images: [
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/MotoFull.jpg",
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20moto.jpeg"
+    ],
     title: "Moto",
     artist: "Jimmy Frezza",
     artistName: "Jimmy Frezza",
@@ -170,6 +175,19 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "36 x 48 inches",
   },
+  {
+    id: 16,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/carcinogenesis.jpg",
+    title: "Carcinogenesis",
+    artist: "Jimmy Frezza",
+    artistName: "Jimmy Frezza",
+    price: "",
+    description: "A powerful exploration of transformation and cellular metamorphosis.",
+    isSold: false,
+    year: "2023",
+    dimensions: "28 x 36 inches",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
@@ -182,3 +200,38 @@ export const artworks: Artwork[] = baseArtworks.map((artwork, index) => ({
 export const getArtworkById = (id: number): Artwork | undefined => {
   return artworks.find(artwork => artwork.id === id)
 }
+
+// Artist profiles with images
+export interface Artist {
+  name: string
+  bio: string
+  image: string
+  artworks: Artwork[]
+}
+
+export const getArtistProfiles = (): Artist[] => [
+  {
+    name: "Jimmy Frezza",
+    bio: "Contemporary artist known for mixed media works that blend found objects with traditional painting techniques.",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/JimmyFrezza.jpg",
+    artworks: artworks.filter(a => a.artistName === "Jimmy Frezza")
+  },
+  {
+    name: "Allie",
+    bio: "Emerging artist exploring themes of nature, emotion, and human connection through vibrant imagery.",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
+    artworks: artworks.filter(a => a.artistName === "Allie")
+  },
+  {
+    name: "Ammo Cat",
+    bio: "Digital and mixed media artist creating bold collaborative works that challenge traditional art boundaries.",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammocat.JPG",
+    artworks: artworks.filter(a => a.artistName === "Ammo Cat")
+  },
+  {
+    name: "Anthony Haden-Guest",
+    bio: "Renowned artist and cultural commentator whose work spans multiple decades and media.",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/ANTHONY%20HADEN%20GUEST%20-%20JACOB.jpg",
+    artworks: artworks.filter(a => a.artistName === "Anthony Haden-Guest")
+  }
+]

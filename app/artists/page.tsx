@@ -4,35 +4,10 @@ import Link from "next/link"
 import { ChevronLeft, Bitcoin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import { artworks } from "@/lib/artworks"
+import { getArtistProfiles } from "@/lib/artworks"
 
-// Artist data with their info and artworks derived from shared data
-const artistsData = [
-  {
-    name: "Jimmy Frezza",
-    bio: "Contemporary artist known for mixed media works that blend found objects with traditional painting techniques.",
-    image: "/placeholder-artist.jpg", // You can replace with actual artist photos
-    artworks: artworks.filter(a => a.artistName === "Jimmy Frezza")
-  },
-  {
-    name: "Allie",
-    bio: "Emerging artist exploring themes of nature, emotion, and human connection through vibrant imagery.",
-    image: "/placeholder-artist.jpg",
-    artworks: artworks.filter(a => a.artistName === "Allie")
-  },
-  {
-    name: "Ammo Cat",
-    bio: "Digital and mixed media artist creating bold collaborative works that challenge traditional art boundaries.",
-    image: "/placeholder-artist.jpg",
-    artworks: artworks.filter(a => a.artistName === "Ammo Cat")
-  },
-  {
-    name: "Anthony Haden-Guest",
-    bio: "Renowned artist and cultural commentator whose work spans multiple decades and media.",
-    image: "/placeholder-artist.jpg",
-    artworks: artworks.filter(a => a.artistName === "Anthony Haden-Guest")
-  }
-]
+// Get artist data with profile images
+const artistsData = getArtistProfiles()
 
 export default function ArtistsPage() {
   const [selectedArtist, setSelectedArtist] = useState(artistsData[0])
@@ -113,16 +88,21 @@ export default function ArtistsPage() {
           <div className="space-y-8">
             {/* Artist Info */}
             <div className="text-center max-w-2xl mx-auto">
-              <div className="w-48 h-48 mx-auto mb-6 bg-gray-200 rounded-lg flex items-center justify-center">
-                {selectedArtist.image ? (
-                  <img
-                    src={selectedArtist.image}
-                    alt={selectedArtist.name}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                ) : (
-                  <span className="text-gray-500 text-sm">Artist Photo</span>
-                )}
+              <div className="w-48 h-48 mx-auto mb-6 bg-gray-200 rounded-lg overflow-hidden">
+                <img
+                  src={selectedArtist.image}
+                  alt={selectedArtist.name}
+                  className={`w-full h-full object-cover ${
+                    selectedArtist.name === "Anthony Haden-Guest" 
+                      ? "object-left" 
+                      : "object-center"
+                  }`}
+                  style={
+                    selectedArtist.name === "Anthony Haden-Guest" 
+                      ? { objectPosition: "25% center" } 
+                      : {}
+                  }
+                />
               </div>
               <h1 className="text-4xl font-extralight mb-4">{selectedArtist.name}</h1>
               <p className="text-gray-700 font-light leading-relaxed">{selectedArtist.bio}</p>
