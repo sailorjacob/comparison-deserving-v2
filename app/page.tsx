@@ -274,93 +274,104 @@ function HomePageContent() {
 
       {/* Acquire Modal */}
       {selectedArtworkForInquiry && (
-        <div className="fixed inset-0 bg-black/80 z-[100] flex items-end sm:items-center justify-center p-4 sm:p-8">
-          <div className="bg-white p-6 sm:p-8 md:p-12 rounded-t-2xl sm:rounded-lg shadow-2xl max-w-2xl w-full relative max-h-[90vh] overflow-y-auto">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-4 right-4 text-gray-600 hover:text-black"
-              onClick={closeAcquireModal}
-            >
-              <X className="w-6 h-6" />
-            </Button>
-            <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extralight text-black mb-4">Acquire Artwork</h2>
-              {selectedArtworkForInquiry.title ? (
-                <p className="text-base sm:text-lg font-light text-gray-600">
-                  Express your interest in <span className="font-medium">{selectedArtworkForInquiry.title}</span>. We will contact you shortly.
-                </p>
-              ) : (
-                <p className="text-base sm:text-lg font-light text-gray-600">Please provide your details for a general inquiry. We will contact you shortly.</p>
-              )}
+        <div 
+          className="fixed inset-0 bg-black/60 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closeAcquireModal()
+            }
+          }}
+        >
+          <div className="bg-white w-full sm:max-w-lg sm:rounded-lg shadow-lg relative overflow-hidden animate-in slide-in-from-bottom-4 sm:slide-in-from-bottom-0 duration-300">
+            {/* Header */}
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+              <h2 className="text-lg font-light text-black">Inquiry</h2>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-gray-400 hover:text-black h-8 w-8"
+                onClick={closeAcquireModal}
+              >
+                <X className="w-4 h-4" />
+              </Button>
             </div>
+            
+            {/* Content */}
+            <div className="px-6 py-6">
+              {selectedArtworkForInquiry.title && (
+                <p className="text-sm text-gray-600 mb-6 text-center">
+                  Interested in <span className="font-medium text-black">{selectedArtworkForInquiry.title}</span>
+                </p>
+              )}
 
-            <form
-              className="space-y-8"
-              onSubmit={async (e) => {
-                e.preventDefault()
-                if (isSubmitting) return
-                setIsSubmitting(true)
-                try {
-                  const res = await fetch("/api/inquiry", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      name: formName,
-                      email: formEmail,
-                      message: formMessage,
-                      artworkTitle: selectedArtworkForInquiry?.title ?? null,
-                    }),
-                  })
-                  if (!res.ok) throw new Error("Failed to send inquiry")
-                  alert("Inquiry sent. We'll contact you shortly.")
-                  setFormName("")
-                  setFormEmail("")
-                  setFormMessage("")
-                  setSelectedArtworkForInquiry(null)
-                } catch (err) {
-                  alert("There was an error sending your inquiry. Please try again.")
-                } finally {
-                  setIsSubmitting(false)
-                }
-              }}
-            >
-              <div>
-                <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Name</label>
-                <input
-                  type="text"
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
-                  required
-                  value={formName}
-                  onChange={(e) => setFormName(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Email</label>
-                <input
-                  type="email"
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg"
-                  required
-                  value={formEmail}
-                  onChange={(e) => setFormEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-light text-gray-600 mb-3 uppercase tracking-wide">Message</label>
-                <textarea
-                  rows={4}
-                  className="w-full border-b-2 border-gray-200 bg-transparent py-3 focus:border-black focus:outline-none transition-colors font-light text-base sm:text-lg resize-none"
-                  placeholder="Optional: Share your interest or questions."
-                  value={formMessage}
-                  onChange={(e) => setFormMessage(e.target.value)}
-                />
-              </div>
-              <div className="text-center pt-4">
-                <Button type="submit" size="lg" className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-light px-8 sm:px-16 py-4 text-base sm:text-lg transition-all duration-300" disabled={isSubmitting}>
+              <form
+                className="space-y-4"
+                onSubmit={async (e) => {
+                  e.preventDefault()
+                  if (isSubmitting) return
+                  setIsSubmitting(true)
+                  try {
+                    const res = await fetch("/api/inquiry", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        name: formName,
+                        email: formEmail,
+                        message: formMessage,
+                        artworkTitle: selectedArtworkForInquiry?.title ?? null,
+                      }),
+                    })
+                    if (!res.ok) throw new Error("Failed to send inquiry")
+                    alert("Inquiry sent. We'll contact you shortly.")
+                    setFormName("")
+                    setFormEmail("")
+                    setFormMessage("")
+                    setSelectedArtworkForInquiry(null)
+                  } catch (err) {
+                    alert("There was an error sending your inquiry. Please try again.")
+                  } finally {
+                    setIsSubmitting(false)
+                  }
+                }}
+              >
+                <div>
+                  <input
+                    type="text"
+                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
+                    placeholder="Name"
+                    required
+                    value={formName}
+                    onChange={(e) => setFormName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
+                    placeholder="Email"
+                    required
+                    value={formEmail}
+                    onChange={(e) => setFormEmail(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <textarea
+                    rows={3}
+                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
+                    placeholder="Share your interest or questions"
+                    value={formMessage}
+                    onChange={(e) => setFormMessage(e.target.value)}
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-black hover:bg-gray-800 text-white text-sm py-2.5 transition-colors" 
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Sending..." : "Send Inquiry"}
                 </Button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       )}
