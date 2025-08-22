@@ -39,22 +39,14 @@ export function ImageProtection() {
     document.addEventListener('dragstart', handleDragStart)
     document.addEventListener('keydown', handleKeyDown)
 
-    // Disable image selection on touch devices
-    const handleTouchStart = (e: TouchEvent) => {
-      const target = e.target as HTMLElement
-      if (target.tagName === 'IMG') {
-        e.preventDefault()
-      }
-    }
-
-    document.addEventListener('touchstart', handleTouchStart, { passive: false })
+    // Note: Removed touchstart prevention to allow mobile scrolling
+    // Images can still be scrolled but right-click and drag are disabled
 
     // Cleanup
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu)
       document.removeEventListener('dragstart', handleDragStart)
       document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('touchstart', handleTouchStart)
     }
   }, [])
 

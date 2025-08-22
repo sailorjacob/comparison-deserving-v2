@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 import { ImageProtection } from "@/components/image-protection"
+import { SingaporeModal } from "@/components/singapore-modal"
 
 
 
@@ -393,12 +394,13 @@ function HomePageContent() {
         <div className="container mx-auto flex items-center justify-between">
           <p className="text-gray-500 font-light text-sm">© 2025 comparison-deserving.</p>
           <div className="flex items-center space-x-6 text-gray-600 font-light">
-            <a href="/privacy" className="hover:text-black transition-colors text-sm">
+            <a href="/privacy" className="hover:text-black transition-colors text-xs">
               Privacy
             </a>
-            <a href="/terms" className="hover:text-black transition-colors text-sm">
+            <a href="/terms" className="hover:text-black transition-colors text-xs">
               Terms
             </a>
+            <SingaporeModal />
           </div>
         </div>
       </footer>
