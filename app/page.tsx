@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useEffect, useState, useCallback, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
+import { ImageProtection } from "@/components/image-protection"
 
 
 
@@ -77,6 +78,7 @@ function HomePageContent() {
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
+      <ImageProtection />
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">
@@ -151,27 +153,7 @@ function HomePageContent() {
                     ))}
                   </div>
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Status</div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant={showSoldOnly ? "outline" : "outline"}
-                      size="sm"
-                      className={`${showSoldOnly ? "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50" : "border border-black text-black bg-white hover:bg-gray-50"}`}
-                      onClick={() => setShowSoldOnly(false)}
-                    >
-                      All
-                    </Button>
-                    <Button
-                      variant={showSoldOnly ? "outline" : "outline"}
-                      size="sm"
-                      className={`${showSoldOnly ? "border border-black text-black bg-white hover:bg-gray-50" : "border border-gray-300 text-gray-500 bg-transparent hover:bg-gray-50"}`}
-                      onClick={() => setShowSoldOnly(true)}
-                    >
-                      Sold
-                    </Button>
-                  </div>
-                </div>
+
               </div>
             </aside>
 

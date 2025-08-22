@@ -138,3 +138,34 @@
 
   /* Keep default scrollbars visible for usability */
 }
+
+/* Image protection styles */
+@layer base {
+  img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: auto;
+    -webkit-touch-callout: none;
+  }
+
+  /* Disable right-click context menu on images */
+  img::selection {
+    background: transparent;
+  }
+
+  /* Prevent text selection on image containers */
+  .image-container {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}

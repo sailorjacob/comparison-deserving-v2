@@ -5,6 +5,7 @@ import { ChevronLeft, Bitcoin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { getArtistProfiles } from "@/lib/artworks"
+import { ImageProtection } from "@/components/image-protection"
 
 // Get artist data with profile images
 const artistsData = getArtistProfiles()
@@ -32,6 +33,7 @@ export default function ArtistsPage() {
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
+      <ImageProtection />
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">

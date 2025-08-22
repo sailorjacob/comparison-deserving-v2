@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { notFound } from "next/navigation"
 import { getArtworkById, getArtistProfiles, artworks, type Artwork } from "@/lib/artworks"
+import { ImageProtection } from "@/components/image-protection"
 
 // Random logo color utility
 const getRandomLogoColor = () => {
@@ -53,6 +54,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
+      <ImageProtection />
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
