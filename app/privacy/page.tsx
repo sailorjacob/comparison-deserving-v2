@@ -1,122 +1,132 @@
-import type { Metadata } from "next"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — comparison-deserving",
-  description: "Privacy practices for the comparison-deserving gallery website.",
+import Link from "next/link"
+import { ChevronLeft, Bitcoin } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
+
+// Random logo color utility
+const getRandomLogoColor = () => {
+  const colors = [
+    'bg-blue-500',
+    'bg-red-500', 
+    'bg-green-500',
+    'bg-yellow-500'
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
 }
 
-export default function PrivacyPolicyPage() {
+export default function PrivacyPage() {
+  const [logoColor] = useState(getRandomLogoColor())
+
   return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 md:px-6 py-12 md:py-16 max-w-3xl">
-        <h1 className="text-3xl md:text-4xl font-extralight tracking-tight text-black">Privacy Policy</h1>
-        <p className="mt-3 text-sm text-gray-500">Last updated: {new Date().toLocaleDateString()}</p>
-
-        <div className="mt-10 space-y-8 text-gray-800">
-          <section>
-            <p className="leading-relaxed">
-              This Privacy Policy describes how comparison-deserving ("we", "us", or "our") collects, uses,
-              and shares information when you visit our website and interact with our gallery, including when
-              you submit inquiries about artworks.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Information We Collect</h2>
-            <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-700">
-              <li>
-                Contact details you provide to us, such as your name and email address, when you submit an inquiry.
-              </li>
-              <li>
-                Optional information you include in messages (e.g., questions, preferences, or context about a work).
-              </li>
-              <li>
-                Basic usage information collected automatically, such as IP address, device/browser type, and pages visited.
-              </li>
-              <li>
-                Cookies or similar technologies to maintain basic site functionality and performance.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">How We Use Information</h2>
-            <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-700">
-              <li>To respond to your inquiries and provide information about artworks.</li>
-              <li>To operate, maintain, and improve our website and services.</li>
-              <li>To communicate with you about updates, exhibitions, or opportunities, where permitted.</li>
-              <li>To protect our rights, prevent fraud, and comply with legal obligations.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Legal Bases</h2>
-            <p className="mt-3 text-gray-700">
-              Where applicable, we process your information based on our legitimate interests (e.g., operating a gallery
-              and addressing inquiries), your consent (e.g., optional communications), and to fulfill legal obligations.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Sharing of Information</h2>
-            <p className="mt-3 text-gray-700">
-              We do not sell your personal information. We may share limited information with service providers who assist
-              in operating our website and communications, subject to appropriate safeguards. We may also share information
-              where required by law or to protect the rights and safety of our visitors and partners.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Data Retention</h2>
-            <p className="mt-3 text-gray-700">
-              We retain personal information for as long as needed to respond to inquiries, provide requested information,
-              and for legitimate business and legal purposes. We delete or anonymize data when it is no longer necessary.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Your Choices</h2>
-            <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-700">
-              <li>You can request access to, correction of, or deletion of your personal information.</li>
-              <li>You may opt out of non-essential communications at any time.</li>
-              <li>You can adjust your browser settings to manage cookies.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">International Visitors</h2>
-            <p className="mt-3 text-gray-700">
-              If you visit our site from outside your home region, note that information may be processed in locations with
-              different data protection laws. We take steps to protect your information consistent with applicable requirements.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Security</h2>
-            <p className="mt-3 text-gray-700">
-              We use reasonable administrative, technical, and organizational safeguards designed to protect personal
-              information. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Children’s Privacy</h2>
-            <p className="mt-3 text-gray-700">
-              Our website is not directed to children under 13, and we do not knowingly collect personal information from them.
-              If you believe a child has provided us personal information, please contact us and we will take appropriate steps.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-light text-black">Contact</h2>
-            <p className="mt-3 text-gray-700">
-              For privacy questions or requests, contact us at <a href="mailto:contact@comparison-deserving.com" className="underline">contact@comparison-deserving.com</a>.
-            </p>
-          </section>
+    <div className="min-h-screen w-full bg-white flex flex-col">
+      {/* Navigation */}
+      <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
+        <div className="container mx-auto px-4 md:px-6 py-3">
+          <div className="flex items-center space-x-4 mb-2">
+            <div className={`w-8 h-8 ${logoColor}`} />
+            <div>
+              <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
+              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-8">
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/">
+                Collection
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/artists">
+                Artists
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/about">
+                About
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Bitcoin className="w-4 h-4" />
+              <span className="text-sm font-light">Accepted</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </nav>
+
+      <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
+        <div className="mb-6">
+          <Link href="/" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
+            <ChevronLeft className="w-5 h-5 mr-1" />
+            <span className="text-sm font-light">Back</span>
+          </Link>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-extralight mb-8">Privacy Policy</h1>
+          
+          <div className="space-y-8 text-gray-700 font-light leading-relaxed">
+            <section>
+              <h2 className="text-2xl font-light mb-4 text-black">Information We Collect</h2>
+              <p>
+                When you use our gallery website, we may collect information you provide directly to us, 
+                such as when you make an inquiry about artwork, subscribe to updates, or contact us. 
+                This may include your name, email address, and any messages you send us.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-light mb-4 text-black">How We Use Your Information</h2>
+              <p>
+                We use the information we collect to respond to your inquiries, provide information about 
+                our artists and available works, and communicate with you about our gallery. We do not 
+                sell, trade, or otherwise transfer your personal information to third parties without 
+                your consent, except as described in this policy.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-light mb-4 text-black">Data Security</h2>
+              <p>
+                We implement appropriate security measures to protect your personal information against 
+                unauthorized access, alteration, disclosure, or destruction. However, please be aware 
+                that no method of transmission over the internet is 100% secure.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-light mb-4 text-black">Bitcoin Transactions</h2>
+              <p>
+                For artwork purchases using Bitcoin, we may collect wallet addresses and transaction 
+                information necessary to complete your purchase. These transactions are recorded on 
+                the blockchain and are publicly viewable.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-light mb-4 text-black">Contact Us</h2>
+              <p>
+                If you have any questions about this Privacy Policy, please contact us at 
+                <a href="mailto:info@haven.engineer" className="text-black hover:underline ml-1">
+                  info@haven.engineer
+                </a>.
+              </p>
+            </section>
+
+            <section>
+              <p className="text-sm text-gray-500">
+                Last updated: January 2025
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
+      </main>
+    </div>
   )
 }
-
-

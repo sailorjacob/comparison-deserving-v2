@@ -226,10 +226,11 @@ function HomePageContent() {
             </div>
 
             {/* Pagination Controls */}
-            <div className="mt-8 flex items-center justify-between md:col-span-2">
-              <div className="text-sm text-gray-500 font-light">
-                Showing {currentPageIndex * ITEMS_PER_PAGE + 1}-{Math.min((currentPageIndex + 1) * ITEMS_PER_PAGE, filteredArtworks.length)} of {filteredArtworks.length}
-              </div>
+                            <div className="mt-8 flex items-center justify-between md:col-span-2">
+                  <div className="text-sm text-gray-500 font-light hidden md:block">
+                    Showing {currentPageIndex * ITEMS_PER_PAGE + 1}-{Math.min((currentPageIndex + 1) * ITEMS_PER_PAGE, filteredArtworks.length)} of {filteredArtworks.length}
+                  </div>
+                  <div className="md:hidden"></div>
               <div className="flex items-center gap-3">
                 {/* Page Numbers */}
                 <div className="flex items-center gap-1">
@@ -385,7 +386,7 @@ function HomePageContent() {
       {/* Footer - Minimal */}
       <footer className="w-full py-4 px-6 border-t border-gray-100 bg-white z-40">
         <div className="container mx-auto flex items-center justify-between">
-          <p className="text-gray-500 font-light text-sm">© 2024 comparison-deserving. Private Collection.</p>
+          <p className="text-gray-500 font-light text-sm">© 2025 comparison-deserving.</p>
           <div className="flex items-center space-x-6 text-gray-600 font-light">
             <a href="/privacy" className="hover:text-black transition-colors text-sm">
               Privacy
