@@ -7,6 +7,17 @@ import { useState } from "react"
 import { notFound } from "next/navigation"
 import { getArtworkById, getArtistProfiles, artworks, type Artwork } from "@/lib/artworks"
 
+// Random logo color utility
+const getRandomLogoColor = () => {
+  const colors = [
+    'bg-blue-500',
+    'bg-red-500', 
+    'bg-green-500',
+    'bg-yellow-500'
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
 interface ProductPageProps {
   params: {
     id: string
@@ -20,6 +31,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   const [formMessage, setFormMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [logoColor] = useState(getRandomLogoColor())
 
   const artwork = getArtworkById(parseInt(params.id))
 
@@ -42,10 +54,10 @@ export default function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-300">
+      <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-yellow-500" />
+            <div className={`w-8 h-8 ${logoColor}`} />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
@@ -78,7 +90,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
       </nav>
 
-      <main className="flex-1 container mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12">
+      <main className="flex-1 container mx-auto px-4 sm:px-6 md:px-8 pt-24 pb-6 sm:pt-28 sm:pb-8 md:pb-12">
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
             <ChevronLeft className="w-5 h-5 mr-1" />

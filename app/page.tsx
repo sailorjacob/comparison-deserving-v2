@@ -11,6 +11,17 @@ import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
+// Random logo color utility
+const getRandomLogoColor = () => {
+  const colors = [
+    'bg-blue-500',
+    'bg-red-500', 
+    'bg-green-500',
+    'bg-yellow-500'
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
 function HomePageContent() {
   const searchParams = useSearchParams()
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
@@ -18,6 +29,7 @@ function HomePageContent() {
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
+  const [logoColor, setLogoColor] = useState<string>("bg-yellow-500")
 
   const [formName, setFormName] = useState("")
   const [formEmail, setFormEmail] = useState("")
@@ -26,6 +38,7 @@ function HomePageContent() {
 
   useEffect(() => {
     setIsVisible(true) // Trigger initial animation on component mount
+    setLogoColor(getRandomLogoColor()) // Set random logo color on mount
     
     // Check for artist parameter in URL
     const artistParam = searchParams.get('artist')
@@ -65,10 +78,10 @@ function HomePageContent() {
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-300">
+      <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">
           <div className="flex items-center space-x-4 mb-2">
-            <div className="w-8 h-8 bg-yellow-500" />
+            <div className={`w-8 h-8 ${logoColor}`} />
             <div>
               <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
@@ -104,7 +117,7 @@ function HomePageContent() {
       </nav>
 
       {/* Main Art Display Grid */}
-      <main className={`flex-1 relative px-0 py-8 md:py-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+      <main className={`flex-1 relative px-0 pt-24 pb-8 md:pt-28 md:pb-10 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="container mx-auto px-4 md:px-6 md:pl-[3rem]">
           <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-6">
             {/* Sidebar Filters */}
@@ -388,11 +401,13 @@ function HomePageContent() {
 }
 
 export default function HomePage() {
+  const fallbackLogoColor = getRandomLogoColor()
+  
   return (
     <Suspense fallback={
       <div className="min-h-screen w-full bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 bg-yellow-500 mx-auto mb-4" />
+          <div className={`w-8 h-8 ${fallbackLogoColor} mx-auto mb-4`} />
           <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
           <div className="text-xs font-light text-gray-500 tracking-wider uppercase mt-1">Loading...</div>
         </div>
