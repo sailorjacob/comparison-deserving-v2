@@ -58,12 +58,6 @@ export default function ArtistsPage() {
       </nav>
 
       <main className="flex-1 container mx-auto px-6 md:px-8 py-12">
-        <div className="mb-6">
-          <Link href="/" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
-            <ChevronLeft className="w-5 h-5 mr-1" />
-            <span className="text-sm font-light">Back</span>
-          </Link>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(0,1fr)] gap-8">
           {/* Left Artist Menu */}

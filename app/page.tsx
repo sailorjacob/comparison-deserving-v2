@@ -4,14 +4,7 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
-import { artworks, type Artwork } from "@/lib/artworks"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 
 
 
@@ -33,7 +26,7 @@ export default function HomePage() {
     setIsVisible(true) // Trigger initial animation on component mount
   }, [])
 
-  const artists = Array.from(new Set(artworks.map((a) => a.artistName))).sort()
+  const artistProfiles = getArtistProfiles()
   const filteredArtworks = artworks.filter((a) => {
     const artistOk = selectedArtist === "all" || a.artistName === selectedArtist
     const soldOk = showSoldOnly ? a.isSold : true
@@ -111,19 +104,31 @@ export default function HomePage() {
               <div className="sticky top-20 space-y-6">
                 <div>
                   <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Artists</div>
-                  <Select value={selectedArtist} onValueChange={(v) => setSelectedArtist(v)}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="All artists" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All artists</SelectItem>
-                      {artists.map((name) => (
-                        <SelectItem key={name} value={name}>
-                          {name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="space-y-1">
+                    <button
+                      onClick={() => setSelectedArtist("all")}
+                      className={`w-full text-left px-3 py-2 rounded-md transition-colors text-sm ${
+                        selectedArtist === "all"
+                          ? "bg-gray-100 text-black"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-black"
+                      }`}
+                    >
+                      All artists
+                    </button>
+                    {artistProfiles.map((artist) => (
+                      <button
+                        key={artist.name}
+                        onClick={() => setSelectedArtist(artist.name)}
+                        className={`w-full text-left px-3 py-2 rounded-md transition-colors text-sm ${
+                          selectedArtist === artist.name
+                            ? "bg-gray-100 text-black"
+                            : "text-gray-600 hover:bg-gray-50 hover:text-black"
+                        }`}
+                      >
+                        {artist.name}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-wider text-gray-500 mb-2">Status</div>
@@ -202,31 +207,61 @@ export default function HomePage() {
             {/* Pagination Controls */}
             <div className="mt-8 flex items-center justify-between md:col-span-2">
               <div className="text-sm text-gray-500 font-light">
-                Page {currentPageIndex + 1} of {totalPages}
+                Showing {currentPageIndex * ITEMS_PER_PAGE + 1}-{Math.min((currentPageIndex + 1) * ITEMS_PER_PAGE, filteredArtworks.length)} of {filteredArtworks.length}
               </div>
-              <div className="flex items-center gap-2">
-                {currentPageIndex > 0 && (
+              <div className="flex items-center gap-3">
+                {/* Page Numbers */}
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <Button
+                      key={i}
+                      variant={currentPageIndex === i ? "default" : "ghost"}
+                      size="sm"
+                      className={`w-8 h-8 p-0 ${
+                        currentPageIndex === i 
+                          ? "bg-black text-white hover:bg-gray-800" 
+                          : "text-gray-600 hover:text-black hover:bg-gray-100"
+                      }`}
+                      onClick={() => setCurrentPageIndex(i)}
+                    >
+                      {i + 1}
+                    </Button>
+                  ))}
+                </div>
+                
+                {/* Arrow Controls */}
+                <div className="flex items-center gap-1 ml-2">
                   <Button
                     variant="ghost"
-                    size="icon"
-                    className="p-2 text-gray-800 hover:text-black"
-                    aria-label="Previous"
+                    size="sm"
+                    className={`px-3 py-2 ${
+                      currentPageIndex > 0 
+                        ? "text-gray-800 hover:text-black hover:bg-gray-100" 
+                        : "text-gray-300 cursor-not-allowed"
+                    }`}
+                    aria-label="Previous page"
                     onClick={prevPage}
+                    disabled={currentPageIndex === 0}
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-4 h-4 mr-1" />
+                    Prev
                   </Button>
-                )}
-                {currentPageIndex < totalPages - 1 && (
                   <Button
                     variant="ghost"
-                    size="icon"
-                    className="p-2 text-gray-800 hover:text-black"
-                    aria-label="Next"
+                    size="sm"
+                    className={`px-3 py-2 ${
+                      currentPageIndex < totalPages - 1 
+                        ? "text-gray-800 hover:text-black hover:bg-gray-100" 
+                        : "text-gray-300 cursor-not-allowed"
+                    }`}
+                    aria-label="Next page"
                     onClick={nextPage}
+                    disabled={currentPageIndex >= totalPages - 1}
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    Next
+                    <ChevronRight className="w-4 h-4 ml-1" />
                   </Button>
-                )}
+                </div>
               </div>
             </div>
           </div>
