@@ -4,7 +4,7 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
-
+import { artworks, type Artwork } from "@/lib/artworks"
 import {
   Select,
   SelectContent,
@@ -13,174 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-// Types
-interface Artwork {
-  id: number
-  image: string
-  title: string
-  artist: string
-  artistName: string
-  medium?: string
-  price: string
-  description: string
-  isSold?: boolean
-  isPlaceholder?: boolean
-}
 
-// Define the artworks
-const baseArtworks: Artwork[] = [
-  {
-    id: 1,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/IMG_549509AE11D4-1-removebg-preview%20(1).png",
-    title: "Backyard Blue",
-    artist: "Jimmy Frezza, 2022",
-    artistName: "Jimmy Frezza",
-    medium: "Oil, acrylic, and found object on canvas",
-    price: "",
-    description: "Oil, acrylic, and found object on canvas.",
-  },
-  
-  // Allie works
-  {
-    id: 4,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie1.png",
-    title: "Storm",
-    artist: "Allie, 2021",
-    artistName: "Allie",
-    price: "",
-    description: "Work by Allie.",
-    isSold: false,
-  },
-  {
-    id: 5,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
-    title: "Sisters",
-    artist: "Allie, 2022",
-    artistName: "Allie",
-    price: "",
-    description: "Work by Allie.",
-    isSold: false,
-  },
-  {
-    id: 6,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie3.png",
-    title: "Waiting",
-    artist: "Allie, 2023",
-    artistName: "Allie",
-    price: "",
-    description: "Work by Allie.",
-    isSold: false,
-  },
-  {
-    id: 7,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie4.png",
-    title: "Olive",
-    artist: "Allie",
-    artistName: "Allie",
-    price: "",
-    description: "Work by Allie.",
-    isSold: false,
-  },
-  {
-    id: 8,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie5.png",
-    title: "Allie 2",
-    artist: "Allie",
-    artistName: "Allie",
-    price: "",
-    description: "Work by Allie.",
-    isSold: false,
-  },
-  {
-    id: 9,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammo%20cat.jpg",
-    title: "Ammo Cat x rare.glass",
-    artist: "Ammo Cat",
-    artistName: "Ammo Cat",
-    price: "0.20 BTC",
-    description: "Collaboration piece.",
-    isSold: false,
-  },
-  {
-    id: 10,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammocat%202.jpg",
-    title: "Ammo Cat x rare.glass 2",
-    artist: "Ammo Cat",
-    artistName: "Ammo Cat",
-    price: "0.20 BTC",
-    description: "Collaboration piece.",
-    isSold: false,
-  },
-  {
-    id: 11,
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/AHG22.png",
-    title: "Cartoon (2023)",
-    artist: "Anthony Haden-Guest",
-    artistName: "Anthony Haden-Guest",
-    price: "",
-    description: "Work by Anthony Haden-Guest.",
-    isSold: false,
-  },
-  {
-    id: 12,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20frezza%20suit.png",
-    title: "Suit",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "Work by Jimmy Frezza.",
-    isSold: false,
-  },
-  {
-    id: 13,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20moto.jpeg",
-    title: "Moto",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "Work by Jimmy Frezza.",
-    isSold: false,
-  },
-  {
-    id: 14,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Jimmy%20Camera.jpeg",
-    title: "Jimmy Camera",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "Work by Jimmy Frezza.",
-    isSold: false,
-  },
-  {
-    id: 15,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20black%20hole.png",
-    title: "Black Hole",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "Work by Jimmy Frezza.",
-    isSold: false,
-  },
-]
-
-// Enrich artworks with minimal metadata for filtering
-const artworks: Artwork[] = baseArtworks.map((artwork, index) => ({
-  ...artwork,
-  artistName: artwork.artistName,
-  isSold: artwork.isSold ?? false,
-}))
 
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
@@ -321,30 +154,34 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
-                    <div className="relative overflow-hidden mb-3 rounded-md">
-                      {artwork.image ? (
-                        <img
-                          src={artwork.image}
-                          alt={artwork.title}
-                          className="w-full aspect-[4/3] object-contain bg-gray-100"
-                        />
-                      ) : (
-                        <div className="w-full aspect-[4/3] bg-gray-200" />
-                      )}
-                    </div>
-                    <div className="space-y-1 text-center px-2">
-                      <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
-                        {artwork.title}
-                      </h3>
-                      <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
-                      {artwork.price && (
-                        <div className="flex items-center justify-center pt-2">
-                          <span className="text-lg font-light text-black flex items-center space-x-1">
-                            <Bitcoin className="w-4 h-4" />
-                            <span>{artwork.price}</span>
-                          </span>
-                        </div>
-                      )}
+                    <Link href={`/product/${artwork.id}`} className="block">
+                      <div className="relative overflow-hidden mb-3 rounded-md">
+                        {artwork.image ? (
+                          <img
+                            src={artwork.image}
+                            alt={artwork.title}
+                            className="w-full aspect-[4/3] object-contain bg-gray-100"
+                          />
+                        ) : (
+                          <div className="w-full aspect-[4/3] bg-gray-200" />
+                        )}
+                      </div>
+                      <div className="space-y-1 text-center px-2">
+                        <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
+                          {artwork.title}
+                        </h3>
+                        <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
+                        {artwork.price && (
+                          <div className="flex items-center justify-center pt-2">
+                            <span className="text-lg font-light text-black flex items-center space-x-1">
+                              <Bitcoin className="w-4 h-4" />
+                              <span>{artwork.price}</span>
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                    <div className="text-center px-2">
                       <Button
                         size="sm"
                         variant="outline"

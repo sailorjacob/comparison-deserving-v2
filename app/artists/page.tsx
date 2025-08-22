@@ -4,101 +4,33 @@ import Link from "next/link"
 import { ChevronLeft, Bitcoin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import { artworks } from "@/lib/artworks"
 
-// Artist data with their info and artworks
+// Artist data with their info and artworks derived from shared data
 const artistsData = [
   {
     name: "Jimmy Frezza",
     bio: "Contemporary artist known for mixed media works that blend found objects with traditional painting techniques.",
     image: "/placeholder-artist.jpg", // You can replace with actual artist photos
-    artworks: [
-      {
-        id: 1,
-        title: "Backyard Blue",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/IMG_549509AE11D4-1-removebg-preview%20(1).png"
-      },
-      {
-        id: 12,
-        title: "Suit", 
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20frezza%20suit.png"
-      },
-      {
-        id: 13,
-        title: "Moto",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20moto.jpeg"
-      },
-      {
-        id: 14,
-        title: "Jimmy Camera",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Jimmy%20Camera.jpeg"
-      },
-      {
-        id: 15,
-        title: "Black Hole",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20black%20hole.png"
-      }
-    ]
+    artworks: artworks.filter(a => a.artistName === "Jimmy Frezza")
   },
   {
     name: "Allie",
     bio: "Emerging artist exploring themes of nature, emotion, and human connection through vibrant imagery.",
     image: "/placeholder-artist.jpg",
-    artworks: [
-      {
-        id: 4,
-        title: "Storm",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie1.png"
-      },
-      {
-        id: 5,
-        title: "Sisters", 
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png"
-      },
-      {
-        id: 6,
-        title: "Waiting",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie3.png"
-      },
-      {
-        id: 7,
-        title: "Olive",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie4.png"
-      },
-      {
-        id: 8,
-        title: "Allie 2",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie5.png"
-      }
-    ]
+    artworks: artworks.filter(a => a.artistName === "Allie")
   },
   {
     name: "Ammo Cat",
     bio: "Digital and mixed media artist creating bold collaborative works that challenge traditional art boundaries.",
     image: "/placeholder-artist.jpg",
-    artworks: [
-      {
-        id: 9,
-        title: "Ammo Cat x rare.glass",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammo%20cat.jpg"
-      },
-      {
-        id: 10,
-        title: "Ammo Cat x rare.glass 2",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammocat%202.jpg"
-      }
-    ]
+    artworks: artworks.filter(a => a.artistName === "Ammo Cat")
   },
   {
     name: "Anthony Haden-Guest",
     bio: "Renowned artist and cultural commentator whose work spans multiple decades and media.",
     image: "/placeholder-artist.jpg",
-    artworks: [
-      {
-        id: 11,
-        title: "Cartoon (2023)",
-        image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/AHG22.png"
-      }
-    ]
+    artworks: artworks.filter(a => a.artistName === "Anthony Haden-Guest")
   }
 ]
 
@@ -211,21 +143,28 @@ export default function ArtistsPage() {
             {/* Artwork Preview Icons */}
             <div className="flex justify-center gap-4 flex-wrap">
               {selectedArtist.artworks.map((artwork) => (
-                <button
-                  key={artwork.id}
-                  onClick={() => setSelectedArtwork(artwork)}
-                  className={`w-20 h-20 rounded-md overflow-hidden border-2 transition-all ${
-                    selectedArtwork.id === artwork.id
-                      ? "border-black"
-                      : "border-gray-200 hover:border-gray-400"
-                  }`}
-                >
-                  <img
-                    src={artwork.image}
-                    alt={artwork.title}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
+                <div key={artwork.id} className="relative">
+                  <button
+                    onClick={() => setSelectedArtwork(artwork)}
+                    className={`w-20 h-20 rounded-md overflow-hidden border-2 transition-all ${
+                      selectedArtwork.id === artwork.id
+                        ? "border-black"
+                        : "border-gray-200 hover:border-gray-400"
+                    }`}
+                  >
+                    <img
+                      src={artwork.image}
+                      alt={artwork.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                  <Link 
+                    href={`/product/${artwork.id}`}
+                    className="absolute inset-0 opacity-0 hover:opacity-100 bg-black/50 rounded-md flex items-center justify-center transition-opacity"
+                  >
+                    <span className="text-white text-xs font-light">View</span>
+                  </Link>
+                </div>
               ))}
             </div>
           </div>
