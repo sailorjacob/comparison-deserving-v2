@@ -5,7 +5,7 @@ import { ChevronLeft, Bitcoin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { notFound } from "next/navigation"
-import { getArtworkById, type Artwork } from "@/lib/artworks"
+import { getArtworkById, getArtistProfiles, artworks, type Artwork } from "@/lib/artworks"
 
 interface ProductPageProps {
   params: {
@@ -29,6 +29,15 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   const openAcquireModal = (artwork: Artwork) => setSelectedArtworkForInquiry(artwork)
   const closeAcquireModal = () => setSelectedArtworkForInquiry(null)
+
+  // Get related works (same artist, different pieces)
+  const relatedWorks = artworks.filter(a => 
+    a.artistName === artwork.artistName && a.id !== artwork.id
+  ).slice(0, 3)
+
+  // Get other artists
+  const allArtists = getArtistProfiles()
+  const otherArtists = allArtists.filter(a => a.name !== artwork.artistName).slice(0, 3)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
@@ -69,7 +78,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </div>
       </nav>
 
-      <main className="flex-1 container mx-auto px-6 md:px-8 py-12">
+      <main className="flex-1 container mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12">
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
             <ChevronLeft className="w-5 h-5 mr-1" />
@@ -77,7 +86,7 @@ export default function ProductPage({ params }: ProductPageProps) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Artwork Image Gallery */}
           <div className="space-y-4">
             <div className="aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
@@ -113,57 +122,129 @@ export default function ProductPage({ params }: ProductPageProps) {
           </div>
 
           {/* Artwork Details */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h1 className="text-4xl font-extralight text-black mb-2">{artwork.title}</h1>
-              <p className="text-xl font-light text-gray-600 mb-4">{artwork.artist}</p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extralight text-black mb-2">{artwork.title}</h1>
+              <p className="text-lg sm:text-xl font-light text-gray-600 mb-4">{artwork.artist}</p>
               
               {artwork.price && (
                 <div className="flex items-center space-x-2 mb-6">
-                  <Bitcoin className="w-5 h-5 text-black" />
-                  <span className="text-2xl font-light text-black">{artwork.price}</span>
+                  <Bitcoin className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+                  <span className="text-xl sm:text-2xl font-light text-black">{artwork.price}</span>
                 </div>
               )}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
-                <h3 className="text-lg font-light text-black mb-2">Description</h3>
-                <p className="text-gray-700 font-light leading-relaxed">{artwork.description}</p>
+                <h3 className="text-base sm:text-lg font-light text-black mb-2">Description</h3>
+                <p className="text-gray-700 font-light leading-relaxed text-sm sm:text-base">{artwork.description}</p>
               </div>
 
               {artwork.medium && (
                 <div>
-                  <h3 className="text-lg font-light text-black mb-2">Medium</h3>
-                  <p className="text-gray-700 font-light">{artwork.medium}</p>
+                  <h3 className="text-base sm:text-lg font-light text-black mb-2">Medium</h3>
+                  <p className="text-gray-700 font-light text-sm sm:text-base">{artwork.medium}</p>
                 </div>
               )}
 
               {artwork.dimensions && (
                 <div>
-                  <h3 className="text-lg font-light text-black mb-2">Dimensions</h3>
-                  <p className="text-gray-700 font-light">{artwork.dimensions}</p>
+                  <h3 className="text-base sm:text-lg font-light text-black mb-2">Dimensions</h3>
+                  <p className="text-gray-700 font-light text-sm sm:text-base">{artwork.dimensions}</p>
                 </div>
               )}
 
               {artwork.year && (
                 <div>
-                  <h3 className="text-lg font-light text-black mb-2">Year</h3>
-                  <p className="text-gray-700 font-light">{artwork.year}</p>
+                  <h3 className="text-base sm:text-lg font-light text-black mb-2">Year</h3>
+                  <p className="text-gray-700 font-light text-sm sm:text-base">{artwork.year}</p>
                 </div>
               )}
             </div>
 
-            <div className="pt-6 border-t border-gray-200">
+            <div className="pt-4 sm:pt-6 border-t border-gray-200">
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-black text-black hover:bg-black hover:text-white bg-transparent"
+                className="w-full border-black text-black hover:bg-black hover:text-white bg-transparent text-base sm:text-lg py-3 sm:py-4"
                 onClick={() => openAcquireModal(artwork)}
               >
                 {artwork.price ? "Buy" : "Inquire"}
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Related Works Section */}
+        {relatedWorks.length > 0 && (
+          <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-extralight text-black mb-6 sm:mb-8 text-center px-4">More by {artwork.artistName}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+              {relatedWorks.map((relatedWork) => (
+                <Link 
+                  key={relatedWork.id} 
+                  href={`/product/${relatedWork.id}`}
+                  className="group"
+                >
+                  <div className="bg-gray-50 rounded-lg overflow-hidden mb-3">
+                    <img
+                      src={relatedWork.image}
+                      alt={relatedWork.title}
+                      className="w-full aspect-[4/3] object-contain bg-gray-100 group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="text-center px-2">
+                    <h3 className="text-sm sm:text-base font-light text-black group-hover:text-gray-600 transition-colors">
+                      {relatedWork.title}
+                    </h3>
+                    {relatedWork.price && (
+                      <div className="flex items-center justify-center mt-1">
+                        <Bitcoin className="w-3 h-3 mr-1" />
+                        <span className="text-xs sm:text-sm font-light">{relatedWork.price}</span>
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Explore Artists Section */}
+        <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-200 mb-16">
+          <h2 className="text-xl sm:text-2xl font-extralight text-black mb-6 sm:mb-8 text-center px-4">Explore Other Artists</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+            {otherArtists.map((artist) => (
+              <Link 
+                key={artist.name} 
+                href="/artists"
+                className="group text-center"
+              >
+                <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden bg-gray-200">
+                  <img
+                    src={artist.image}
+                    alt={artist.name}
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${
+                      artist.name === "Anthony Haden-Guest" 
+                        ? "object-left" 
+                        : "object-center"
+                    }`}
+                    style={
+                      artist.name === "Anthony Haden-Guest" 
+                        ? { objectPosition: "25% center" } 
+                        : {}
+                    }
+                  />
+                </div>
+                <h3 className="text-sm sm:text-base font-light text-black group-hover:text-gray-600 transition-colors mb-1 sm:mb-2">
+                  {artist.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed px-1 sm:px-2">
+                  {artist.bio.length > 60 ? `${artist.bio.substring(0, 60)}...` : artist.bio}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
 
