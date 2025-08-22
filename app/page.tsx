@@ -3,7 +3,7 @@
 import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 
@@ -11,7 +11,7 @@ import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 
 const ITEMS_PER_PAGE = 4 // Display 4 artworks per page (2x2 grid)
 
-export default function HomePage() {
+function HomePageContent() {
   const searchParams = useSearchParams()
   const [currentPageIndex, setCurrentPageIndex] = useState(0)
   const [selectedArtworkForInquiry, setSelectedArtworkForInquiry] = useState<Artwork | null>(null)
@@ -384,5 +384,21 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen w-full bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 bg-yellow-500 mx-auto mb-4" />
+          <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
+          <div className="text-xs font-light text-gray-500 tracking-wider uppercase mt-1">Loading...</div>
+        </div>
+      </div>
+    }>
+      <HomePageContent />
+    </Suspense>
   )
 }
