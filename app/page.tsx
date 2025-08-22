@@ -4,7 +4,7 @@ import { Bitcoin, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
-import { useHideOnScroll } from "@/hooks/use-scroll-direction"
+
 import {
   Select,
   SelectContent,
@@ -190,7 +190,7 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false) // For initial load animation
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
-  const hideHeader = useHideOnScroll({ threshold: 10, topOffset: 12 })
+
   const [formName, setFormName] = useState("")
   const [formEmail, setFormEmail] = useState("")
   const [formMessage, setFormMessage] = useState("")
@@ -207,25 +207,7 @@ export default function HomePage() {
     const placeholderOk = selectedArtist === "all" ? !a.isPlaceholder : true
     return artistOk && soldOk && placeholderOk
   })
-  // Randomize ordering but keep "Backyard Blue" pinned as the very first item when present
-  const [randomizedFilteredArtworks, setRandomizedFilteredArtworks] = useState<Artwork[]>([])
-
-  useEffect(() => {
-    // Shuffle a shallow copy of the filtered list
-    const toShuffle = [...filteredArtworks]
-    // Pull out the pinned item if present within the filtered set
-    const pinnedIndex = toShuffle.findIndex((a) => a.title === "Backyard Blue")
-    const pinned = pinnedIndex >= 0 ? toShuffle.splice(pinnedIndex, 1)[0] : null
-
-    for (let i = toShuffle.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]]
-    }
-
-    setRandomizedFilteredArtworks(pinned ? [pinned, ...toShuffle] : toShuffle)
-  }, [selectedArtist, showSoldOnly])
-
-  const totalPages = Math.max(1, Math.ceil(randomizedFilteredArtworks.length / ITEMS_PER_PAGE))
+  const totalPages = Math.max(1, Math.ceil(filteredArtworks.length / ITEMS_PER_PAGE))
 
   const nextPage = useCallback(() => {
     setCurrentPageIndex((prevIndex) => Math.min(prevIndex + 1, totalPages - 1))
@@ -244,12 +226,12 @@ export default function HomePage() {
 
   const startIndex = currentPageIndex * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentArtworks: Artwork[] = randomizedFilteredArtworks.slice(startIndex, endIndex)
+  const currentArtworks: Artwork[] = filteredArtworks.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className={`w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-transform duration-300 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}>
+      <nav className="w-full bg-white/90 backdrop-blur-xl border-b border-gray-100 z-50 sticky top-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-yellow-500" />
@@ -266,6 +248,12 @@ export default function HomePage() {
             >
               Collection
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+            </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/artists">
+                Artists
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
             </Button>
             <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
               <Link href="/about">
@@ -368,7 +356,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 ))}
-                {randomizedFilteredArtworks.length === 0 && (
+                {filteredArtworks.length === 0 && (
                   <div className="text-center text-gray-500 font-light py-12">No works found.</div>
                 )}
               </div>
