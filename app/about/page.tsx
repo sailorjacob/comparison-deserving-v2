@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { ChevronLeft, Bitcoin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FlashlightReveal } from "@/components/flashlight-reveal"
+import { useEffect, useState } from "react"
 
 // Random logo color utility
 const getRandomLogoColor = () => {
@@ -15,7 +18,32 @@ const getRandomLogoColor = () => {
 }
 
 export default function AboutPage() {
-  const logoColor = getRandomLogoColor()
+  const [logoColor] = useState(() => getRandomLogoColor())
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMoving, setIsMoving] = useState(false)
+  const [lastMoveTime, setLastMoveTime] = useState(Date.now())
+
+  useEffect(() => {
+    let moveTimeout: NodeJS.Timeout
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+      setIsMoving(true)
+      setLastMoveTime(Date.now())
+
+      clearTimeout(moveTimeout)
+      moveTimeout = setTimeout(() => {
+        setIsMoving(false)
+      }, 100)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      clearTimeout(moveTimeout)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
@@ -54,6 +82,20 @@ export default function AboutPage() {
           </div>
         </div>
       </nav>
+
+      {/* Big green circle that follows mouse */}
+      <div 
+        className="fixed pointer-events-none z-10 transition-all duration-300 ease-out"
+        style={{
+          left: mousePosition.x - (isMoving ? 100 : 150),
+          top: mousePosition.y - (isMoving ? 100 : 150),
+          width: isMoving ? '200px' : '300px',
+          height: isMoving ? '200px' : '300px',
+          background: 'rgb(34, 197, 94)',
+          borderRadius: '50%',
+          mixBlendMode: 'lighten',
+        }}
+      />
 
       <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
         <div className="mb-6">
