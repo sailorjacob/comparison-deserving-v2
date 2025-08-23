@@ -331,6 +331,32 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "Digital print",
   },
+  {
+    id: 28,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/OG%201.png",
+    title: "ORIGINAL PRINT",
+    artist: "Ammo Cat",
+    artistName: "Ammo Cat",
+    price: "",
+    description: "Enhanced Matte Paper Framed Poster (in) (White / 14″×14″)",
+    isSold: false,
+    year: "2023",
+    dimensions: "14″×14″",
+  },
+  {
+    id: 29,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/SPACE%201.png",
+    title: "SPACE 1",
+    artist: "Ammo Cat",
+    artistName: "Ammo Cat",
+    price: "",
+    description: "Enhanced Matte Paper Framed Poster (in) (White / 11×14″)",
+    isSold: false,
+    year: "2023",
+    dimensions: "11×14″",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
