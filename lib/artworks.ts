@@ -109,7 +109,7 @@ export const baseArtworks: Artwork[] = [
   },
   {
     id: 35,
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%201.heic",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%201.jpg",
     title: "Cartoon Drawing 1",
     artist: "Anthony Haden-Guest",
     artistName: "Anthony Haden-Guest",
@@ -121,7 +121,7 @@ export const baseArtworks: Artwork[] = [
   },
   {
     id: 36,
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%202.heic",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%202.jpg",
     title: "Cartoon Drawing 2",
     artist: "Anthony Haden-Guest",
     artistName: "Anthony Haden-Guest",
@@ -133,7 +133,7 @@ export const baseArtworks: Artwork[] = [
   },
   {
     id: 37,
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%203.heic",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%203.jpg",
     title: "Cartoon Drawing 3",
     artist: "Anthony Haden-Guest",
     artistName: "Anthony Haden-Guest",
