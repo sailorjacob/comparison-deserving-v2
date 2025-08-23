@@ -68,19 +68,7 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "16 x 20 inches",
   },
-  {
-    id: 7,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie4.png",
-    title: "Olive",
-    artist: "Allie",
-    artistName: "Allie",
-    price: "",
-    description: "A subtle study in color and form, inspired by Mediterranean landscapes.",
-    isSold: false,
-    year: "2023",
-    dimensions: "12 x 16 inches",
-  },
+
   {
     id: 9,
     image:
@@ -132,19 +120,7 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "28 x 36 inches",
   },
-  {
-    id: 12,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20frezza%20suit.png",
-    title: "Suit",
-    artist: "Jimmy Frezza",
-    artistName: "Jimmy Frezza",
-    price: "",
-    description: "A striking exploration of formal attire as both armor and constraint in modern society.",
-    isSold: false,
-    year: "2023",
-    dimensions: "30 x 40 inches",
-  },
+
   {
     id: 13,
     image:
