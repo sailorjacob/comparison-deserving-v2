@@ -64,6 +64,8 @@ export default function AboutPage() {
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
+        The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue, though we may cut to just comparison.
+        <br /><br />
         comparison-deserving is a fine art collection and online gallery focused on emerging talent. all works shown are part of our private inventory - for acquisition inquiries, please contact
       </p>
       <p className="text-gray-500 font-light text-sm">
