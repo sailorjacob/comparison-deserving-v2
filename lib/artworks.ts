@@ -409,6 +409,19 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "8×10″",
   },
+  {
+    id: 34,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/HEART%202.jpg",
+    title: "AMMO CAT X RARE.GLASS - 'HEART'",
+    artist: "Ammo Cat",
+    artistName: "Ammo Cat",
+    price: "0.20",
+    description: "Prism with transparent background, 25mm acrylic block, 6x6″ / 15x15cm",
+    isSold: false,
+    year: "2023",
+    dimensions: "6×6″ / 15×15cm",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
