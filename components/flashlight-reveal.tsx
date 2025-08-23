@@ -104,7 +104,7 @@ export function FlashlightReveal() {
         <div className="absolute inset-0 flex items-center">
           <div className="pointer-events-none px-1 md:px-2">
             <p className="text-red-600 font-light leading-relaxed max-w-3xl">
-              comparison-deserving is a fine art collection and online gallery focused on emerging talent. all works shown are part of our private inventory - for acquisition inquiries, please contact
+              comparison deserving represents exceptional artists across the world
             </p>
             <p className="text-red-600 font-light leading-relaxed max-w-3xl mt-3">
               we are working on a world where more art and bitcoin are exchanged
