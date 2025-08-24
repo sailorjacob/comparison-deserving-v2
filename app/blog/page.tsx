@@ -42,6 +42,14 @@ const blogArticles = [
     date: "August 27, 2025",
     readTime: "7 min read",
     slug: "shifting-horizons-emerging-capitals-resilient-niches-2025-art-market"
+  },
+  {
+    id: 4,
+    title: "The Next 100 Artists",
+    excerpt: "At our gallery, we're embarking on a search for the next 100 emerging artists: voices poised to shape tomorrow's visual narratives. This initiative focuses on talents from rising creative hubs across the Global South and beyond...",
+    date: "September 2, 2025",
+    readTime: "6 min read",
+    slug: "the-next-100-artists"
   }
 ]
 
@@ -100,7 +108,7 @@ export default function BlogPage() {
           {/* Articles List */}
           <div className="space-y-8">
             {blogArticles.map((article) => (
-              <article key={article.id} className={`border-b pb-8 last:border-b-0 ${article.id === 1 ? 'border-blue-500' : article.id === 2 ? 'border-red-500' : 'border-green-500'}`}>
+              <article key={article.id} className={`border-b pb-8 last:border-b-0 ${article.id === 1 ? 'border-blue-500' : article.id === 2 ? 'border-red-500' : article.id === 3 ? 'border-green-500' : 'border-yellow-500'}`}>
                 <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center space-x-2">
                     <Calendar className="w-4 h-4" />
