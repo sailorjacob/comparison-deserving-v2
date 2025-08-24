@@ -18,13 +18,14 @@ export function FlashlightReveal() {
     const el = containerRef.current
     if (!el) return
 
+    // Smoother interpolation with higher values for more fluid movement
     const lerp = (start: number, end: number, t: number) => start + (end - start) * t
 
-    const nextX = lerp(currentPosRef.current.x, targetPosRef.current.x, 0.15)
-    const nextY = lerp(currentPosRef.current.y, targetPosRef.current.y, 0.15)
+    const nextX = lerp(currentPosRef.current.x, targetPosRef.current.x, 0.08)
+    const nextY = lerp(currentPosRef.current.y, targetPosRef.current.y, 0.08)
     currentPosRef.current = { x: nextX, y: nextY }
 
-    const nextR = lerp(currentRadiusRef.current, targetRadiusRef.current, 0.12)
+    const nextR = lerp(currentRadiusRef.current, targetRadiusRef.current, 0.1)
     currentRadiusRef.current = nextR
 
     el.style.setProperty("--x", `${nextX}px`)
@@ -52,12 +53,12 @@ export function FlashlightReveal() {
 
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
     updateTargetFromEvent(e.clientX, e.clientY)
-    targetRadiusRef.current = 180
+    targetRadiusRef.current = 120
   }
 
   const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (e) => {
     updateTargetFromEvent(e.clientX, e.clientY)
-    targetRadiusRef.current = 180
+    targetRadiusRef.current = 120
   }
 
   const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -67,13 +68,13 @@ export function FlashlightReveal() {
   const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const t = e.touches[0]
     updateTargetFromEvent(t.clientX, t.clientY)
-    targetRadiusRef.current = 180
+    targetRadiusRef.current = 120
   }
 
   const handleTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
     const t = e.touches[0]
     updateTargetFromEvent(t.clientX, t.clientY)
-    targetRadiusRef.current = 180
+    targetRadiusRef.current = 120
   }
 
   const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = () => {
@@ -92,16 +93,26 @@ export function FlashlightReveal() {
         onTouchEnd={handleTouchEnd}
         className="relative overflow-hidden select-none w-full min-h-[50vh] md:min-h-[60vh]"
         style={{
-          WebkitMaskImage:
-            "radial-gradient(circle var(--r, 0px) at var(--x, -100px) var(--y, -100px), rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 60%)",
-          maskImage:
-            "radial-gradient(circle var(--r, 0px) at var(--x, -100px) var(--y, -100px), rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 60%)",
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-          willChange: "mask-image, -webkit-mask-image",
+          willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="absolute inset-0 flex items-center">
+        {/* Green ball that follows the mouse */}
+        <div 
+          className="absolute pointer-events-none rounded-full bg-green-500 opacity-80"
+          style={{
+            left: 'var(--x, -100px)',
+            top: 'var(--y, -100px)',
+            width: 'var(--r, 0px)',
+            height: 'var(--r, 0px)',
+            transform: 'translate(-50%, -50%)',
+            mixBlendMode: 'multiply',
+            filter: 'blur(1px)',
+            willChange: 'left, top, width, height',
+          } as React.CSSProperties}
+        />
+        
+        {/* Content with blend mode */}
+        <div className="absolute inset-0 flex items-center mix-blend-multiply">
           <div className="pointer-events-none px-1 md:px-2">
             <p className="text-red-600 font-light leading-relaxed max-w-3xl">
               comparison deserving represents exceptional artists across the world
