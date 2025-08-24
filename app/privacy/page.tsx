@@ -50,6 +50,12 @@ export default function PrivacyPage() {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
               </Link>
             </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/blog">
+                Blog
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
             <div className="flex items-center space-x-2 text-gray-600">
               <Bitcoin className="w-4 h-4" />
               <span className="text-sm font-light">Accepted</span>
@@ -70,63 +76,63 @@ export default function PrivacyPage() {
           <h1 className="text-4xl font-extralight mb-8">Privacy Policy</h1>
           
           <div className="space-y-8 text-gray-700 font-light leading-relaxed">
-            <section>
+          <section>
               <h2 className="text-2xl font-light mb-4 text-black">Information We Collect</h2>
               <p>
                 When you use our gallery website, we may collect information you provide directly to us, 
                 such as when you make an inquiry about artwork, subscribe to updates, or contact us. 
                 This may include your name, email address, and any messages you send us.
-              </p>
-            </section>
+            </p>
+          </section>
 
-            <section>
+          <section>
               <h2 className="text-2xl font-light mb-4 text-black">How We Use Your Information</h2>
               <p>
                 We use the information we collect to respond to your inquiries, provide information about 
                 our artists and available works, and communicate with you about our gallery. We do not 
                 sell, trade, or otherwise transfer your personal information to third parties without 
                 your consent, except as described in this policy.
-              </p>
-            </section>
+            </p>
+          </section>
 
-            <section>
+          <section>
               <h2 className="text-2xl font-light mb-4 text-black">Data Security</h2>
               <p>
                 We implement appropriate security measures to protect your personal information against 
                 unauthorized access, alteration, disclosure, or destruction. However, please be aware 
                 that no method of transmission over the internet is 100% secure.
-              </p>
-            </section>
+            </p>
+          </section>
 
-            <section>
+          <section>
               <h2 className="text-2xl font-light mb-4 text-black">Bitcoin Transactions</h2>
               <p>
                 For artwork purchases using Bitcoin, we may collect wallet addresses and transaction 
                 information necessary to complete your purchase. These transactions are recorded on 
                 the blockchain and are publicly viewable.
-              </p>
-            </section>
+            </p>
+          </section>
 
-            <section>
+          <section>
               <h2 className="text-2xl font-light mb-4 text-black">Contact Us</h2>
               <p>
                 If you have any questions about this Privacy Policy, please contact us at 
                 <a href="mailto:info@haven.engineer" className="text-black hover:underline ml-1">
                   info@haven.engineer
                 </a>.
-              </p>
-            </section>
+            </p>
+          </section>
 
-            <section>
+          <section>
               <p className="text-sm text-gray-500">
                 Last updated: January 2025
-              </p>
-            </section>
-          </div>
+            </p>
+          </section>
         </div>
+      </div>
 
         <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
-      </main>
+    </main>
     </div>
   )
 }

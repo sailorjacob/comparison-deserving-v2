@@ -123,6 +123,12 @@ function HomePageContent() {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
               </Link>
             </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/blog">
+                Blog
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
             <div className="flex items-center space-x-2 text-gray-600">
               <Bitcoin className="w-4 h-4" />
               <span className="text-sm font-light">Accepted</span>
@@ -176,30 +182,30 @@ function HomePageContent() {
                 {currentArtworks.map((artwork) => (
                   <div key={artwork.id} className="group cursor-pointer flex flex-col">
                     <Link href={`/product/${artwork.id}`} className="block">
-                      <div className="relative overflow-hidden mb-3 rounded-md">
-                        {artwork.image ? (
-                          <img
-                            src={artwork.image}
-                            alt={artwork.title}
-                            className="w-full aspect-[4/3] object-contain bg-gray-100"
-                          />
-                        ) : (
-                          <div className="w-full aspect-[4/3] bg-gray-200" />
-                        )}
-                      </div>
-                      <div className="space-y-1 text-center px-2">
-                        <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
-                          {artwork.title}
-                        </h3>
-                        <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
-                        {artwork.price && (
-                          <div className="flex items-center justify-center pt-2">
-                            <span className="text-lg font-light text-black flex items-center space-x-1">
-                              <Bitcoin className="w-4 h-4" />
-                              <span>{artwork.price}</span>
-                            </span>
-                          </div>
-                        )}
+                    <div className="relative overflow-hidden mb-3 rounded-md">
+                      {artwork.image ? (
+                        <img
+                          src={artwork.image}
+                          alt={artwork.title}
+                          className="w-full aspect-[4/3] object-contain bg-gray-100"
+                        />
+                      ) : (
+                        <div className="w-full aspect-[4/3] bg-gray-200" />
+                      )}
+                    </div>
+                    <div className="space-y-1 text-center px-2">
+                      <h3 className="text-xl font-light text-black group-hover:text-gray-700 transition-colors">
+                        {artwork.title}
+                      </h3>
+                      <p className="text-gray-600 font-light text-sm">{artwork.artist}</p>
+                      {artwork.price && (
+                        <div className="flex items-center justify-center pt-2">
+                          <span className="text-lg font-light text-black flex items-center space-x-1">
+                            <Bitcoin className="w-4 h-4" />
+                            <span>{artwork.price}</span>
+                          </span>
+                        </div>
+                      )}
                       </div>
                     </Link>
                     <div className="text-center px-2">
@@ -221,7 +227,7 @@ function HomePageContent() {
             </div>
 
             {/* Pagination Controls */}
-                            <div className="mt-8 flex items-center justify-between md:col-span-2">
+            <div className="mt-8 flex items-center justify-between md:col-span-2">
                   <div className="text-sm text-gray-500 font-light hidden md:block">
                     Showing {currentPageIndex * ITEMS_PER_PAGE + 1}-{Math.min((currentPageIndex + 1) * ITEMS_PER_PAGE, filteredArtworks.length)} of {filteredArtworks.length}
                   </div>
@@ -244,7 +250,7 @@ function HomePageContent() {
                       {i + 1}
                     </Button>
                   ))}
-                </div>
+              </div>
                 
                 {/* Arrow Controls */}
                 <div className="flex items-center gap-1 ml-2">
@@ -299,14 +305,14 @@ function HomePageContent() {
             {/* Header */}
             <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
               <h2 className="text-lg font-light text-black">Inquiry</h2>
-              <Button
-                variant="ghost"
-                size="icon"
+            <Button
+              variant="ghost"
+              size="icon"
                 className="text-gray-400 hover:text-black h-8 w-8"
-                onClick={closeAcquireModal}
-              >
+              onClick={closeAcquireModal}
+            >
                 <X className="w-4 h-4" />
-              </Button>
+            </Button>
             </div>
             
             {/* Content */}
@@ -347,35 +353,35 @@ function HomePageContent() {
                   }
                 }}
               >
-                <div>
-                  <input
-                    type="text"
+              <div>
+                <input
+                  type="text"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Name"
-                    required
+                  required
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Email"
-                    required
+                  required
                     value={formEmail}
                     onChange={(e) => setFormEmail(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <textarea
+                />
+              </div>
+              <div>
+                <textarea
                     rows={3}
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
                     placeholder="Share your interest or questions"
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
-                  />
-                </div>
+                />
+              </div>
                 <Button 
                   type="submit" 
                   className="w-full bg-black hover:bg-gray-800 text-white text-sm py-2.5 transition-colors" 
@@ -384,7 +390,7 @@ function HomePageContent() {
                   {isSubmitting ? "Sending..." : "Send Inquiry"}
                 </Button>
               </form>
-            </div>
+              </div>
           </div>
         </div>
       )}

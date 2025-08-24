@@ -4,7 +4,7 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Fine Art Gallery',
+  title: 'Comparison | Fine Art',
   description: 'comparison-deserving represents exceptional artists across the world, alive now.',
   generator: 'v0.dev',
 }
