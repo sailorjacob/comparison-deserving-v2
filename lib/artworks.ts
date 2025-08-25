@@ -68,9 +68,23 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "16 x 20 inches",
   },
+  {
+    id: 7,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/allie56.png",
+    title: "Moon Crow",
+    artist: "Allie, 2024",
+    artistName: "Allie",
+    medium: "Pastels",
+    price: "",
+    description: "A mystical exploration of nocturnal beauty and the enigmatic nature of crows through vibrant pastel work.",
+    isSold: false,
+    year: "2024",
+    dimensions: "18 x 24 inches",
+  },
 
   {
-    id: 9,
+    id: 10,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammo%20cat.jpg",
     title: "Ammo Cat x rare.glass",
@@ -83,7 +97,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Digital artwork",
   },
   {
-    id: 10,
+    id: 11,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/rare%20glass%20x%20ammocat%202.jpg",
     title: "Ammo Cat x rare.glass 2",
@@ -96,7 +110,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Digital artwork",
   },
   {
-    id: 11,
+    id: 12,
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/AHG22.png",
     title: "Cartoon (2023)",
     artist: "Anthony Haden-Guest",
@@ -108,7 +122,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "22 x 30 inches",
   },
   {
-    id: 35,
+    id: 39,
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%201.jpg",
     title: "Cartoon Drawing 1",
     artist: "Anthony Haden-Guest",
@@ -120,7 +134,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Drawing on paper",
   },
   {
-    id: 36,
+    id: 40,
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%202.jpg",
     title: "Cartoon Drawing 2",
     artist: "Anthony Haden-Guest",
@@ -132,7 +146,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Drawing on paper",
   },
   {
-    id: 37,
+    id: 41,
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ahg/AHG%203.jpg",
     title: "Cartoon Drawing 3",
     artist: "Anthony Haden-Guest",
@@ -144,7 +158,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Drawing on paper",
   },
   {
-    id: 16,
+    id: 17,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/carcinogenesis.jpg",
     title: "Carcinogenesis",
@@ -158,7 +172,7 @@ export const baseArtworks: Artwork[] = [
   },
 
   {
-    id: 13,
+    id: 18,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/MotoFull.jpg",
     images: [
@@ -175,7 +189,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "24 x 32 inches",
   },
   {
-    id: 14,
+    id: 19,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Jimmy%20Camera.jpeg",
     title: "Jimmy Camera",
@@ -188,7 +202,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "20 x 24 inches",
   },
   {
-    id: 15,
+    id: 20,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/jimmy%20black%20hole.png",
     title: "Black Hole",
@@ -201,7 +215,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "36 x 48 inches",
   },
   {
-    id: 17,
+    id: 21,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Man%20Wrestles%20Ape.jpg",
     title: "Man Wrestles Ape Drawing",
@@ -214,7 +228,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Drawing on paper",
   },
   {
-    id: 18,
+    id: 22,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Onion%20Knight.jpg",
     title: "Skull Knight / Onion Knight Drawing",
@@ -227,7 +241,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Drawing on paper",
   },
   {
-    id: 19,
+    id: 23,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Tainnaky's%20Enduro%202022.jpg",
     title: "Tainaky's Enduro 2022",
@@ -240,7 +254,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Mixed media on canvas",
   },
   {
-    id: 20,
+    id: 24,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Kids%202022.jpg",
     title: "Kids",
@@ -253,7 +267,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Acrylic on canvas",
   },
   {
-    id: 21,
+    id: 25,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Eros%20Of%20Time%202022.jpg",
     title: "Eros Of Time (Commission)",
@@ -266,7 +280,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Oil on canvas",
   },
   {
-    id: 22,
+    id: 26,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Shapes%20III.jpg",
     title: "Shapes III",
@@ -279,7 +293,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Acrylic on canvas",
   },
   {
-    id: 23,
+    id: 27,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Shapes%20.jpg",
     title: "Shapes I",
@@ -292,7 +306,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Acrylic on canvas",
   },
   {
-    id: 24,
+    id: 28,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Shapes%20II.jpg",
     title: "Shapes II",
@@ -305,7 +319,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Acrylic on canvas",
   },
   {
-    id: 25,
+    id: 29,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Andromeda%20Master%20Study.jpg",
     title: "Andromeda Master Study",
@@ -318,7 +332,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Oil on canvas",
   },
   {
-    id: 26,
+    id: 30,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Sketchbook%20Scan.jpg",
     title: "Sketchbook Scan (Print)",
@@ -331,7 +345,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Digital print",
   },
   {
-    id: 27,
+    id: 31,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Sketchbook%20Scan%202.jpg",
     title: "Sketchbook Scan 2 (Print)",
@@ -344,7 +358,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "Digital print",
   },
   {
-    id: 28,
+    id: 32,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/OG%201.png",
     title: "ORIGINAL PRINT",
@@ -357,7 +371,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "14″×14″",
   },
   {
-    id: 29,
+    id: 33,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/SPACE%201.png",
     title: "SPACE 1",
@@ -370,7 +384,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "11×14″",
   },
   {
-    id: 30,
+    id: 34,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/greenrevolver.png",
     title: "Green Revolver",
@@ -383,7 +397,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "8×10″",
   },
   {
-    id: 31,
+    id: 35,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/morning%20star.png",
     title: "Morning Star",
@@ -396,7 +410,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "8×10″",
   },
   {
-    id: 32,
+    id: 36,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/spaceii.png",
     title: "SPACE II",
@@ -409,7 +423,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "8×10″",
   },
   {
-    id: 33,
+    id: 37,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/blaster.png",
     title: "Blaster",
@@ -422,7 +436,7 @@ export const baseArtworks: Artwork[] = [
     dimensions: "8×10″",
   },
   {
-    id: 34,
+    id: 38,
     image:
       "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/ammo%20cat%20prints/HEART%202.jpg",
     title: "AMMO CAT X RARE.GLASS - 'HEART'",
