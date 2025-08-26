@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { Bitcoin, Calendar, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ImageProtection } from "@/components/image-protection"
 import { useState } from "react"
 
 // Random logo color utility
@@ -65,10 +64,9 @@ export default function BlogPage() {
   const [logoColor] = useState(() => getRandomLogoColor())
 
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col relative">
-      <ImageProtection />
+    <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Navigation */}
-      <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-50 fixed top-0 left-0 right-0 transition-all duration-300">
+      <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">
           <div className="flex items-center space-x-4 mb-2">
             <div className={`w-8 h-8 ${logoColor}`} />
@@ -111,29 +109,37 @@ export default function BlogPage() {
       </nav>
 
       {/* Main Content */}
-      <div className="pt-32 pb-16">
-        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+      <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
+        <div className="max-w-4xl mx-auto">
+          {/* Page Header */}
+          <header className="mb-12">
+            <h1 className="text-4xl font-extralight mb-4">Blog</h1>
+            <p className="text-gray-600 font-light">Thoughts on art, collecting, and the creative world</p>
+          </header>
+
           {/* Articles List */}
-          <div className="space-y-8">
+          <div className="space-y-12">
             {blogArticles.map((article) => (
-              <article key={article.id} className={`border-b pb-8 last:border-b-0 ${article.id === 1 ? 'border-yellow-500' : article.id === 2 ? 'border-green-500' : article.id === 3 ? 'border-red-500' : 'border-blue-500'}`}>
+              <article key={article.id} className="border-b border-gray-100 pb-12 last:border-b-0">
                 <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center space-x-2">
                     <Calendar className="w-4 h-4" />
                     <span>{article.date}</span>
                   </div>
+                  <span>•</span>
+                  <span>{article.readTime}</span>
                 </div>
                 
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-4">
+                <h2 className="text-2xl font-extralight text-gray-900 leading-tight mb-4">
                   {article.title}
                 </h2>
                 
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                <p className="text-gray-700 font-light leading-relaxed mb-6">
                   {article.excerpt}
                 </p>
                 
                 <Link href={`/blog/${article.slug}`}>
-                  <Button variant="ghost" className="group text-gray-600 hover:text-black px-0 py-2 h-auto font-normal">
+                  <Button variant="ghost" className="group text-gray-600 hover:text-black px-0 py-2 h-auto font-light">
                     <span className="text-sm">Read Article</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -142,7 +148,9 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
-      </div>
+
+        <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
+      </main>
     </div>
   )
 }
