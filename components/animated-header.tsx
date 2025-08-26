@@ -35,15 +35,6 @@ export function AnimatedHeader({ logoColor }: AnimatedHeaderProps) {
           >
             -deserving
           </span>
-          <span 
-            className={`inline-block transition-all duration-1000 ease-in-out delay-500 ${
-              headerAnimation 
-                ? 'opacity-100' 
-                : 'opacity-0'
-            }`}
-          >
-            .
-          </span>
         </div>
         <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
       </div>
