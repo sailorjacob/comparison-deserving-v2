@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronLeft, Bitcoin } from "lucide-react"
+import { ChevronLeft, Bitcoin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FlashlightReveal } from "@/components/flashlight-reveal"
 import { useEffect, useState } from "react"
@@ -75,12 +75,7 @@ export default function AboutPage() {
             >
               About
             </Button>
-            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
-              <Link href="/blog">
-                Blog
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
-              </Link>
-            </Button>
+
             <div className="flex items-center space-x-2 text-gray-600">
               <Bitcoin className="w-4 h-4" />
               <span className="text-sm font-light">Accepted</span>
@@ -111,10 +106,19 @@ export default function AboutPage() {
           </Link>
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
+      
+      {/* Blog Link */}
+      <div className="mb-8">
+        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
+          <span className="text-sm">Read our blog</span>
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </Link>
+      </div>
+      
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
-        The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue, and comparison for short.
+        The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue. Comparison for short.
         <br /><br />
-        comparison-deserving is a fine art collection and online gallery focused on emerging talent. all works shown are part of our private inventory - for acquisition inquiries, please contact
+        comparison is a fine art collection and online gallery focused on emerging talent, all works shown are part of our private inventory - for acquisition inquiries, please contact
       </p>
       <p className="text-gray-500 font-light text-sm">
         <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
