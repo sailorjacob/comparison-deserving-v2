@@ -295,37 +295,14 @@ export default function ProductPage({ params }: ProductPageProps) {
 
               <form
                 className="space-y-4"
-                onSubmit={async (e) => {
-                  e.preventDefault()
-                  if (isSubmitting) return
-                  setIsSubmitting(true)
-                  try {
-                    const res = await fetch("/api/inquiry", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        name: formName,
-                        email: formEmail,
-                        message: formMessage,
-                        artworkTitle: selectedArtworkForInquiry?.title ?? null,
-                      }),
-                    })
-                    if (!res.ok) throw new Error("Failed to send inquiry")
-                    alert("Inquiry sent. We'll contact you shortly.")
-                    setFormName("")
-                    setFormEmail("")
-                    setFormMessage("")
-                    setSelectedArtworkForInquiry(null)
-                  } catch (err) {
-                    alert("There was an error sending your inquiry. Please try again.")
-                  } finally {
-                    setIsSubmitting(false)
-                  }
-                }}
+                action="https://formspree.io/f/mnnbqlqr"
+                method="POST"
               >
+                <input type="hidden" name="artworkTitle" value={selectedArtworkForInquiry?.title ?? ""} />
                 <div>
                   <input
                     type="text"
+                    name="name"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Name"
                     required
@@ -336,6 +313,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <div>
                   <input
                     type="email"
+                    name="email"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Email"
                     required
@@ -345,6 +323,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </div>
                 <div>
                   <textarea
+                    name="message"
                     rows={3}
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
                     placeholder="Share your interest or questions"

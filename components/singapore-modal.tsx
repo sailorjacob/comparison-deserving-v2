@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ContactForm } from "./contact-form"
 
 export function SingaporeModal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,7 +29,7 @@ export function SingaporeModal() {
           <div className="bg-white w-full max-w-md rounded-lg shadow-lg relative overflow-hidden">
             {/* Header */}
             <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-              <h2 className="text-lg font-light text-black">Singapore</h2>
+              <h2 className="text-lg font-light text-black">Contact Us</h2>
               <Button
                 variant="ghost"
                 size="icon"
@@ -42,17 +43,10 @@ export function SingaporeModal() {
             {/* Content */}
             <div className="px-6 py-6">
               <p className="text-sm text-gray-600 mb-6 text-center">
-                Our gallery is based in Singapore with remote capabilities worldwide.
+                Our gallery is based in Singapore with remote capabilities worldwide. Send us a message and we'll get back to you.
               </p>
               
-              <div className="text-center">
-                <Button 
-                  onClick={() => window.open('mailto:info@haven.engineer', '_blank')}
-                  className="w-full bg-black hover:bg-gray-800 text-white text-sm py-2.5 transition-colors"
-                >
-                  Email
-                </Button>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>

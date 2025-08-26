@@ -315,63 +315,42 @@ function HomePageContent() {
 
               <form
                 className="space-y-4"
-                onSubmit={async (e) => {
-                  e.preventDefault()
-                  if (isSubmitting) return
-                  setIsSubmitting(true)
-                  try {
-                    const res = await fetch("/api/inquiry", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        name: formName,
-                        email: formEmail,
-                        message: formMessage,
-                        artworkTitle: selectedArtworkForInquiry?.title ?? null,
-                      }),
-                    })
-                    if (!res.ok) throw new Error("Failed to send inquiry")
-                    alert("Inquiry sent. We'll contact you shortly.")
-                    setFormName("")
-                    setFormEmail("")
-                    setFormMessage("")
-                    setSelectedArtworkForInquiry(null)
-                  } catch (err) {
-                    alert("There was an error sending your inquiry. Please try again.")
-                  } finally {
-                    setIsSubmitting(false)
-                  }
-                }}
+                action="https://formspree.io/f/mnnbqlqr"
+                method="POST"
               >
-              <div>
-                <input
-                  type="text"
+                <input type="hidden" name="artworkTitle" value={selectedArtworkForInquiry?.title ?? ""} />
+                <div>
+                  <input
+                    type="text"
+                    name="name"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Name"
-                  required
+                    required
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
                     placeholder="Email"
-                  required
+                    required
                     value={formEmail}
                     onChange={(e) => setFormEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <textarea
+                  />
+                </div>
+                <div>
+                  <textarea
+                    name="message"
                     rows={3}
                     className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
                     placeholder="Share your interest or questions"
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
-                />
-              </div>
+                  />
+                </div>
                 <Button 
                   type="submit" 
                   className="w-full bg-black hover:bg-gray-800 text-white text-sm py-2.5 transition-colors" 

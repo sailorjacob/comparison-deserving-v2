@@ -80,12 +80,9 @@ This project is automatically deployed to Vercel:
 
 ## 🔐 Environment
 
-To enable inquiry emails, set the following environment variables (locally in `.env.local` and in your hosting provider):
+This project uses Formspree for handling all contact forms and inquiries. No additional environment variables are required for form functionality.
 
-```
-RESEND_API_KEY=your_resend_api_key
-INQUIRY_TO_EMAIL=info@haven.engineer
-```
+For local development, you may want to create a `.env.local` file for any other environment-specific configurations.
 
 ## 📝 License
 
