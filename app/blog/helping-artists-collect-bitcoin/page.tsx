@@ -122,23 +122,23 @@ export default function HelpingArtistsCollectBitcoinPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              In 2025, Bitcoin weaves deeper into the art world, powering galleries at events like Bitcoin Asia and the Vegas Bitcoin Conference, where pieces sell in sats for a borderless vibe. Our online gallery steps in to guide artists, especially from quieter corners, toward their first crypto collectors.
+              In 2025, Bitcoin weaves deeper into the art world, powering galleries at events like Bitcoin Asia and the Vegas Bitcoin Conference, where pieces sell in sats for a borderless vibe. Our online gallery steps in to guide artists toward their first crypto collectors.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              We hand-pick talent from spots like rural Nigeria or Colombian highlands, spotlighting voices often overlooked. Take Osinachi, a Nigerian digital artist who flipped Microsoft Word into crypto canvases, proving tech can amplify African narratives amid a continent's NFT boom. Lesser-known: He started without formal training, self-teaching code to layer cultural symbols, much like emerging creators we scout today.
+              We hand-pick emerging talent from overlooked corners, spotlighting voices that deserve attention. Take digital artists who transform everyday tools into creative canvases, proving technology can amplify artistic narratives in new ways.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Setting up is straightforward. We walk artists through free wallets like Electrum or Muun, stressing seed phrase backups and hardware options for safety. No banks needed, just a phone scan to receive funds, cutting fees that eat into sales from remote areas.
+              Setting up is straightforward. We walk artists through wallet setup, stressing security and backup options. No banks needed, just a phone scan to receive funds, cutting fees that eat into sales.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Then, connections: We pair them with collectors keen on BTC deals, handling escrow via multisig for trust. It's like the Bitcoin Art Gallery auctions, where works price in Bitcoin fractions, tying value to the coin's climb. Lesser-known: Artists there often embed blockchain nods, like hidden QR codes linking to provenance, educating buyers on digital roots.
+              Then, connections: We pair them with collectors keen on Bitcoin deals, handling escrow for trust. It's like Bitcoin Art Gallery auctions, where works price in Bitcoin fractions, tying value to the coin's climb. Artists often embed blockchain elements, linking to provenance and educating buyers on digital roots.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              This opens doors—global payments without conversion hassles, royalties baked in via smart tools. We're here to make it feel easy, turning Bitcoin into a tool for independence.
+              This opens doors—global payments without conversion hassles, royalties built into the system. We're here to make it feel easy, turning Bitcoin into a tool for artistic independence.
             </p>
           </div>
 

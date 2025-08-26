@@ -21,6 +21,14 @@ const getRandomLogoColor = () => {
 const blogArticles = [
   {
     id: 1,
+    title: "Helping Artists Collect Bitcoin",
+    excerpt: "In 2025, Bitcoin weaves deeper into the art world, powering galleries at events like Bitcoin Asia and the Vegas Bitcoin Conference, where pieces sell in sats for a borderless vibe. Our online gallery steps in to guide artists toward their first crypto collectors...",
+    date: "January 2025",
+    readTime: "4 min read",
+    slug: "helping-artists-collect-bitcoin"
+  },
+  {
+    id: 2,
     title: "The Next 100 Artists",
     excerpt: "At our gallery, we're embarking on a search for the next 100 emerging artists: voices poised to shape tomorrow's visual narratives. This initiative focuses on talents from rising creative hubs across the Global South and beyond...",
     date: "September 2, 2025",
@@ -28,7 +36,7 @@ const blogArticles = [
     slug: "the-next-100-artists"
   },
   {
-    id: 2,
+    id: 3,
     title: "Shifting Horizons: Emerging Capitals and Resilient Niches in the 2025 Art Market",
     excerpt: "Mid-2025 finds the global art scene in flux—auction sales dipped 6% in the first half to $3.98 billion, with ultra-contemporary works down 43% from last year. Yet amid the slowdown, fresh energy bubbles up in overlooked corners...",
     date: "August 27, 2025",
@@ -36,7 +44,7 @@ const blogArticles = [
     slug: "shifting-horizons-emerging-capitals-resilient-niches-2025-art-market"
   },
   {
-    id: 3,
+    id: 4,
     title: "Top 15 Art Collectors of 2025",
     excerpt: "In 2025, art collecting pulses with fresh energy, from AI-infused commissions to global biennials spotlighting underrepresented voices. These 15 stand out for their influence, blending philanthropy with sharp instincts...",
     date: "August 24, 2025",
@@ -44,7 +52,7 @@ const blogArticles = [
     slug: "top-15-art-collectors-of-2025"
   },
   {
-    id: 4,
+    id: 5,
     title: "What Would Andy Warhol Be Doing Today?",
     excerpt: "If Andy Warhol were still around, painting, filming, and hoarding, he might thrive in our hyper-connected world. Born Andrew Warhola to Slovak immigrants, he ditched the 'a' early on to fit into New York's scene, much like today's creators might rebrand for TikTok fame...",
     date: "August 19, 2025",
