@@ -72,6 +72,30 @@ const getRandomPolkaDotShadow = (color: string) => {
   return colorMap[color] || 'shadow-gray-400/50'
 }
 
+// Random background gradient color utility
+const getRandomBackgroundColor = () => {
+  const colors = [
+    '#f5f5f4', '#e7e5e4', '#d6d3d1', '#a8a29e', // stone tones
+    '#f8fafc', '#e2e8f0', '#cbd5e1', '#94a3b8', // slate tones
+    '#fafafa', '#e4e4e7', '#d4d4d8', '#a1a1aa', // zinc tones
+    '#fafafa', '#e5e5e5', '#d4d4d4', '#a3a3a3', // neutral tones
+    '#f3f4f6', '#e5e7eb', '#d1d5db', '#9ca3af', // gray tones
+    '#fef3c7', '#fde68a', '#fcd34d', '#f59e0b', // amber tones
+    '#fed7aa', '#fdba74', '#fb923c', '#ea580c', // orange tones
+    '#fecaca', '#fca5a5', '#f87171', '#dc2626', // red tones
+    '#fce7f3', '#fbcfe8', '#f9a8d4', '#e91e63', // rose tones
+    '#ccfbf1', '#99f6e4', '#5eead4', '#14b8a6', // teal tones
+    '#cffafe', '#a5f3fc', '#67e8f9', '#06b6d4', // cyan tones
+    '#dbeafe', '#bfdbfe', '#93c5fd', '#3b82f6', // blue tones
+    '#e0e7ff', '#c7d2fe', '#a5b4fc', '#6366f1', // indigo tones
+    '#d1fae5', '#a7f3d0', '#6ee7b7', '#10b981', // emerald tones
+    '#ede9fe', '#ddd6fe', '#c4b5fd', '#8b5cf6', // violet tones
+    '#fae8ff', '#f3e8ff', '#e9d5ff', '#d946ef', // fuchsia tones
+    '#fce7f3', '#fbcfe8', '#f9a8d4', '#ec4899'  // pink tones
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
 // Blog articles data
 const blogArticles = [
   {
@@ -171,9 +195,9 @@ export default function BlogPage() {
           <div className="mb-16 w-full h-48 rounded-2xl overflow-hidden relative"
                style={{
                  background: `linear-gradient(45deg, 
-                   ${getRandomPolkaDotColor().replace('bg-', '')}, 
-                   ${getRandomPolkaDotColor().replace('bg-', '')}, 
-                   ${getRandomPolkaDotColor().replace('bg-', '')}
+                   ${getRandomBackgroundColor()}, 
+                   ${getRandomBackgroundColor()}, 
+                   ${getRandomBackgroundColor()}
                  )`
                }}>
             <div className="absolute inset-0">
