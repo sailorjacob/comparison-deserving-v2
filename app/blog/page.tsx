@@ -147,22 +147,33 @@ export default function BlogPage() {
       <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
         <div className="max-w-6xl mx-auto">
           {/* Colorful Polka Dot Header */}
-          <div className="mb-16 w-full h-48 bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400 rounded-2xl overflow-hidden relative">
+          <div className="mb-16 w-full h-48 rounded-2xl overflow-hidden relative"
+               style={{
+                 background: `linear-gradient(45deg, ${getRandomPolkaDotColor().replace('bg-', '')}, ${getRandomPolkaDotColor().replace('bg-', '')}, ${getRandomPolkaDotColor().replace('bg-', '')})`
+               }}>
             <div className="absolute inset-0">
               {/* Generate polka dots with random neon colors */}
               {(() => {
                 const dots = []
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 25; i++) {
                   const color = getRandomPolkaDotColor()
                   const shadow = getRandomPolkaDotShadow(color)
-                  const size = Math.random() > 0.5 ? 'w-4 h-4' : Math.random() > 0.3 ? 'w-6 h-6' : 'w-8 h-8'
-                  const top = Math.random() * 40 + 8
-                  const left = Math.random() * 120 + 8
+                  // More size variety
+                  const sizeOptions = ['w-3 h-3', 'w-4 h-4', 'w-5 h-5', 'w-6 h-6', 'w-8 h-8', 'w-10 h-10', 'w-12 h-12']
+                  const size = sizeOptions[Math.floor(Math.random() * sizeOptions.length)]
+                  // Better distribution across the entire header
+                  const top = Math.random() * 180 + 16
+                  const left = Math.random() * 600 + 20
                   dots.push(
                     <div 
                       key={i}
-                      className={`absolute ${size} ${color} rounded-full shadow-lg ${shadow}`}
-                      style={{ top: `${top}px`, left: `${left}px` }}
+                      className={`absolute ${size} ${color} rounded-full shadow-lg ${shadow} animate-pulse`}
+                      style={{ 
+                        top: `${top}px`, 
+                        left: `${left}px`,
+                        animationDelay: `${Math.random() * 2}s`,
+                        animationDuration: `${2 + Math.random() * 2}s`
+                      }}
                     ></div>
                   )
                 }
