@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronLeft, Bitcoin } from "lucide-react"
+import { ChevronLeft, Bitcoin, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { FlashlightReveal } from "@/components/flashlight-reveal"
 import { useEffect, useState } from "react"
 
 // Random logo color utility
@@ -17,7 +16,7 @@ const getRandomLogoColor = () => {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
-export default function AboutPage() {
+export default function HelpingArtistsCollectBitcoinPage() {
   const [logoColor] = useState(() => getRandomLogoColor())
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMoving, setIsMoving] = useState(false)
@@ -69,17 +68,17 @@ export default function AboutPage() {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
               </Link>
             </Button>
+            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
+              <Link href="/about">
+                About
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </Button>
             <Button
               variant="ghost"
               className="text-black border-b border-black font-light relative group px-0"
             >
-              About
-            </Button>
-            <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
-              <Link href="/blog">
-                Blog
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
-              </Link>
+              Blog
             </Button>
             <div className="flex items-center space-x-2 text-gray-600">
               <Bitcoin className="w-4 h-4" />
@@ -105,27 +104,59 @@ export default function AboutPage() {
 
       <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
         <div className="mb-6">
-          <Link href="/" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
-            <ChevronLeft className="w-5 h-5 mr-1" />
-            <span className="text-sm font-light">Back</span>
+          <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
+            <ArrowLeft className="w-5 h-5 mr-1" />
+            <span className="text-sm font-light">Back to Blog</span>
           </Link>
         </div>
-      <h1 className="text-4xl font-extralight mb-6">About</h1>
-      <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
-        The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue, and comparison for short.
-        <br /><br />
-        comparison-deserving is a fine art collection and online gallery focused on emerging talent. all works shown are part of our private inventory - for acquisition inquiries, please contact
-      </p>
-      <p className="text-gray-500 font-light text-sm">
-        <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
-      </p>
-              <div className="mt-12">
-          <FlashlightReveal />
-        </div>
+
+        <article className="max-w-4xl mx-auto">
+          <header className="mb-8">
+            <h1 className="text-4xl font-extralight mb-4">Helping Artists Collect Bitcoin</h1>
+            <div className="flex items-center space-x-4 text-sm text-gray-500">
+              <span>January 2025</span>
+              <span>•</span>
+              <span>Bitcoin & Art</span>
+            </div>
+          </header>
+
+          <div className="prose prose-lg max-w-none">
+            <p className="text-gray-700 font-light leading-relaxed mb-6">
+              In 2025, Bitcoin weaves deeper into the art world, powering galleries at events like Bitcoin Asia and the Vegas Bitcoin Conference, where pieces sell in sats for a borderless vibe. Our online gallery steps in to guide artists, especially from quieter corners, toward their first crypto collectors.
+            </p>
+
+            <p className="text-gray-700 font-light leading-relaxed mb-6">
+              We hand-pick talent from spots like rural Nigeria or Colombian highlands, spotlighting voices often overlooked. Take Osinachi, a Nigerian digital artist who flipped Microsoft Word into crypto canvases, proving tech can amplify African narratives amid a continent's NFT boom. Lesser-known: He started without formal training, self-teaching code to layer cultural symbols, much like emerging creators we scout today.
+            </p>
+
+            <p className="text-gray-700 font-light leading-relaxed mb-6">
+              Setting up is straightforward. We walk artists through free wallets like Electrum or Muun, stressing seed phrase backups and hardware options for safety. No banks needed, just a phone scan to receive funds, cutting fees that eat into sales from remote areas.
+            </p>
+
+            <p className="text-gray-700 font-light leading-relaxed mb-6">
+              Then, connections: We pair them with collectors keen on BTC deals, handling escrow via multisig for trust. It's like the Bitcoin Art Gallery auctions, where works price in Bitcoin fractions, tying value to the coin's climb. Lesser-known: Artists there often embed blockchain nods, like hidden QR codes linking to provenance, educating buyers on digital roots.
+            </p>
+
+            <p className="text-gray-700 font-light leading-relaxed mb-6">
+              This opens doors—global payments without conversion hassles, royalties baked in via smart tools. We're here to make it feel easy, turning Bitcoin into a tool for independence.
+            </p>
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="flex items-center justify-between">
+              <Link href="/blog" className="text-gray-600 hover:text-black transition-colors font-light">
+                ← All Articles
+              </Link>
+              <div className="flex items-center space-x-2 text-gray-500">
+                <Bitcoin className="w-4 h-4" />
+                <span className="text-sm">Bitcoin Accepted</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
         <div className="fixed bottom-3 right-4 text-xs text-gray-500 font-light">Singapore</div>
       </main>
     </div>
   )
 }
-
-
