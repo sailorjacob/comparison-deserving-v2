@@ -205,7 +205,7 @@ function HomePageContent() {
                         className="mt-4 border-black text-black hover:bg-black hover:text-white bg-transparent"
                         onClick={() => openAcquireModal(artwork)}
                       >
-                        {artwork.price ? "Buy" : "Inquire"}
+                        Inquire
                       </Button>
                     </div>
                   </div>
@@ -291,75 +291,124 @@ function HomePageContent() {
             }
           }}
         >
-          <div className="bg-white w-full sm:max-w-lg sm:rounded-lg shadow-lg relative overflow-hidden animate-in slide-in-from-bottom-4 sm:slide-in-from-bottom-0 duration-300">
+          <div className="bg-white w-full sm:max-w-2xl sm:rounded-2xl shadow-2xl relative overflow-hidden animate-in slide-in-from-bottom-4 sm:slide-in-from-bottom-0 duration-300">
             {/* Header */}
-            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-              <h2 className="text-lg font-light text-black">Inquiry</h2>
-            <Button
-              variant="ghost"
-              size="icon"
-                className="text-gray-400 hover:text-black h-8 w-8"
-              onClick={closeAcquireModal}
-            >
-                <X className="w-4 h-4" />
-            </Button>
+            <div className="px-6 py-6 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-light text-black">Artwork Inquiry</h2>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-black h-10 w-10 rounded-full hover:bg-gray-100 transition-all duration-200"
+                  onClick={closeAcquireModal}
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              
+              {/* Artwork Details */}
+              <div className="flex items-start space-x-4">
+                <div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                  {selectedArtworkForInquiry.image ? (
+                    <img
+                      src={selectedArtworkForInquiry.image}
+                      alt={selectedArtworkForInquiry.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-medium text-black mb-1">{selectedArtworkForInquiry.title}</h3>
+                  <p className="text-sm text-gray-600 mb-2">{selectedArtworkForInquiry.artist}</p>
+                  {selectedArtworkForInquiry.price && (
+                    <div className="flex items-center space-x-2">
+                      <Bitcoin className="w-4 h-4 text-amber-500" />
+                      <span className="text-sm font-medium text-black">{selectedArtworkForInquiry.price} BTC</span>
+                    </div>
+                  )}
+                  {selectedArtworkForInquiry.medium && (
+                    <p className="text-xs text-gray-500 mt-1">{selectedArtworkForInquiry.medium}</p>
+                  )}
+                  {selectedArtworkForInquiry.dimensions && (
+                    <p className="text-xs text-gray-500">{selectedArtworkForInquiry.dimensions}</p>
+                  )}
+                </div>
+              </div>
             </div>
             
-            {/* Content */}
-            <div className="px-6 py-6">
-              {selectedArtworkForInquiry.title && (
-                <p className="text-sm text-gray-600 mb-6 text-center">
-                  Interested in <span className="font-medium text-black">{selectedArtworkForInquiry.title}</span>
-                </p>
-              )}
+            {/* Form Content */}
+            <div className="px-6 py-8">
+              <div className="mb-6">
+                <h4 className="text-base font-medium text-black mb-2">Send us your inquiry</h4>
+                <p className="text-sm text-gray-600">We'll get back to you within 24 hours to discuss this piece.</p>
+              </div>
 
               <form
-                className="space-y-4"
+                className="space-y-5"
                 action="https://formspree.io/f/mnnbqlqr"
                 method="POST"
               >
                 <input type="hidden" name="artworkTitle" value={selectedArtworkForInquiry?.title ?? ""} />
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
-                    placeholder="Name"
-                    required
-                    value={formName}
-                    onChange={(e) => setFormName(e.target.value)}
-                  />
+                <input type="hidden" name="artworkArtist" value={selectedArtworkForInquiry?.artistName ?? ""} />
+                <input type="hidden" name="artworkPrice" value={selectedArtworkForInquiry?.price ?? ""} />
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+                      placeholder="Your full name"
+                      required
+                      value={formName}
+                      onChange={(e) => setFormName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+                      placeholder="your@email.com"
+                      required
+                      value={formEmail}
+                      onChange={(e) => setFormEmail(e.target.value)}
+                    />
+                  </div>
                 </div>
+                
                 <div>
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
-                    placeholder="Email"
-                    required
-                    value={formEmail}
-                    onChange={(e) => setFormEmail(e.target.value)}
-                  />
-                </div>
-                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea
                     name="message"
-                    rows={3}
-                    className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
-                    placeholder="Share your interest or questions"
+                    rows={4}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200 resize-none"
+                    placeholder="Tell us about your interest in this piece, any questions you have, or if you'd like to arrange a viewing..."
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
                   />
                 </div>
+                
                 <Button 
                   type="submit" 
-                  className="w-full bg-black hover:bg-gray-800 text-white text-sm py-2.5 transition-colors" 
+                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg" 
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </div>
+                  ) : (
+                    "Send Inquiry"
+                  )}
                 </Button>
               </form>
-              </div>
+            </div>
           </div>
         </div>
       )}
