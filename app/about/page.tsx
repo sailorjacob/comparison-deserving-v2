@@ -22,16 +22,6 @@ export default function AboutPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMoving, setIsMoving] = useState(false)
   const [lastMoveTime, setLastMoveTime] = useState(Date.now())
-  const [headerAnimation, setHeaderAnimation] = useState(false)
-
-  useEffect(() => {
-    // Trigger header animation after page load
-    const timer = setTimeout(() => {
-      setHeaderAnimation(true)
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     let moveTimeout: NodeJS.Timeout
@@ -62,29 +52,7 @@ export default function AboutPage() {
           <div className="flex items-center space-x-4 mb-2">
             <div className={`w-8 h-8 ${logoColor}`} />
             <div>
-              <div className="text-2xl font-light tracking-wide text-black relative overflow-hidden">
-                <span className="inline-block transition-all duration-1000 ease-in-out">
-                  comparison
-                </span>
-                <span 
-                  className={`inline-block transition-all duration-1000 ease-in-out ${
-                    headerAnimation 
-                      ? 'opacity-0 translate-x-2 w-0 overflow-hidden' 
-                      : 'opacity-100 translate-x-0 w-auto'
-                  }`}
-                >
-                  -deserving
-                </span>
-                <span 
-                  className={`inline-block transition-all duration-1000 ease-in-out delay-500 ${
-                    headerAnimation 
-                      ? 'opacity-100 translate-x-0' 
-                      : 'opacity-0 -translate-x-2'
-                  }`}
-                >
-                  .
-                </span>
-              </div>
+              <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
             </div>
           </div>
