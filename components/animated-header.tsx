@@ -29,8 +29,8 @@ export function AnimatedHeader({ logoColor }: AnimatedHeaderProps) {
           <span 
             className={`inline-block transition-all duration-1000 ease-in-out ${
               headerAnimation 
-                ? 'opacity-0' 
-                : 'opacity-100'
+                ? 'opacity-0 w-0 overflow-hidden' 
+                : 'opacity-100 w-auto'
             }`}
           >
             -deserving
