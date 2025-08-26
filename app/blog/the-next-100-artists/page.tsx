@@ -98,31 +98,31 @@ export default function Next100ArtistsArticlePage() {
           {/* Article Content */}
           <article className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              At our gallery, we're embarking on a search for the next 100 emerging artists: voices poised to shape tomorrow's visual narratives. This initiative focuses on talents from rising creative hubs across the Global South and beyond, providing an online-first platform that connects them directly with discerning collectors. In a market evolving toward greater digital fluency, we envision a future where art trades more seamlessly, mirroring historical leaps that elevated overlooked creators to enduring legacies.
+              We're searching for the next 100 emerging artists who will define tomorrow's art world. This isn't just another list—it's a focused effort to discover talent from creative centers across the Global South and other overlooked regions. We're building an online platform that connects these artists directly with serious collectors. As the art market becomes more digital, we see an opportunity to create something that hasn't existed before: a streamlined way for new voices to reach the right audience.
             </p>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">The Digital Shift: Expanding Horizons</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">How Digital Changes Everything</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              As galleries adapt to 2025's landscape, online platforms drive discovery: 59% of collectors now find works digitally, up from pre-pandemic levels. This opens pathways for fresh talent, much like how photography revolutionized access in the 19th century, allowing broader dissemination beyond elite circles. Lesser known: Early photographers like Julia Margaret Cameron captured intimate portraits that democratized imagery, echoing today's virtual exhibitions that amplify diverse perspectives without geographic barriers. Our approach builds on this, offering streamlined tools for artists to showcase and sell, fostering a world where art flows freely amid growing mid-tier demand.
+              The numbers tell the story: 59% of collectors now discover art online, a significant jump from before the pandemic. This shift creates new opportunities for artists who might not have access to traditional gallery networks. Think of it like photography in the 19th century—suddenly, art could reach people who'd never set foot in a salon. Julia Margaret Cameron's portraits found homes far beyond London's elite circles. Today's online platforms do the same thing, breaking down geographic barriers and letting collectors discover work they'd never see otherwise. We're building tools that make this process simple and effective.
             </p>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Global Currents: Untapped Creative Wells</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Why These Regions Matter</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Emerging regions pulse with innovation, blending local traditions with contemporary themes. These areas, often in Asia, Africa, and Latin America, contribute to a 15% eastward market shift, as collectors seek authentic stories amid selective buying trends. Fun fact: The Renaissance saw similar expansions when trade routes brought Eastern influences to Europe, enriching palettes and techniques. Today, we're channeling that spirit by highlighting underrepresented scenes, ensuring these artists gain visibility in a market valuing diversity: 69% of buyers prioritize it for meaningful acquisitions.
+              Asia, Africa, and Latin America aren't just emerging markets—they're where some of the most interesting art is being made right now. Collectors are paying attention: the market is shifting eastward by about 15%, and people are looking for authentic stories, not just familiar names. It reminds me of how the Renaissance expanded when trade routes opened up between Europe and the East. New influences changed everything. We're seeing the same thing happen now, and we want to make sure these artists get the visibility they deserve. When 69% of serious buyers say diversity matters in their collections, that's not just talk—it's a market reality.
             </p>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Echoes of Patronage: Lessons from the Past</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">What We Can Learn from the Past</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Art's great eras thrived on forward-thinking support: The Medici in 15th-century Florence commissioned works that defined the Renaissance, spotting potential in figures like Botticelli through a blend of cultural investment and keen insight. They backed over 1,000 pieces, turning patronage into a catalyst for innovation. In parallel, we're drawing from this model, identifying promise in a time when emerging works see steady growth, driven by collectors who blend passion with purpose. This reflects ongoing trends where thoughtful backing sustains creativity, much as it did centuries ago.
+              The Medici family didn't just collect art—they created an entire ecosystem. In 15th-century Florence, they commissioned over 1,000 works and spotted talent like Botticelli before anyone else did. They understood that supporting artists early could change the course of art history. We're not the Medici, but we can learn from their approach. The art market is growing, and emerging artists are seeing steady demand. Collectors who get in early aren't just making investments—they're building relationships with artists who might become the next big names. It's happened before, and it will happen again.
             </p>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Purposeful Engagement: Building Lasting Impact</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Making It Last</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Our effort aligns with a broader movement toward impactful collecting, where supporting new talent yields cultural dividends. Philanthropic models evolve, emphasizing empowerment that resonates with younger generations - favoring initiatives that uplift creators while enriching collections. Lesser known: Historical patrons often funded academies, like the French Academy in the 17th century, which nurtured talents and preserved techniques for future eras. In 2025, this translates to platforms that bridge gaps, creating ecosystems where art not only endures but inspires societal dialogue.
+              This isn't about quick profits or trendy names. We're building something that will matter in the long run. The French Academy in the 17th century didn't just teach painting—it preserved techniques and nurtured talent that influenced generations. In 2025, we need platforms that do more than just sell art. We need systems that help artists build careers, that help collectors make meaningful choices, and that create conversations about what art can do in the world. When art connects people across cultures and generations, that's when it becomes something more than decoration.
             </p>
 
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              In pursuing the next 100, we're honoring art's timeless cycle: discovery, nurture, influence. This is an invitation to engage with the unfolding story of creativity, where every connection sparks possibility.
+              Finding the next 100 artists isn't about creating a list—it's about starting conversations, building connections, and watching what happens when talent meets opportunity. We're not predicting the future; we're helping to shape it.
             </p>
           </article>
 
