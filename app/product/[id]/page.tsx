@@ -32,6 +32,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   const [formEmail, setFormEmail] = useState("")
   const [formMessage, setFormMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [logoColor] = useState(getRandomLogoColor())
 
@@ -320,74 +321,131 @@ export default function ProductPage({ params }: ProductPageProps) {
             
             {/* Form Content */}
             <div className="px-6 py-8">
-              <div className="mb-6">
-                <h4 className="text-base font-medium text-black mb-2">Send us your inquiry</h4>
-                <p className="text-sm text-gray-600">We'll get back to you within 24 hours to discuss this piece.</p>
-              </div>
+              {showSuccess ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-medium text-gray-900 mb-2">Inquiry Sent Successfully!</h3>
+                  <p className="text-gray-600 mb-4">We'll get back to you within 24 hours.</p>
+                  <div className="text-sm text-gray-500">This modal will close automatically...</div>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-6">
+                    <h4 className="text-base font-medium text-black mb-2">Send us your inquiry</h4>
+                    <p className="text-sm text-gray-600">We'll get back to you within 24 hours to discuss this piece.</p>
+                  </div>
 
-              <form
-                className="space-y-5"
-                action="https://formspree.io/f/mnnbqlqr"
-                method="POST"
-              >
-                <input type="hidden" name="artworkTitle" value={selectedArtworkForInquiry?.title ?? ""} />
-                <input type="hidden" name="artworkArtist" value={selectedArtworkForInquiry?.artistName ?? ""} />
-                <input type="hidden" name="artworkPrice" value={selectedArtworkForInquiry?.price ?? ""} />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
-                      placeholder="Your full name"
-                      required
-                      value={formName}
-                      onChange={(e) => setFormName(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
-                      placeholder="your@email.com"
-                      required
-                      value={formEmail}
-                      onChange={(e) => setFormEmail(e.target.value)}
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 resize-none focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
-                    placeholder="Tell us about your interest in this piece, any questions you have, or if you'd like to arrange a viewing..."
-                    value={formMessage}
-                    onChange={(e) => setFormMessage(e.target.value)}
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${logoColor} hover:opacity-90`}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Sending...</span>
+                  <form
+                    className="space-y-5"
+                    onSubmit={async (e) => {
+                      e.preventDefault()
+                      if (isSubmitting) return
+                      setIsSubmitting(true)
+                      
+                      try {
+                        const formData = new FormData()
+                        formData.append('artworkTitle', selectedArtworkForInquiry?.title ?? '')
+                        formData.append('artworkArtist', selectedArtworkForInquiry?.artistName ?? '')
+                        formData.append('artworkPrice', selectedArtworkForInquiry?.price ?? '')
+                        formData.append('name', formName)
+                        formData.append('email', formEmail)
+                        formData.append('message', formMessage)
+                        
+                        const response = await fetch('https://formspree.io/f/mnnbqlqr', {
+                          method: 'POST',
+                          body: formData,
+                          headers: {
+                            'Accept': 'application/json'
+                          }
+                        })
+                        
+                        if (response.ok) {
+                          // Show success state
+                          setShowSuccess(true)
+                          setFormName("")
+                          setFormEmail("")
+                          setFormMessage("")
+                          
+                          // Auto-close after 3 seconds
+                          setTimeout(() => {
+                            setShowSuccess(false)
+                            closeAcquireModal()
+                          }, 3000)
+                        } else {
+                          throw new Error('Failed to send inquiry')
+                        }
+                      } catch (error) {
+                        console.error('Error sending inquiry:', error)
+                        alert("There was an error sending your inquiry. Please try again.")
+                      } finally {
+                        setIsSubmitting(false)
+                      }
+                    }}
+                  >
+                    <input type="hidden" name="artworkTitle" value={selectedArtworkForInquiry?.title ?? ""} />
+                    <input type="hidden" name="artworkArtist" value={selectedArtworkForInquiry?.artistName ?? ""} />
+                    <input type="hidden" name="artworkPrice" value={selectedArtworkForInquiry?.price ?? ""} />
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
+                          placeholder="Your full name"
+                          required
+                          value={formName}
+                          onChange={(e) => setFormName(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
+                          placeholder="your@email.com"
+                          required
+                          value={formEmail}
+                          onChange={(e) => setFormEmail(e.target.value)}
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    "Send Inquiry"
-                  )}
-                </Button>
-              </form>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                      <textarea
+                        name="message"
+                        rows={4}
+                        className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 resize-none focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
+                        placeholder="Tell us about your interest in this piece, any questions you have, or if you'd like to arrange a viewing..."
+                        value={formMessage}
+                        onChange={(e) => setFormMessage(e.target.value)}
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${logoColor} hover:opacity-90`}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <div className="flex items-center justify-center space-x-2">
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <span>Sending...</span>
+                        </div>
+                      ) : (
+                        "Send Inquiry"
+                      )}
+                    </Button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </div>

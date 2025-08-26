@@ -18,11 +18,42 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [buttonColor] = useState(() => getRandomLogoColor())
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    
+    try {
+      const formData = new FormData(e.currentTarget)
+      formData.append('formType', 'general')
+      
+      const response = await fetch('https://formspree.io/f/mnnbqlqr', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      
+      if (response.ok) {
+        // Success - reset form and show message
+        e.currentTarget.reset()
+        alert("Message sent successfully! We'll get back to you within 24 hours.")
+      } else {
+        throw new Error('Failed to send message')
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert("There was an error sending your message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <form
       className="space-y-5"
-      action="https://formspree.io/f/mnnbqlqr"
-      method="POST"
+      onSubmit={handleSubmit}
     >
       <input type="hidden" name="formType" value="general" />
       
