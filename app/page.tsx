@@ -401,7 +401,6 @@ function HomePageContent() {
             <a href="/terms" className="hover:text-black transition-colors text-xs">
               Terms
             </a>
-            <SingaporeModal />
           </div>
         </div>
       </footer>
