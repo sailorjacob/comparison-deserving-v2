@@ -22,6 +22,16 @@ export default function AboutPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMoving, setIsMoving] = useState(false)
   const [lastMoveTime, setLastMoveTime] = useState(Date.now())
+  const [headerAnimation, setHeaderAnimation] = useState(false)
+
+  useEffect(() => {
+    // Trigger header animation after page load
+    const timer = setTimeout(() => {
+      setHeaderAnimation(true)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     let moveTimeout: NodeJS.Timeout
@@ -52,7 +62,29 @@ export default function AboutPage() {
           <div className="flex items-center space-x-4 mb-2">
             <div className={`w-8 h-8 ${logoColor}`} />
             <div>
-              <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
+              <div className="text-2xl font-light tracking-wide text-black relative overflow-hidden">
+                <span className="inline-block transition-all duration-1000 ease-in-out">
+                  comparison
+                </span>
+                <span 
+                  className={`inline-block transition-all duration-1000 ease-in-out ${
+                    headerAnimation 
+                      ? 'opacity-0 translate-x-2 w-0 overflow-hidden' 
+                      : 'opacity-100 translate-x-0 w-auto'
+                  }`}
+                >
+                  -deserving
+                </span>
+                <span 
+                  className={`inline-block transition-all duration-1000 ease-in-out delay-500 ${
+                    headerAnimation 
+                      ? 'opacity-100 translate-x-0' 
+                      : 'opacity-0 -translate-x-2'
+                  }`}
+                >
+                  .
+                </span>
+              </div>
               <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
             </div>
           </div>
@@ -107,6 +139,14 @@ export default function AboutPage() {
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
       
+      {/* Blog Link */}
+      <div className="mb-8">
+        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
+          <span className="text-sm">Read our blog</span>
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </Link>
+      </div>
+      
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
         The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue. Comparison for short.
         <br /><br />
@@ -115,14 +155,6 @@ export default function AboutPage() {
       <p className="text-gray-500 font-light text-sm">
         <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
       </p>
-      
-      {/* Blog Link */}
-      <div className="mt-8 mb-8">
-        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
-          <span className="text-sm">Read our blog</span>
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </Link>
-      </div>
               <div className="mt-12">
           <FlashlightReveal />
         </div>

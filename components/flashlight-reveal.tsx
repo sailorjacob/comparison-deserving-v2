@@ -114,12 +114,10 @@ export function FlashlightReveal() {
         {/* Content with blend mode */}
         <div className="absolute inset-0 flex items-center mix-blend-multiply">
           <div className="pointer-events-none px-1 md:px-2">
-            <p className="text-red-600 font-light leading-relaxed max-w-3xl transition-opacity duration-300"
-               style={{ opacity: currentRadiusRef.current > 0 ? '1' : '0' }}>
+            <p className="text-red-600 font-light leading-relaxed max-w-3xl">
               comparison deserving represents exceptional artists across the world
             </p>
-            <p className="text-red-600 font-light leading-relaxed max-w-3xl mt-3 transition-opacity duration-300"
-               style={{ opacity: currentRadiusRef.current > 0 ? '1' : '0' }}>
+            <p className="text-red-600 font-light leading-relaxed max-w-3xl mt-3">
               we are working on a world where more art and bitcoin are exchanged
             </p>
           </div>
