@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ChevronLeft, Bitcoin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FlashlightReveal } from "@/components/flashlight-reveal"
+import { AnimatedHeader } from "@/components/animated-header"
 import { useEffect, useState } from "react"
 
 // Random logo color utility
@@ -49,13 +50,7 @@ export default function AboutPage() {
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">
-          <div className="flex items-center space-x-4 mb-2">
-            <div className={`w-8 h-8 ${logoColor}`} />
-            <div>
-              <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
-              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
-            </div>
-          </div>
+          <AnimatedHeader logoColor={logoColor} />
           <div className="flex items-center space-x-8">
             <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
               <Link href="/">

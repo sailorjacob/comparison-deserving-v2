@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation"
 import { artworks, getArtistProfiles, type Artwork } from "@/lib/artworks"
 import { ImageProtection } from "@/components/image-protection"
 import { SingaporeModal } from "@/components/singapore-modal"
+import { AnimatedHeader } from "@/components/animated-header"
 
 
 
@@ -32,7 +33,6 @@ function HomePageContent() {
   const [selectedArtist, setSelectedArtist] = useState<string>("all")
   const [showSoldOnly, setShowSoldOnly] = useState<boolean>(false)
   const [logoColor, setLogoColor] = useState<string>("bg-yellow-500")
-  const [headerAnimation, setHeaderAnimation] = useState(false)
 
   const [formName, setFormName] = useState("")
   const [formEmail, setFormEmail] = useState("")
@@ -43,18 +43,11 @@ function HomePageContent() {
     setIsVisible(true) // Trigger initial animation on component mount
     setLogoColor(getRandomLogoColor()) // Set random logo color on mount
     
-    // Trigger header animation after page load
-    const timer = setTimeout(() => {
-      setHeaderAnimation(true)
-    }, 1000)
-    
     // Check for artist parameter in URL
     const artistParam = searchParams.get('artist')
     if (artistParam) {
       setSelectedArtist(artistParam)
     }
-
-    return () => clearTimeout(timer)
   }, [searchParams])
 
   const artistProfiles = getArtistProfiles()
@@ -103,35 +96,7 @@ function HomePageContent() {
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3">
-          <div className="flex items-center space-x-4 mb-2">
-            <div className={`w-8 h-8 ${logoColor}`} />
-            <div>
-              <div className="text-2xl font-light tracking-wide text-black relative overflow-hidden">
-                <span className="inline-block transition-all duration-1000 ease-in-out">
-                  comparison
-                </span>
-                <span 
-                  className={`inline-block transition-all duration-1000 ease-in-out ${
-                    headerAnimation 
-                      ? 'opacity-0 translate-x-2 w-0 overflow-hidden' 
-                      : 'opacity-100 translate-x-0 w-auto'
-                  }`}
-                >
-                  -deserving
-                </span>
-                <span 
-                  className={`inline-block transition-all duration-1000 ease-in-out delay-500 ${
-                    headerAnimation 
-                      ? 'opacity-100 translate-x-0' 
-                      : 'opacity-0 -translate-x-2'
-                  }`}
-                >
-                  .
-                </span>
-              </div>
-              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
-            </div>
-          </div>
+          <AnimatedHeader logoColor={logoColor} />
           <div className="flex items-center space-x-8">
             <Button
               variant="ghost"

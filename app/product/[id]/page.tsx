@@ -7,6 +7,7 @@ import { useState } from "react"
 import { notFound } from "next/navigation"
 import { getArtworkById, getArtistProfiles, artworks, type Artwork } from "@/lib/artworks"
 import { ImageProtection } from "@/components/image-protection"
+import { AnimatedHeader } from "@/components/animated-header"
 
 // Random logo color utility
 const getRandomLogoColor = () => {
@@ -58,13 +59,7 @@ export default function ProductPage({ params }: ProductPageProps) {
       {/* Navigation */}
       <nav className="w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 z-[9999] fixed top-0 left-0 right-0 transition-all duration-300">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className={`w-8 h-8 ${logoColor}`} />
-            <div>
-              <div className="text-2xl font-light tracking-wide text-black">comparison-deserving</div>
-              <div className="text-xs font-light text-gray-500 tracking-wider uppercase">Fine Art Gallery</div>
-            </div>
-          </div>
+          <AnimatedHeader logoColor={logoColor} />
           <div className="hidden md:flex items-center space-x-12">
             <Button asChild variant="ghost" className="text-gray-600 hover:text-black transition-all duration-300 font-light relative group px-0">
               <Link href="/">
