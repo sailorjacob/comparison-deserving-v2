@@ -3,8 +3,20 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
+// Random logo color utility (same as main theme)
+const getRandomLogoColor = () => {
+  const colors = [
+    'bg-blue-500',
+    'bg-red-500', 
+    'bg-green-500',
+    'bg-yellow-500'
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [buttonColor] = useState(() => getRandomLogoColor())
 
   return (
     <form
@@ -20,7 +32,7 @@ export function ContactForm() {
           <input
             type="text"
             name="name"
-            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+            className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${buttonColor.replace('bg-', 'focus:border-')}`}
             placeholder="Your full name"
             required
           />
@@ -30,7 +42,7 @@ export function ContactForm() {
           <input
             type="email"
             name="email"
-            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+            className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${buttonColor.replace('bg-', 'focus:border-')}`}
             placeholder="your@email.com"
             required
           />
@@ -42,7 +54,7 @@ export function ContactForm() {
         <textarea
           name="message"
           rows={4}
-          className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200 resize-none"
+          className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 resize-none focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${buttonColor.replace('bg-', 'focus:border-')}`}
           placeholder="How can we help you? Tell us about your inquiry or questions..."
           required
         />
@@ -50,7 +62,7 @@ export function ContactForm() {
       
       <Button 
         type="submit" 
-        className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg" 
+        className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${buttonColor} hover:opacity-90`}
         disabled={isSubmitting}
       >
         {isSubmitting ? (

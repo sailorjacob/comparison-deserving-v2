@@ -340,7 +340,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     <input
                       type="text"
                       name="name"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+                      className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
                       placeholder="Your full name"
                       required
                       value={formName}
@@ -352,7 +352,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     <input
                       type="email"
                       name="email"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200"
+                      className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
                       placeholder="your@email.com"
                       required
                       value={formEmail}
@@ -366,7 +366,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   <textarea
                     name="message"
                     rows={4}
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-200 resize-none"
+                    className={`w-full border border-gray-200 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none transition-all duration-200 resize-none focus:border-opacity-100 focus:ring-2 focus:ring-opacity-20 ${logoColor.replace('bg-', 'focus:border-')}`}
                     placeholder="Tell us about your interest in this piece, any questions you have, or if you'd like to arrange a viewing..."
                     value={formMessage}
                     onChange={(e) => setFormMessage(e.target.value)}
@@ -375,7 +375,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg" 
+                  className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${logoColor} hover:opacity-90`}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
