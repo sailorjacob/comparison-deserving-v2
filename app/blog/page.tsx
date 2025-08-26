@@ -19,10 +19,27 @@ const getRandomLogoColor = () => {
 // Random polka dot color utility
 const getRandomPolkaDotColor = () => {
   const colors = [
-    'bg-yellow-300', 'bg-pink-400', 'bg-cyan-300', 'bg-purple-400', 'bg-orange-400',
-    'bg-green-400', 'bg-red-400', 'bg-blue-400', 'bg-indigo-400', 'bg-teal-400',
-    'bg-rose-400', 'bg-amber-400', 'bg-emerald-400', 'bg-violet-400', 'bg-sky-400',
-    'bg-lime-400', 'bg-fuchsia-400'
+    // Earthy tones and flat colors
+    'bg-stone-200', 'bg-stone-300', 'bg-stone-400', 'bg-stone-500',
+    'bg-slate-200', 'bg-slate-300', 'bg-slate-400', 'bg-slate-500',
+    'bg-zinc-200', 'bg-zinc-300', 'bg-zinc-400', 'bg-zinc-500',
+    'bg-neutral-200', 'bg-neutral-300', 'bg-neutral-400', 'bg-neutral-500',
+    'bg-gray-200', 'bg-gray-300', 'bg-gray-400', 'bg-gray-500',
+    // Warm earth tones
+    'bg-amber-200', 'bg-amber-300', 'bg-amber-400',
+    'bg-orange-200', 'bg-orange-300', 'bg-orange-400',
+    'bg-red-200', 'bg-red-300', 'bg-red-400',
+    'bg-rose-200', 'bg-rose-300', 'bg-rose-400',
+    // Cool earth tones
+    'bg-teal-200', 'bg-teal-300', 'bg-teal-400',
+    'bg-cyan-200', 'bg-cyan-300', 'bg-cyan-400',
+    'bg-blue-200', 'bg-blue-300', 'bg-blue-400',
+    'bg-indigo-200', 'bg-indigo-300', 'bg-indigo-400',
+    // Bright neon accents
+    'bg-emerald-400', 'bg-emerald-500',
+    'bg-violet-400', 'bg-violet-500',
+    'bg-fuchsia-400', 'bg-fuchsia-500',
+    'bg-pink-400', 'bg-pink-500'
   ]
   return colors[Math.floor(Math.random() * colors.length)]
 }
@@ -30,23 +47,27 @@ const getRandomPolkaDotColor = () => {
 // Random polka dot shadow color utility
 const getRandomPolkaDotShadow = (color: string) => {
   const colorMap: { [key: string]: string } = {
-    'bg-yellow-300': 'shadow-yellow-300/50',
-    'bg-pink-400': 'shadow-pink-400/50',
-    'bg-cyan-300': 'shadow-cyan-300/50',
-    'bg-purple-400': 'shadow-purple-400/50',
-    'bg-orange-400': 'shadow-orange-400/50',
-    'bg-green-400': 'shadow-green-400/50',
-    'bg-red-400': 'shadow-red-400/50',
-    'bg-blue-400': 'shadow-blue-400/50',
-    'bg-indigo-400': 'shadow-indigo-400/50',
-    'bg-teal-400': 'shadow-teal-400/50',
-    'bg-rose-400': 'shadow-rose-400/50',
-    'bg-amber-400': 'shadow-amber-400/50',
-    'bg-emerald-400': 'shadow-emerald-400/50',
-    'bg-violet-400': 'shadow-violet-400/50',
-    'bg-sky-400': 'shadow-sky-400/50',
-    'bg-lime-400': 'shadow-lime-400/50',
-    'bg-fuchsia-400': 'shadow-fuchsia-400/50'
+    // Earthy tones
+    'bg-stone-200': 'shadow-stone-200/50', 'bg-stone-300': 'shadow-stone-300/50', 'bg-stone-400': 'shadow-stone-400/50', 'bg-stone-500': 'shadow-stone-500/50',
+    'bg-slate-200': 'shadow-slate-200/50', 'bg-slate-300': 'shadow-slate-300/50', 'bg-slate-400': 'shadow-slate-400/50', 'bg-slate-500': 'shadow-slate-500/50',
+    'bg-zinc-200': 'shadow-zinc-200/50', 'bg-zinc-300': 'shadow-zinc-300/50', 'bg-zinc-400': 'shadow-zinc-400/50', 'bg-zinc-500': 'shadow-zinc-500/50',
+    'bg-neutral-200': 'shadow-neutral-200/50', 'bg-neutral-300': 'shadow-neutral-300/50', 'bg-neutral-400': 'shadow-neutral-400/50', 'bg-neutral-500': 'shadow-neutral-500/50',
+    'bg-gray-200': 'shadow-gray-200/50', 'bg-gray-300': 'shadow-gray-300/50', 'bg-gray-400': 'shadow-gray-400/50', 'bg-gray-500': 'shadow-gray-500/50',
+    // Warm earth tones
+    'bg-amber-200': 'shadow-amber-200/50', 'bg-amber-300': 'shadow-amber-300/50', 'bg-amber-400': 'shadow-amber-400/50',
+    'bg-orange-200': 'shadow-orange-200/50', 'bg-orange-300': 'shadow-orange-300/50', 'bg-orange-400': 'shadow-orange-400/50',
+    'bg-red-200': 'shadow-red-200/50', 'bg-red-300': 'shadow-red-300/50', 'bg-red-400': 'shadow-red-400/50',
+    'bg-rose-200': 'shadow-rose-200/50', 'bg-rose-300': 'shadow-rose-300/50', 'bg-rose-400': 'shadow-rose-400/50',
+    // Cool earth tones
+    'bg-teal-200': 'shadow-teal-200/50', 'bg-teal-300': 'shadow-teal-300/50', 'bg-teal-400': 'shadow-teal-400/50',
+    'bg-cyan-200': 'shadow-cyan-200/50', 'bg-cyan-300': 'shadow-cyan-300/50', 'bg-cyan-400': 'shadow-cyan-400/50',
+    'bg-blue-200': 'shadow-blue-200/50', 'bg-blue-300': 'shadow-blue-300/50', 'bg-blue-400': 'shadow-blue-400/50',
+    'bg-indigo-200': 'shadow-indigo-200/50', 'bg-indigo-300': 'shadow-indigo-300/50', 'bg-indigo-400': 'shadow-indigo-400/50',
+    // Bright neon accents
+    'bg-emerald-400': 'shadow-emerald-400/50', 'bg-emerald-500': 'shadow-emerald-500/50',
+    'bg-violet-400': 'shadow-violet-400/50', 'bg-violet-500': 'shadow-violet-500/50',
+    'bg-fuchsia-400': 'shadow-fuchsia-400/50', 'bg-fuchsia-500': 'shadow-fuchsia-500/50',
+    'bg-pink-400': 'shadow-pink-400/50', 'bg-pink-500': 'shadow-pink-500/50'
   }
   return colorMap[color] || 'shadow-gray-400/50'
 }
@@ -149,7 +170,11 @@ export default function BlogPage() {
           {/* Colorful Polka Dot Header */}
           <div className="mb-16 w-full h-48 rounded-2xl overflow-hidden relative"
                style={{
-                 background: `linear-gradient(45deg, ${getRandomPolkaDotColor().replace('bg-', '')}, ${getRandomPolkaDotColor().replace('bg-', '')}, ${getRandomPolkaDotColor().replace('bg-', '')})`
+                 background: `linear-gradient(45deg, 
+                   ${getRandomPolkaDotColor().replace('bg-', '')}, 
+                   ${getRandomPolkaDotColor().replace('bg-', '')}, 
+                   ${getRandomPolkaDotColor().replace('bg-', '')}
+                 )`
                }}>
             <div className="absolute inset-0">
               {/* Generate polka dots with random neon colors */}
