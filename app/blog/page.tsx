@@ -110,12 +110,30 @@ export default function BlogPage() {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-6 md:px-8 pt-32 pb-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Page Header */}
-          <header className="mb-12">
-            <h1 className="text-4xl font-extralight mb-4">Blog</h1>
-            <p className="text-gray-600 font-light">Thoughts on art, collecting, and the creative world</p>
-          </header>
+        <div className="max-w-6xl mx-auto">
+          {/* Colorful Polka Dot Header */}
+          <div className="mb-16 w-full h-48 bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400 rounded-2xl overflow-hidden relative">
+            <div className="absolute inset-0">
+              {/* Generate polka dots with neon colors */}
+              <div className="absolute top-8 left-12 w-6 h-6 bg-yellow-300 rounded-full shadow-lg shadow-yellow-300/50"></div>
+              <div className="absolute top-16 left-32 w-4 h-4 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50"></div>
+              <div className="absolute top-24 left-20 w-8 h-8 bg-cyan-300 rounded-full shadow-lg shadow-cyan-300/50"></div>
+              <div className="absolute top-12 left-48 w-5 h-5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
+              <div className="absolute top-32 left-8 w-7 h-7 bg-orange-400 rounded-full shadow-lg shadow-orange-400/50"></div>
+              <div className="absolute top-8 left-64 w-6 h-6 bg-green-400 rounded-full shadow-lg shadow-green-400/50"></div>
+              <div className="absolute top-20 left-72 w-4 h-4 bg-red-400 rounded-full shadow-lg shadow-red-400/50"></div>
+              <div className="absolute top-36 left-56 w-5 h-5 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
+              <div className="absolute top-16 left-80 w-7 h-7 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
+              <div className="absolute top-28 left-88 w-6 h-6 bg-teal-400 rounded-full shadow-lg shadow-teal-400/50"></div>
+              <div className="absolute top-12 left-96 w-4 h-4 bg-rose-400 rounded-full shadow-lg shadow-rose-400/50"></div>
+              <div className="absolute top-40 left-72 w-5 h-5 bg-amber-400 rounded-full shadow-lg shadow-amber-400/50"></div>
+              <div className="absolute top-8 left-104 w-6 h-6 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"></div>
+              <div className="absolute top-24 left-112 w-4 h-4 bg-violet-400 rounded-full shadow-lg shadow-violet-400/50"></div>
+              <div className="absolute top-32 left-96 w-7 h-7 bg-sky-400 rounded-full shadow-lg shadow-sky-400/50"></div>
+              <div className="absolute top-16 left-120 w-5 h-5 bg-lime-400 rounded-full shadow-lg shadow-lime-400/50"></div>
+              <div className="absolute top-36 left-108 w-6 h-6 bg-fuchsia-400 rounded-full shadow-lg shadow-fuchsia-400/50"></div>
+            </div>
+          </div>
 
           {/* Articles List */}
           <div className="space-y-12">
@@ -130,7 +148,7 @@ export default function BlogPage() {
                   <span>{article.readTime}</span>
                 </div>
                 
-                <h2 className="text-2xl font-extralight text-gray-900 leading-tight mb-4">
+                <h2 className="text-2xl font-semibold text-gray-900 leading-tight mb-4">
                   {article.title}
                 </h2>
                 
