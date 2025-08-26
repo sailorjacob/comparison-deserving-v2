@@ -126,7 +126,7 @@ export default function HelpingArtistsCollectBitcoinPage() {
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              We hand-pick emerging talent from overlooked corners, spotlighting voices that deserve attention. Take digital artists who transform everyday tools into creative canvases, proving technology can amplify artistic narratives in new ways.
+              We hand-pick emerging talent from overlooked corners, spotlighting voices that deserve attention. Digital artists who transform everyday tools into creative canvases prove that technology can amplify artistic narratives in new ways.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
