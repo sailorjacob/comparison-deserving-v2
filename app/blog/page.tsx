@@ -16,6 +16,41 @@ const getRandomLogoColor = () => {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
+// Random polka dot color utility
+const getRandomPolkaDotColor = () => {
+  const colors = [
+    'bg-yellow-300', 'bg-pink-400', 'bg-cyan-300', 'bg-purple-400', 'bg-orange-400',
+    'bg-green-400', 'bg-red-400', 'bg-blue-400', 'bg-indigo-400', 'bg-teal-400',
+    'bg-rose-400', 'bg-amber-400', 'bg-emerald-400', 'bg-violet-400', 'bg-sky-400',
+    'bg-lime-400', 'bg-fuchsia-400'
+  ]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
+// Random polka dot shadow color utility
+const getRandomPolkaDotShadow = (color: string) => {
+  const colorMap: { [key: string]: string } = {
+    'bg-yellow-300': 'shadow-yellow-300/50',
+    'bg-pink-400': 'shadow-pink-400/50',
+    'bg-cyan-300': 'shadow-cyan-300/50',
+    'bg-purple-400': 'shadow-purple-400/50',
+    'bg-orange-400': 'shadow-orange-400/50',
+    'bg-green-400': 'shadow-green-400/50',
+    'bg-red-400': 'shadow-red-400/50',
+    'bg-blue-400': 'shadow-blue-400/50',
+    'bg-indigo-400': 'shadow-indigo-400/50',
+    'bg-teal-400': 'shadow-teal-400/50',
+    'bg-rose-400': 'shadow-rose-400/50',
+    'bg-amber-400': 'shadow-amber-400/50',
+    'bg-emerald-400': 'shadow-emerald-400/50',
+    'bg-violet-400': 'shadow-violet-400/50',
+    'bg-sky-400': 'shadow-sky-400/50',
+    'bg-lime-400': 'shadow-lime-400/50',
+    'bg-fuchsia-400': 'shadow-fuchsia-400/50'
+  }
+  return colorMap[color] || 'shadow-gray-400/50'
+}
+
 // Blog articles data
 const blogArticles = [
   {
@@ -114,24 +149,25 @@ export default function BlogPage() {
           {/* Colorful Polka Dot Header */}
           <div className="mb-16 w-full h-48 bg-gradient-to-r from-pink-400 via-purple-500 to-cyan-400 rounded-2xl overflow-hidden relative">
             <div className="absolute inset-0">
-              {/* Generate polka dots with neon colors */}
-              <div className="absolute top-8 left-12 w-6 h-6 bg-yellow-300 rounded-full shadow-lg shadow-yellow-300/50"></div>
-              <div className="absolute top-16 left-32 w-4 h-4 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50"></div>
-              <div className="absolute top-24 left-20 w-8 h-8 bg-cyan-300 rounded-full shadow-lg shadow-cyan-300/50"></div>
-              <div className="absolute top-12 left-48 w-5 h-5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
-              <div className="absolute top-32 left-8 w-7 h-7 bg-orange-400 rounded-full shadow-lg shadow-orange-400/50"></div>
-              <div className="absolute top-8 left-64 w-6 h-6 bg-green-400 rounded-full shadow-lg shadow-green-400/50"></div>
-              <div className="absolute top-20 left-72 w-4 h-4 bg-red-400 rounded-full shadow-lg shadow-red-400/50"></div>
-              <div className="absolute top-36 left-56 w-5 h-5 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
-              <div className="absolute top-16 left-80 w-7 h-7 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
-              <div className="absolute top-28 left-88 w-6 h-6 bg-teal-400 rounded-full shadow-lg shadow-teal-400/50"></div>
-              <div className="absolute top-12 left-96 w-4 h-4 bg-rose-400 rounded-full shadow-lg shadow-rose-400/50"></div>
-              <div className="absolute top-40 left-72 w-5 h-5 bg-amber-400 rounded-full shadow-lg shadow-amber-400/50"></div>
-              <div className="absolute top-8 left-104 w-6 h-6 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"></div>
-              <div className="absolute top-24 left-112 w-4 h-4 bg-violet-400 rounded-full shadow-lg shadow-violet-400/50"></div>
-              <div className="absolute top-32 left-96 w-7 h-7 bg-sky-400 rounded-full shadow-lg shadow-sky-400/50"></div>
-              <div className="absolute top-16 left-120 w-5 h-5 bg-lime-400 rounded-full shadow-lg shadow-lime-400/50"></div>
-              <div className="absolute top-36 left-108 w-6 h-6 bg-fuchsia-400 rounded-full shadow-lg shadow-fuchsia-400/50"></div>
+              {/* Generate polka dots with random neon colors */}
+              {(() => {
+                const dots = []
+                for (let i = 0; i < 20; i++) {
+                  const color = getRandomPolkaDotColor()
+                  const shadow = getRandomPolkaDotShadow(color)
+                  const size = Math.random() > 0.5 ? 'w-4 h-4' : Math.random() > 0.3 ? 'w-6 h-6' : 'w-8 h-8'
+                  const top = Math.random() * 40 + 8
+                  const left = Math.random() * 120 + 8
+                  dots.push(
+                    <div 
+                      key={i}
+                      className={`absolute ${size} ${color} rounded-full shadow-lg ${shadow}`}
+                      style={{ top: `${top}px`, left: `${left}px` }}
+                    ></div>
+                  )
+                }
+                return dots
+              })()}
             </div>
           </div>
 

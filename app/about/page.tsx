@@ -107,14 +107,6 @@ export default function AboutPage() {
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
       
-      {/* Blog Link */}
-      <div className="mb-8">
-        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
-          <span className="text-sm">Read our blog</span>
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </Link>
-      </div>
-      
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
         The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue. Comparison for short.
         <br /><br />
@@ -123,6 +115,14 @@ export default function AboutPage() {
       <p className="text-gray-500 font-light text-sm">
         <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>
       </p>
+      
+      {/* Blog Link */}
+      <div className="mt-8 mb-8">
+        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
+          <span className="text-sm">Read our blog</span>
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </Link>
+      </div>
               <div className="mt-12">
           <FlashlightReveal />
         </div>
