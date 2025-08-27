@@ -122,31 +122,31 @@ export default function ShiftingHorizonsArticlePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Mid-2025 finds the global art scene in flux—auction sales dipped 6% in the first half to $3.98 billion, with ultra-contemporary works down 43% from last year. Yet amid the slowdown, fresh energy bubbles up in overlooked corners. High-end trophies falter, but mid-tier resilience and budding hubs keep things lively. Here's the pulse.
+              Mid-2025 finds the global art scene in transition—auction sales declined 6% in the first half to $3.98 billion, with ultra-contemporary works down 43% from last year. Despite the slowdown, new energy emerges in overlooked areas. High-end works struggle, but mid-tier resilience and emerging hubs maintain activity. Here's the current state of the market.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Galleries lean digital: 43% boost online sales focus, while 55% amp up content like Reels and virtual shows. Collectors follow suit—59% bought online last year. Lesser known: Visible prices make artworks six times more likely to sell, a quiet edge in a market where 69% hesitate over transparency gaps. Economic jitters hit hard, with 75% of galleries citing uncertainty, but this shift opens doors for nimble buyers.
+              Galleries are increasingly digital: 43% focus more on online sales, while 55% enhance content through social media and virtual exhibitions. Collectors follow this trend—59% purchased online last year. Notably, visible pricing makes artworks six times more likely to sell, providing an advantage in a market where 69% hesitate due to transparency concerns. Economic uncertainty affects 75% of galleries, but this shift creates opportunities for strategic buyers.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              30% of collectors turned selective, with just 7% buying more amid high prices and budgets. Focus sharpens on emerging artists—72% draw interest for fresh takes at under $5,000. Fun fact: The low end (under $5,000) grew 3% in items sold, hitting 40.5 million, as enjoyment trumps investment for many. Galleries echo this, prioritizing early-career talent over stars.
+              30% of collectors became more selective, with only 7% increasing purchases amid high prices and budget constraints. Focus intensifies on emerging artists—72% attract interest for innovative approaches under $5,000. The entry-level market (under $5,000) grew 3% in volume, reaching 40.5 million items, as personal enjoyment outweighs investment for many collectors. Galleries reflect this trend, prioritizing early-career talent over established names.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Prints stay tough, with mid-year gains defying the broader slump. Curators highlight textiles—fiber works weave craft into modern narratives, nodding to queer ecologies and speculative realism. Ethical art surges too: Climate themes and handmade practices like ceramics address eco-crises, blending with biophilic designs for mindful spaces. Lesser known: The $100,000–$1 million bracket holds firm, fueled by personal taste over speculation.
+              Prints remain strong, with mid-year gains defying the broader decline. Curators emphasize textiles—fiber works integrate traditional craft into contemporary narratives, exploring identity and speculative themes. Ethical art also grows: Climate-focused works and handmade practices like ceramics address environmental concerns, combining with biophilic design for thoughtful spaces. The $100,000–$1 million range remains stable, driven by personal taste rather than speculation.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Beyond New York and London, new capitals rise. Milan's tax perks lure galleries, with Miart fair buzzing. Warsaw's Museum of Modern Art debuts in February, spotlighting post-war Polish voices amid events like NADA Villa. Abu Dhabi's Guggenheim opens soon, backed by $1 billion from local funds, while Mumbai's billionaire boom powers Art Mumbai with galleries like Experimenter. Marrakech thrives on African contemporary, with 1-54 fair and revamped museums drawing global eyes. These spots shift 15% of market share eastward, per reports.
+              Beyond New York and London, new art capitals emerge. Milan's tax incentives attract galleries, with the Miart fair gaining prominence. Warsaw's Museum of Modern Art opens in February, highlighting post-war Polish artists alongside events like NADA Villa. Abu Dhabi's Guggenheim opens soon, supported by $1 billion from local funds, while Mumbai's economic growth powers Art Mumbai with galleries like Experimenter. Marrakech thrives on African contemporary art, with the 1-54 fair and renovated museums drawing international attention. These locations shift approximately 15% of market share eastward, according to reports.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Millennials and Gen Z reshape tastes, mixing pop culture with art—think video games as medium, with interactive pieces gaining ground. Activism weaves in: Female and Indigenous artists gain ground, from clay to land discourses. Lesser known: Private sales jumped 14%, favoring discreet deals for high-value postwar works.
+              Millennials and Gen Z reshape preferences, blending pop culture with fine art—including video games as artistic medium, with interactive works gaining recognition. Activism integrates naturally: Female and Indigenous artists gain visibility, from ceramics to land-based practices. Private sales increased 14%, favoring discreet transactions for high-value postwar works.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              In a market rethinking its core—US still leads at 43%, but edges erode—these niches and cities spark joy. Smart eyes spot value here, where resilience meets reinvention.
+              In a market reconsidering its foundation—the US still leads at 43%, but its dominance decreases—these emerging areas and cities create new opportunities. Strategic collectors recognize value where resilience meets innovation.
             </p>
           </div>
 

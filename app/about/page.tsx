@@ -111,9 +111,7 @@ export default function AboutPage() {
       </div>
       
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
-        The name is inspired by the sound of an old school legal firm partnership, it sounds sophisticated and rolls off the tongue. Comparison for short.
-        <br /><br />
-        comparison is a fine art collection and online gallery focused on emerging talent, all works shown are part of our private inventory - for acquisition inquiries, please contact
+        We are a fine art collection and online gallery focused on established and emerging talent, all works shown are part of our private inventory - for acquisition inquiries, please contact
       </p>
       <p className="text-gray-500 font-light text-sm">
         <a href="mailto:info@haven.engineer" className="hover:text-gray-700 transition-colors">info@haven.engineer</a>

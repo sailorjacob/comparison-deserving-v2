@@ -117,23 +117,23 @@ export default function HelpingArtistsCollectBitcoinPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              In 2025, Bitcoin weaves deeper into the art world, powering galleries at events like Bitcoin Asia and the Vegas Bitcoin Conference, where pieces sell in sats for a borderless vibe. Our online gallery steps in to guide artists toward their first crypto collectors.
+              In 2025, Bitcoin continues to integrate into the art world, with galleries participating in events like Bitcoin Asia and the Vegas Bitcoin Conference, where artworks are sold in satoshis. Our online gallery helps artists connect with their first crypto collectors.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              We hand-pick emerging talent from overlooked corners, spotlighting voices that deserve attention. Digital artists who transform everyday tools into creative canvases prove that technology can amplify artistic narratives in new ways.
+              We curate emerging talent from overlooked corners, highlighting artists who deserve recognition. Digital artists who transform everyday tools into creative mediums demonstrate how technology can enhance artistic expression.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Setting up is straightforward. We walk artists through wallet setup, stressing security and backup options. No banks needed, just a phone scan to receive funds, cutting fees that eat into sales.
+              The setup process is straightforward. We guide artists through wallet setup, emphasizing security and backup options. No traditional banking is required—just scan a QR code to receive payments, eliminating fees that reduce profit margins.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Then, connections: We pair them with collectors keen on Bitcoin deals, handling escrow for trust. It's like Bitcoin Art Gallery auctions, where works price in Bitcoin fractions, tying value to the coin's climb. Artists often embed blockchain elements, linking to provenance and educating buyers on digital roots.
+              We facilitate connections by pairing artists with collectors interested in Bitcoin transactions, handling escrow for security. Similar to Bitcoin Art Gallery auctions, works are priced in Bitcoin fractions, creating value tied to the cryptocurrency's performance. Artists often incorporate blockchain elements, linking to provenance and educating buyers about digital ownership.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              This opens doors—global payments without conversion hassles, royalties built into the system. We're here to make it feel easy, turning Bitcoin into a tool for artistic independence.
+              This approach enables global payments without currency conversion issues and built-in royalty systems. We're here to simplify the process, making Bitcoin a practical tool for artistic independence.
             </p>
           </div>
 

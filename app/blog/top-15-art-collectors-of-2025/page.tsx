@@ -122,43 +122,43 @@ export default function TopArtCollectorsArticlePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              In 2025, art collecting pulses with fresh energy, from AI-infused commissions to global biennials spotlighting underrepresented voices. These 15 stand out for their influence, blending philanthropy with sharp instincts. We've drawn from recent reports and profiles to highlight their moves.
+              In 2025, art collecting continues to evolve, from AI-enhanced commissions to global biennials highlighting underrepresented voices. These 15 collectors stand out for their influence, combining philanthropy with strategic vision. We've drawn from recent reports and profiles to highlight their activities.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Power couple with a collection valued over $150 million, focusing on Black artists like Jean-Michel Basquiat and Kerry James Marshall. In 2025, they commissioned an AI-Black futurism installation for their Bel Air home. Lesser-known: Jay-Z once traded a Basquiat for a Rolex in a private deal, tying art to personal milestones.
+              Power couple with a collection valued over $150 million, focusing on Black artists like Jean-Michel Basquiat and Kerry James Marshall. In 2025, they commissioned an AI-enhanced Black futurism installation for their Bel Air home. Notable: Jay-Z once traded a Basquiat for a Rolex in a private deal, connecting art to personal milestones.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Champions of artists of color, with holdings in Gordon Parks and Derrick Adams. This year, they opened a residency in Ghana to nurture emerging talent. Lesser-known: Their art dinners double as informal auctions, where guests bid on pieces mid-conversation.
+              Champions of artists of color, with holdings in Gordon Parks and Derrick Adams. This year, they opened a residency in Ghana to nurture emerging talent. Notable: Their art dinners serve as informal auctions, where guests bid on pieces during conversation.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Eco-focused collector of Takashi Murakami and Banksy. He snagged a Kehinde Wiley triptych at Art for Earth 2025. Lesser-known: DiCaprio quietly outbids financiers for works, often donating proceeds to wildlife causes.
+              Environmentally focused collector of Takashi Murakami and Banksy. He acquired a Kehinde Wiley triptych at Art for Earth 2025. Notable: DiCaprio quietly outbids financiers for works, often donating proceeds to wildlife causes.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Drawn to sculptural and minimalist photography, influenced by architect pals like Frank Gehry. Commissioned a kinetic piece by Anthony Howe for his vineyard in 2025. Lesser-known: Pitt sketches his own designs, blending acting downtime with art experiments.
+              Drawn to sculptural and minimalist photography, influenced by architect friends like Frank Gehry. Commissioned a kinetic piece by Anthony Howe for his vineyard in 2025. Notable: Pitt sketches his own designs, combining acting breaks with art experiments.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Spotlights Caribbean and women artists, plus NFTs. Co-hosted "Island Modern" pop-up at Venice Biennale this year. Lesser-known: Her first major buy was a piece from a Barbados street fair, kickstarting her bold taste.
+              Highlights Caribbean and women artists, plus NFTs. Co-hosted "Island Modern" pop-up at Venice Biennale this year. Notable: Her first major purchase was a piece from a Barbados street fair, establishing her bold taste.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Futurist with digital media focus. Teamed with Beeple for an NFT drop in 2025. Lesser-known: Williams collects vintage synthesizers alongside art, seeing both as cultural instruments.
+              Futurist with digital media focus. Collaborated with Beeple for an NFT release in 2025. Notable: Williams collects vintage synthesizers alongside art, viewing both as cultural instruments.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              AI and space-themed works dominate his haul. Commissioned Mars installations this year. Lesser-known: Musk trades art with tech peers, once swapping a piece for a prototype gadget.
+              AI and space-themed works dominate his collection. Commissioned Mars installations this year. Notable: Musk trades art with tech peers, once exchanging a piece for a prototype device.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Dubai-based, collects contemporary Middle Eastern art. Active in 2025 auctions, supporting regional voices. Lesser-known: Started with family heirlooms, evolving to fund artist residencies in Tehran.
+              Dubai-based collector of contemporary Middle Eastern art. Active in 2025 auctions, supporting regional voices. Notable: Started with family heirlooms, evolving to fund artist residencies in Tehran.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Indian tycoons with vast modern and contemporary holdings. Expanded into digital collectibles amid 2025's NFT revival. Lesser-known: Their Mumbai home museum hosts free public tours, blending private passion with community access.
+              Indian tycoons with vast modern and contemporary holdings. Expanded into digital collectibles during 2025's NFT revival. Notable: Their Mumbai home museum hosts free public tours, combining private passion with community access.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
@@ -166,23 +166,23 @@ export default function TopArtCollectorsArticlePage() {
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Columbus collector eyeing emerging stars like Jadé Fadojutimi. Excited for 2025 shows at CMA and MoMA. Lesser-known: Began collecting after a chance gallery visit, now mentors young buyers.
+              Columbus collector focusing on emerging stars like Jadé Fadojutimi. Excited for 2025 shows at CMA and MoMA. Notable: Began collecting after a chance gallery visit, now mentors young buyers.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              London-based, promotes African and Middle Eastern art. Traveling to 1-54 Marrakech and Jeddah Biennale in 2025. Lesser-known: Descended from Libyan royalty, she bridges diplomacy and art curation.
+              London-based promoter of African and Middle Eastern art. Traveling to 1-54 Marrakech and Jeddah Biennale in 2025. Notable: Descended from Libyan royalty, she bridges diplomacy and art curation.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Hong Kong tastemaker spotlighting Global South artists like Mire Lee. Predicts sculptural boom in 2025. Lesser-known: Co-founded a design hotel chain, where art installations rotate seasonally.
+              Hong Kong tastemaker highlighting Global South artists like Mire Lee. Predicts sculptural growth in 2025. Notable: Co-founded a design hotel chain, where art installations rotate seasonally.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Austin author collecting contemporary works. Active in philanthropy via investments in 2025. Lesser-known: Her memoir weaves art stories, revealing early buys from unknown talents.
+              Austin author collecting contemporary works. Active in philanthropy through investments in 2025. Notable: Her memoir weaves art stories, revealing early purchases from unknown talents.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              LA-New York pair with modern and contemporary focus. Supported artist funds through their foundation this year. Lesser-known: Larry's law background informs their ethical collecting, avoiding speculative flips.
+              LA-New York pair with modern and contemporary focus. Supported artist funds through their foundation this year. Notable: Larry's law background informs their ethical collecting, avoiding speculative flips.
             </p>
           </div>
 

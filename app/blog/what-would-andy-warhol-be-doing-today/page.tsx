@@ -122,31 +122,31 @@ export default function AndyWarholArticlePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              If Andy Warhol were still around, painting, filming, and hoarding, he might thrive in our hyper-connected world. Born Andrew Warhola to Slovak immigrants, he ditched the "a" early on to fit into New York's scene, much like today's creators might rebrand for TikTok fame. He could eye the 2025 art boom in AI-generated works and digital collectibles, possibly remixing pop icons with a twist.
+              If Andy Warhol were still around, painting, filming, and collecting, he might thrive in our hyper-connected world. Born Andrew Warhola to Slovak immigrants, he dropped the "a" early on to fit into New York's scene, much like today's creators might rebrand for social media recognition. He could explore the 2025 art boom in AI-generated works and digital collectibles, possibly remixing pop icons with contemporary elements.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              He could be running an Instagram "Factory," perhaps like Virgil Abloh's Instagram fluttering post style, collaborating with influencers on short-form videos. Warhol produced experimental films like the eight-hour <em>Empire</em>, a static shot of the Empire State Building, pure endurance art. Today, he might drop TikToks of celebrities scrolling their feeds, possibly capturing our 15-second attention spans, echoing his famous quip about fleeting fame.
+              He could be running an Instagram "Factory," perhaps similar to Virgil Abloh's distinctive social media style, collaborating with influencers on short-form videos. Warhol produced experimental films like the eight-hour <em>Empire</em>, a static shot of the Empire State Building, pure endurance art. Today, he might create TikToks of celebrities scrolling their feeds, capturing our short attention spans, echoing his famous observation about fleeting fame.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              He might dive into AI art trends, generating endless variations of Campbell's soup cans with tools like Midjourney, blending nostalgia with code. Retro revival is huge this year, with artists nodding to vintage styles in bold palettes and mixed media. Warhol, who ate the same lunch daily (hence the cans), could love how AI democratizes creation, much like his silk-screen multiples made art accessible.
+              He might explore AI art trends, generating endless variations of Campbell's soup cans with tools like Midjourney, blending nostalgia with technology. Retro revival is significant this year, with artists referencing vintage styles in bold palettes and mixed media. Warhol, who ate the same lunch daily (hence the cans), could appreciate how AI democratizes creation, much like his silk-screen multiples made art accessible.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              As a devout Catholic who attended Mass weekly from childhood until his death in 1987, despite his wild Factory parties, he might infuse spiritual motifs into AR installations, tying into 2025's cultural art wave. Think holographic Madonnas amid climate-themed pieces, possibly addressing eco-anxiety through pop lenses.
+              As a devout Catholic who attended Mass weekly from childhood until his death in 1987, despite his wild Factory parties, he might infuse spiritual motifs into AR installations, connecting to 2025's cultural art movement. Think holographic Madonnas amid climate-themed pieces, addressing environmental concerns through pop art perspectives.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Warhol was a collector at heart, amassing 610 time capsules stuffed with ephemera like pizza dough and unpaid bills. In 2025, he might hoard NFTs and memes, perhaps auctioning his cookie jar collection (which fetched $250K posthumously) as digital twins amid the ethical art movement.
+              Warhol was a collector at heart, amassing 610 time capsules filled with ephemera like pizza dough and unpaid bills. In 2025, he might collect NFTs and memes, perhaps auctioning his cookie jar collection (which fetched $250K posthumously) as digital versions amid the ethical art movement.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              He might podcast from his wig-filled studio. Yes, he wore silver toupees to hide baldness, turning insecurity into style. Chatting pop culture shifts like AI-driven entertainment and sustainable fashion, he could remind us: art mirrors the mundane, now amplified by algorithms.
+              He might podcast from his wig-filled studio. Yes, he wore silver toupees to hide baldness, turning insecurity into style. Discussing pop culture shifts like AI-driven entertainment and sustainable fashion, he could remind us: art mirrors the mundane, now amplified by algorithms.
             </p>
 
             <p className="text-gray-700 font-light leading-relaxed mb-6">
-              Warhol could fit right in, possibly turning today's chaos into silk-screen gold. For visuals, check Warhol-inspired AI art at <a href="https://artsy.net" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-700 underline">artsy.net</a> or his time capsules via the <a href="https://warhol.org" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-700 underline">Warhol Museum</a>.
+              Warhol could fit right in, possibly transforming today's chaos into silk-screen gold. For visuals, explore Warhol-inspired AI art at <a href="https://artsy.net" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-700 underline">artsy.net</a> or his time capsules via the <a href="https://warhol.org" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-700 underline">Warhol Museum</a>.
             </p>
           </div>
 
