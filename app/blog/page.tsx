@@ -117,22 +117,6 @@ const blogArticles = [
   },
   {
     id: 3,
-    title: "Shifting Horizons: Emerging Capitals and Resilient Niches in the 2025 Art Market",
-    excerpt: "Mid-2025 finds the global art scene in flux—auction sales dipped 6% in the first half to $3.98 billion, with ultra-contemporary works down 43% from last year. Yet amid the slowdown, fresh energy bubbles up in overlooked corners...",
-    date: "August 27, 2025",
-    readTime: "7 min read",
-    slug: "shifting-horizons-emerging-capitals-resilient-niches-2025-art-market"
-  },
-  {
-    id: 4,
-    title: "Top 15 Art Collectors of 2025",
-    excerpt: "In 2025, art collecting pulses with fresh energy, from AI-infused commissions to global biennials spotlighting underrepresented voices. These 15 stand out for their influence, blending philanthropy with sharp instincts...",
-    date: "August 24, 2025",
-    readTime: "8 min read",
-    slug: "top-15-art-collectors-of-2025"
-  },
-  {
-    id: 5,
     title: "What Would Andy Warhol Be Doing Today?",
     excerpt: "If Andy Warhol were still around, painting, filming, and hoarding, he might thrive in our hyper-connected world. Born Andrew Warhola to Slovak immigrants, he ditched the 'a' early on to fit into New York's scene, much like today's creators might rebrand for TikTok fame...",
     date: "August 19, 2025",
