@@ -93,7 +93,7 @@ export function ContactForm() {
       
       <Button 
         type="submit" 
-        className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${buttonColor} hover:opacity-90`}
+        className={`w-full text-white text-sm font-medium py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:transform-none disabled:shadow-lg ${buttonColor} hover:opacity-80`}
         disabled={isSubmitting}
       >
         {isSubmitting ? (
