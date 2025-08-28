@@ -102,13 +102,7 @@ export default function AboutPage() {
         </div>
       <h1 className="text-4xl font-extralight mb-6">About</h1>
       
-      {/* Blog Link */}
-      <div className="mb-8">
-        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-black transition-colors font-light">
-          <span className="text-sm">Read our blog</span>
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </Link>
-      </div>
+
       
       <p className="text-gray-700 font-light leading-relaxed max-w-3xl mb-6">
         We are a fine art collection and online gallery focused on established and emerging talent, all works shown are part of our private inventory - for acquisition inquiries, please contact
