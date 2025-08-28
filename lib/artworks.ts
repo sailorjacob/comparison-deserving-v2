@@ -422,7 +422,7 @@ export const getArtistProfiles = (): Artist[] => [
   {
     name: "Anthony Haden-Guest",
     bio: "Renowned artist and cultural commentator whose work spans multiple decades and media.",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/ANTHONY%20HADEN%20GUEST%20-%20JACOB.jpg",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/AHG%20x%202.jpeg",
     artworks: artworks.filter(a => a.artistName === "Anthony Haden-Guest")
   }
 ]
