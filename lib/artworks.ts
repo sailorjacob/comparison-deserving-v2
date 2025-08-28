@@ -29,45 +29,7 @@ export const baseArtworks: Artwork[] = [
     year: "2022",
     dimensions: "24 x 36 inches",
   },
-  {
-    id: 4,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie1.png",
-    title: "Storm",
-    artist: "Allie, 2021",
-    artistName: "Allie",
-    price: "0.72",
-    description: "A powerful depiction of nature's raw energy and emotional intensity.",
-    isSold: false,
-    year: "2021",
-    dimensions: "20 x 24 inches",
-  },
-  {
-    id: 5,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie2.png",
-    title: "Sisters",
-    artist: "Allie, 2022",
-    artistName: "Allie",
-    price: "1.44",
-    description: "An intimate exploration of familial bonds and shared experiences.",
-    isSold: false,
-    year: "2022",
-    dimensions: "18 x 24 inches",
-  },
-  {
-    id: 6,
-    image:
-      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/Allie3.png",
-    title: "Waiting",
-    artist: "Allie, 2023",
-    artistName: "Allie",
-    price: "0.72",
-    description: "A contemplative piece capturing moments of anticipation and stillness.",
-    isSold: false,
-    year: "2023",
-    dimensions: "16 x 20 inches",
-  },
+
 
   {
     id: 9,
@@ -450,12 +412,7 @@ export const getArtistProfiles = (): Artist[] => [
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/JimmyFrezza.jpg",
     artworks: artworks.filter(a => a.artistName === "Jimmy Frezza")
   },
-  {
-    name: "Allie",
-    bio: "Emerging artist exploring themes of nature, emotion, and human connection through vibrant imagery.",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/artists/Allie.jpg",
-    artworks: artworks.filter(a => a.artistName === "Allie")
-  },
+
   {
     name: "Ammo Cat",
     bio: "Digital and mixed media artist creating bold collaborative works that challenge traditional art boundaries.",
