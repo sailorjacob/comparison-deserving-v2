@@ -384,6 +384,19 @@ export const baseArtworks: Artwork[] = [
     year: "2023",
     dimensions: "6×6″ / 15x15cm",
   },
+  {
+    id: 38,
+    image:
+      "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/atm%20:%20am.jpg",
+    title: "ATM/AM",
+    artist: "jacob2fire",
+    artistName: "jacob2fire",
+    price: "10.00",
+    description: "Huge 80x120 inch film photograph printed on metal sheet.",
+    isSold: false,
+    year: "2024",
+    dimensions: "80 x 120 inches",
+  },
 ]
 
 // Enrich artworks with minimal metadata for filtering
@@ -424,5 +437,11 @@ export const getArtistProfiles = (): Artist[] => [
     bio: "Renowned artist and cultural commentator whose work spans multiple decades and media.",
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/images/AHG%20x%202.jpeg",
     artworks: artworks.filter(a => a.artistName === "Anthony Haden-Guest")
+  },
+  {
+    name: "jacob2fire",
+    bio: "Contemporary and elusive artist exploring the intersection of different mediums.",
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs/atm%20:%20am.jpg",
+    artworks: artworks.filter(a => a.artistName === "jacob2fire")
   }
 ]
